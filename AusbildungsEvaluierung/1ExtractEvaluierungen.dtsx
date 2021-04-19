@@ -1,0 +1,854 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/19/2021 10:04:59 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ATGRAZ408"
+  DTS:CreatorName="BRATEGGE\weihsp"
+  DTS:DTSID="{FDA283A1-0FA2-4FC4-9C32-46D164A7CF4F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.157"
+  DTS:LocaleID="3079"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{678452C2-CC4A-45CC-988D-F649BC4A4278}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ATGRAZ408]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2C17EE9F-8784-4AF4-B3A2-81AE1992B9E1}"
+      DTS:ObjectName="ATGRAZ408">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ATGRAZ408;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0789928E-466C-49A6-B478-5A8CABF2B0FA}"
+      DTS:ObjectName="localhost">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.AusbildungsEvaluierungStaging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A43F6176-8F84-43C1-ACDF-A02C9A950A24}"
+      DTS:ObjectName="localhost.AusbildungsEvaluierungStaging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=AusbildungsEvaluierungStaging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extract Evaluierungen"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8BDDDBC0-DE85-4004-B2A9-56F872299E0F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extract Evaluierungen"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Extract Evaluierungen\Calculate Alter"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Calculate Alter"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Extract Evaluierungen\Calculate Alter.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract Evaluierungen\Calculate Alter.Inputs[Derived Column Input].Columns[GebDat]"
+                      cachedDataType="dbDate"
+                      cachedName="GebDat"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[GebDat]" />
+                    <inputColumn
+                      refId="Package\Extract Evaluierungen\Calculate Alter.Inputs[Derived Column Input].Columns[Datum]"
+                      cachedDataType="dbDate"
+                      cachedName="Datum"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[Datum]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract Evaluierungen\Calculate Alter.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Extract Evaluierungen\Calculate Alter.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Calculate Alter.Outputs[Derived Column Output].Columns[AlterPerson]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Extract Evaluierungen\Calculate Alter.Outputs[Derived Column Output].Columns[AlterPerson]"
+                      name="AlterPerson"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[DATEDIFF]("Year",#{Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[GebDat]},#{Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[Datum]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DATEDIFF("Year",GebDat,Datum)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract Evaluierungen\Calculate Alter.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Extract Evaluierungen\Calculate Alter.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Calculate Alter.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Evaluierungen\Calculate Alter.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Calculate Alter.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Evaluierungen\Calculate Alter.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract Evaluierungen\Calculate BewertungGesamt"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Calculate BewertungGesamt"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Extract Evaluierungen\Calculate BewertungGesamt.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract Evaluierungen\Calculate BewertungGesamt.Inputs[Derived Column Input].Columns[AufbauUndGliederungDerLerhveranstaltung]"
+                      cachedDataType="i4"
+                      cachedName="AufbauUndGliederungDerLerhveranstaltung"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[AufbauUndGliederungDerLerhveranstaltung]" />
+                    <inputColumn
+                      refId="Package\Extract Evaluierungen\Calculate BewertungGesamt.Inputs[Derived Column Input].Columns[LehrveranstaltungsleitungKompetenz]"
+                      cachedDataType="i4"
+                      cachedName="LehrveranstaltungsleitungKompetenz"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[LehrveranstaltungsleitungKompetenz]" />
+                    <inputColumn
+                      refId="Package\Extract Evaluierungen\Calculate BewertungGesamt.Inputs[Derived Column Input].Columns[LehrveranstaltungsleitungEingehenAufFragen]"
+                      cachedDataType="i4"
+                      cachedName="LehrveranstaltungsleitungEingehenAufFragen"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[LehrveranstaltungsleitungEingehenAufFragen]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract Evaluierungen\Calculate BewertungGesamt.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Extract Evaluierungen\Calculate BewertungGesamt.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Calculate BewertungGesamt.Outputs[Derived Column Output].Columns[BewertungGesamt]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Extract Evaluierungen\Calculate BewertungGesamt.Outputs[Derived Column Output].Columns[BewertungGesamt]"
+                      name="BewertungGesamt"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[AufbauUndGliederungDerLerhveranstaltung]} + #{Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[LehrveranstaltungsleitungKompetenz]} + #{Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[LehrveranstaltungsleitungEingehenAufFragen]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">AufbauUndGliederungDerLerhveranstaltung + LehrveranstaltungsleitungKompetenz + LehrveranstaltungsleitungEingehenAufFragen</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract Evaluierungen\Calculate BewertungGesamt.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Extract Evaluierungen\Calculate BewertungGesamt.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Calculate BewertungGesamt.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Evaluierungen\Calculate BewertungGesamt.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Calculate BewertungGesamt.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Evaluierungen\Calculate BewertungGesamt.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source_Evaluierungen_join_Personen"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT e.*, p.GebDat
+FROM Evaluierungen e
+INNER JOIN Personen p ON(e.PersonNrFK = p.PersonNr)</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[GebDat]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].ExternalColumns[GebDat]"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[GebDat]"
+                      name="GebDat"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[EvaluierungNr]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].ExternalColumns[EvaluierungNr]"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[EvaluierungNr]"
+                      name="EvaluierungNr"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[PersonNrFK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].ExternalColumns[PersonNrFK]"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[PersonNrFK]"
+                      name="PersonNrFK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[VerantstaltungNrFK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].ExternalColumns[VerantstaltungNrFK]"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[VerantstaltungNrFK]"
+                      name="VerantstaltungNrFK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[Datum]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].ExternalColumns[Datum]"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[Datum]"
+                      name="Datum"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[AufbauUndGliederungDerLerhveranstaltung]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].ExternalColumns[AufbauUndGliederungDerLerhveranstaltung]"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[AufbauUndGliederungDerLerhveranstaltung]"
+                      name="AufbauUndGliederungDerLerhveranstaltung"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[LehrveranstaltungsleitungKompetenz]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].ExternalColumns[LehrveranstaltungsleitungKompetenz]"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[LehrveranstaltungsleitungKompetenz]"
+                      name="LehrveranstaltungsleitungKompetenz"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[LehrveranstaltungsleitungEingehenAufFragen]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].ExternalColumns[LehrveranstaltungsleitungEingehenAufFragen]"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[LehrveranstaltungsleitungEingehenAufFragen]"
+                      name="LehrveranstaltungsleitungEingehenAufFragen"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[BesondersGut]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].ExternalColumns[BesondersGut]"
+                      length="50"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[BesondersGut]"
+                      name="BesondersGut"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].ExternalColumns[GebDat]"
+                      dataType="dbDate"
+                      name="GebDat" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].ExternalColumns[EvaluierungNr]"
+                      dataType="i4"
+                      name="EvaluierungNr" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].ExternalColumns[PersonNrFK]"
+                      dataType="i4"
+                      name="PersonNrFK" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].ExternalColumns[VerantstaltungNrFK]"
+                      dataType="i4"
+                      name="VerantstaltungNrFK" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].ExternalColumns[Datum]"
+                      dataType="dbDate"
+                      name="Datum" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].ExternalColumns[AufbauUndGliederungDerLerhveranstaltung]"
+                      dataType="i4"
+                      name="AufbauUndGliederungDerLerhveranstaltung" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].ExternalColumns[LehrveranstaltungsleitungKompetenz]"
+                      dataType="i4"
+                      name="LehrveranstaltungsleitungKompetenz" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].ExternalColumns[LehrveranstaltungsleitungEingehenAufFragen]"
+                      dataType="i4"
+                      name="LehrveranstaltungsleitungEingehenAufFragen" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].ExternalColumns[BesondersGut]"
+                      dataType="wstr"
+                      length="50"
+                      name="BesondersGut" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Error Output].Columns[EvaluierungNr]"
+                      dataType="i4"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Error Output].Columns[EvaluierungNr]"
+                      name="EvaluierungNr" />
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Error Output].Columns[PersonNrFK]"
+                      dataType="i4"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Error Output].Columns[PersonNrFK]"
+                      name="PersonNrFK" />
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Error Output].Columns[VerantstaltungNrFK]"
+                      dataType="i4"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Error Output].Columns[VerantstaltungNrFK]"
+                      name="VerantstaltungNrFK" />
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Error Output].Columns[Datum]"
+                      dataType="dbDate"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Error Output].Columns[Datum]"
+                      name="Datum" />
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Error Output].Columns[AufbauUndGliederungDerLerhveranstaltung]"
+                      dataType="i4"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Error Output].Columns[AufbauUndGliederungDerLerhveranstaltung]"
+                      name="AufbauUndGliederungDerLerhveranstaltung" />
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Error Output].Columns[LehrveranstaltungsleitungKompetenz]"
+                      dataType="i4"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Error Output].Columns[LehrveranstaltungsleitungKompetenz]"
+                      name="LehrveranstaltungsleitungKompetenz" />
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Error Output].Columns[LehrveranstaltungsleitungEingehenAufFragen]"
+                      dataType="i4"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Error Output].Columns[LehrveranstaltungsleitungEingehenAufFragen]"
+                      name="LehrveranstaltungsleitungEingehenAufFragen" />
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Error Output].Columns[BesondersGut]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Error Output].Columns[BesondersGut]"
+                      name="BesondersGut" />
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Error Output].Columns[GebDat]"
+                      dataType="dbDate"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Error Output].Columns[GebDat]"
+                      name="GebDat" />
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract Evaluierungen\Staging_Evaluierungen"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Staging_Evaluierungen"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Evaluierungen]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.AusbildungsEvaluierungStaging]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.AusbildungsEvaluierungStaging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].Columns[Datum]"
+                      cachedDataType="dbDate"
+                      cachedName="Datum"
+                      externalMetadataColumnId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].ExternalColumns[Datum]"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[Datum]" />
+                    <inputColumn
+                      refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].Columns[AufbauUndGliederungDerLerhveranstaltung]"
+                      cachedDataType="i4"
+                      cachedName="AufbauUndGliederungDerLerhveranstaltung"
+                      externalMetadataColumnId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].ExternalColumns[AufbauUndGliederungDerLerhveranstaltung]"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[AufbauUndGliederungDerLerhveranstaltung]" />
+                    <inputColumn
+                      refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].Columns[LehrveranstaltungsleitungKompetenz]"
+                      cachedDataType="i4"
+                      cachedName="LehrveranstaltungsleitungKompetenz"
+                      externalMetadataColumnId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].ExternalColumns[LehrveranstaltungsleitungKompetenz]"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[LehrveranstaltungsleitungKompetenz]" />
+                    <inputColumn
+                      refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].Columns[LehrveranstaltungsleitungEingehenAufFragen]"
+                      cachedDataType="i4"
+                      cachedName="LehrveranstaltungsleitungEingehenAufFragen"
+                      externalMetadataColumnId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].ExternalColumns[LehrveranstaltungsleitungEingehenAufFragen]"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[LehrveranstaltungsleitungEingehenAufFragen]" />
+                    <inputColumn
+                      refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].Columns[BesondersGut]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="BesondersGut"
+                      externalMetadataColumnId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].ExternalColumns[BesondersGut]"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[BesondersGut]" />
+                    <inputColumn
+                      refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].Columns[BewertungGesamt]"
+                      cachedDataType="i4"
+                      cachedName="BewertungGesamt"
+                      externalMetadataColumnId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].ExternalColumns[BewertungGesamt]"
+                      lineageId="Package\Extract Evaluierungen\Calculate BewertungGesamt.Outputs[Derived Column Output].Columns[BewertungGesamt]" />
+                    <inputColumn
+                      refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].Columns[AlterPerson]"
+                      cachedDataType="i4"
+                      cachedName="AlterPerson"
+                      externalMetadataColumnId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].ExternalColumns[AlterPerson]"
+                      lineageId="Package\Extract Evaluierungen\Calculate Alter.Outputs[Derived Column Output].Columns[AlterPerson]" />
+                    <inputColumn
+                      refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].Columns[EvaluierungNr]"
+                      cachedDataType="i4"
+                      cachedName="EvaluierungNr"
+                      externalMetadataColumnId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].ExternalColumns[EvaluierungBusinessKey]"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[EvaluierungNr]" />
+                    <inputColumn
+                      refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].Columns[PersonNrFK]"
+                      cachedDataType="i4"
+                      cachedName="PersonNrFK"
+                      externalMetadataColumnId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].ExternalColumns[PersonBusinessKey]"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[PersonNrFK]" />
+                    <inputColumn
+                      refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].Columns[VerantstaltungNrFK]"
+                      cachedDataType="i4"
+                      cachedName="VerantstaltungNrFK"
+                      externalMetadataColumnId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].ExternalColumns[VerantstaltungBusinessKey]"
+                      lineageId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output].Columns[VerantstaltungNrFK]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].ExternalColumns[EvaluierungBusinessKey]"
+                      dataType="i4"
+                      name="EvaluierungBusinessKey" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].ExternalColumns[PersonBusinessKey]"
+                      dataType="i4"
+                      name="PersonBusinessKey" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].ExternalColumns[VerantstaltungBusinessKey]"
+                      dataType="i4"
+                      name="VerantstaltungBusinessKey" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].ExternalColumns[Datum]"
+                      dataType="dbDate"
+                      name="Datum" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].ExternalColumns[AufbauUndGliederungDerLerhveranstaltung]"
+                      dataType="i4"
+                      name="AufbauUndGliederungDerLerhveranstaltung" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].ExternalColumns[LehrveranstaltungsleitungKompetenz]"
+                      dataType="i4"
+                      name="LehrveranstaltungsleitungKompetenz" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].ExternalColumns[LehrveranstaltungsleitungEingehenAufFragen]"
+                      dataType="i4"
+                      name="LehrveranstaltungsleitungEingehenAufFragen" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].ExternalColumns[BesondersGut]"
+                      dataType="wstr"
+                      length="50"
+                      name="BesondersGut" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].ExternalColumns[BewertungGesamt]"
+                      dataType="i4"
+                      name="BewertungGesamt" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input].ExternalColumns[AlterPerson]"
+                      dataType="i4"
+                      name="AlterPerson" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Evaluierungen\Staging_Evaluierungen.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Evaluierungen\Staging_Evaluierungen.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Evaluierungen\Staging_Evaluierungen.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extract Evaluierungen.Paths[Derived Column Output]"
+              endId="Package\Extract Evaluierungen\Calculate Alter.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\Extract Evaluierungen\Calculate BewertungGesamt.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Extract Evaluierungen.Paths[Derived Column Output1]"
+              endId="Package\Extract Evaluierungen\Staging_Evaluierungen.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Extract Evaluierungen\Calculate Alter.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Extract Evaluierungen.Paths[OLE DB Source Output]"
+              endId="Package\Extract Evaluierungen\Calculate BewertungGesamt.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="180.8,41.6"
+          Id="Package\Extract Evaluierungen"
+          TopLeft="524.285723214247,243.176473998693" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Extract Evaluierungen">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="255.2,41.6"
+          Id="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen"
+          TopLeft="537.857152016795,177.411767194016" />
+        <NodeLayout
+          Size="210.4,41.6"
+          Id="Package\Extract Evaluierungen\Calculate BewertungGesamt"
+          TopLeft="561.428580989643,302.82353365875" />
+        <NodeLayout
+          Size="146.4,41.6"
+          Id="Package\Extract Evaluierungen\Calculate Alter"
+          TopLeft="597.857153038589,400.70588797269" />
+        <EdgeLayout
+          Id="Package\Extract Evaluierungen.Paths[OLE DB Source Output]"
+          TopLeft="666.042866503219,219.011767194016">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,83.8117664647348"
+              Start="0,0"
+              End="0,76.3117664647348">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.3117664647348" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract Evaluierungen.Paths[Derived Column Output]"
+          TopLeft="668.842867014116,344.42353365875">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56.2823543139397"
+              Start="0,0"
+              End="0,48.7823543139397">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.7823543139397" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="186.4,41.6"
+          Id="Package\Extract Evaluierungen\Staging_Evaluierungen"
+          TopLeft="585.714295688941,513.117654255105" />
+        <EdgeLayout
+          Id="Package\Extract Evaluierungen.Paths[Derived Column Output1]"
+          TopLeft="674.985724363765,442.30588797269">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70.8117662824146"
+              Start="0,0"
+              End="0,63.3117662824146">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.3117662824146" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Evaluierungen\Staging_Evaluierungen">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

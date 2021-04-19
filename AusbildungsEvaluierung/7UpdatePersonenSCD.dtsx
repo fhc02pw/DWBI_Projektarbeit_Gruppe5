@@ -1,0 +1,1965 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/19/2021 10:52:59 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ATGRAZ408"
+  DTS:CreatorName="BRATEGGE\weihsp"
+  DTS:DTSID="{56DF53D9-2E1D-4A0D-8689-5F6ACB6F1860}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.157"
+  DTS:LocaleID="3079"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{F6B5CA35-EB3E-4F6F-9CD1-202BBAD5C5B3}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{ACEAF4E2-8BA9-4E40-BDBB-4F4FAC507196}"
+      DTS:ObjectName="localhost">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.AusbildungsEvaluierungStaging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{BC85B436-38C0-451A-A17B-0C420D3BA56B}"
+      DTS:ObjectName="localhost.AusbildungsEvaluierungStaging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=AusbildungsEvaluierungStaging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.AusbildungsEvaluierungWarehouse]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{EF7DC57E-0FE2-4864-9609-17EB92D89E46}"
+      DTS:ObjectName="localhost.AusbildungsEvaluierungWarehouse">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=AusbildungsEvaluierungWarehouse;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\UpdatePersonenSCD"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1054D32C-C835-416B-ABA6-B5EF0863337D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="UpdatePersonenSCD"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\UpdatePersonenSCD\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\UpdatePersonenSCD\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\UpdatePersonenSCD\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\UpdatePersonenSCD\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Derived Column.Outputs[Derived Column Output].Columns[History]"
+                      dataType="wstr"
+                      description="History"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\UpdatePersonenSCD\Derived Column.Outputs[Derived Column Output].Columns[History]"
+                      name="History"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,50)("Expired")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,50)("Expired")</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UpdatePersonenSCD\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\UpdatePersonenSCD\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UpdatePersonenSCD\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UpdatePersonenSCD\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\UpdatePersonenSCD\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\UpdatePersonenSCD\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\UpdatePersonenSCD\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\UpdatePersonenSCD\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Derived Column 1.Outputs[Derived Column Output].Columns[History]"
+                      dataType="wstr"
+                      description="History"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\UpdatePersonenSCD\Derived Column 1.Outputs[Derived Column Output].Columns[History]"
+                      name="History"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,50)("Current")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,50)("Current")</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UpdatePersonenSCD\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\UpdatePersonenSCD\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UpdatePersonenSCD\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UpdatePersonenSCD\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\UpdatePersonenSCD\Insert Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimPersonen]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UpdatePersonenSCD\Insert Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.AusbildungsEvaluierungWarehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.AusbildungsEvaluierungWarehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input].Columns[PersonBusinessKey]"
+                      cachedDataType="i4"
+                      cachedName="PersonBusinessKey"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[PersonBusinessKey]"
+                      lineageId="Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[PersonBusinessKey]" />
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input].Columns[Vorname]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Vorname"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Vorname]"
+                      lineageId="Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[Vorname]" />
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input].Columns[Nachname]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Nachname"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nachname]"
+                      lineageId="Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[Nachname]" />
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input].Columns[GebDat]"
+                      cachedDataType="dbDate"
+                      cachedName="GebDat"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[GebDat]"
+                      lineageId="Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[GebDat]" />
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input].Columns[Art]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Art"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Art]"
+                      lineageId="Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[Art]" />
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input].Columns[Geschlecht]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Geschlecht"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Geschlecht]"
+                      lineageId="Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[Geschlecht]" />
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input].Columns[History]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="History"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[History]"
+                      lineageId="Package\UpdatePersonenSCD\Derived Column 1.Outputs[Derived Column Output].Columns[History]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[PersonKey]"
+                      dataType="i4"
+                      name="PersonKey" />
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[PersonBusinessKey]"
+                      dataType="i4"
+                      name="PersonBusinessKey" />
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Vorname]"
+                      dataType="wstr"
+                      length="50"
+                      name="Vorname" />
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nachname]"
+                      dataType="wstr"
+                      length="50"
+                      name="Nachname" />
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[GebDat]"
+                      dataType="dbDate"
+                      name="GebDat" />
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Art]"
+                      dataType="wstr"
+                      length="50"
+                      name="Art" />
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Geschlecht]"
+                      dataType="wstr"
+                      length="4"
+                      name="Geschlecht" />
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[History]"
+                      dataType="wstr"
+                      length="50"
+                      name="History" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\UpdatePersonenSCD\Insert Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UpdatePersonenSCD\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UpdatePersonenSCD\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\UpdatePersonenSCD\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimPersonen] SET [History] = ? WHERE [PersonBusinessKey] = ? AND [History] = 'Current'</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UpdatePersonenSCD\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.AusbildungsEvaluierungWarehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.AusbildungsEvaluierungWarehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\UpdatePersonenSCD\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command.Inputs[OLE DB Command Input].Columns[PersonBusinessKey]"
+                      cachedDataType="i4"
+                      cachedName="PersonBusinessKey"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[PersonBusinessKey]" />
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command.Inputs[OLE DB Command Input].Columns[History]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="History"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\UpdatePersonenSCD\Derived Column.Outputs[Derived Column Output].Columns[History]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\UpdatePersonenSCD\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\UpdatePersonenSCD\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UpdatePersonenSCD\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\UpdatePersonenSCD\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UpdatePersonenSCD\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UpdatePersonenSCD\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\UpdatePersonenSCD\OLE DB Command 1"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command 1"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimPersonen] SET [Art] = ?,[GebDat] = ?,[Geschlecht] = ?,[Nachname] = ?,[Vorname] = ? WHERE [PersonBusinessKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UpdatePersonenSCD\OLE DB Command 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.AusbildungsEvaluierungWarehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.AusbildungsEvaluierungWarehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\UpdatePersonenSCD\OLE DB Command 1.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Art]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Art"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Art]" />
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[GebDat]"
+                      cachedDataType="dbDate"
+                      cachedName="GebDat"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[GebDat]" />
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Geschlecht]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Geschlecht"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Geschlecht]" />
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Nachname]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Nachname"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Nachname]" />
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[PersonBusinessKey]"
+                      cachedDataType="i4"
+                      cachedName="PersonBusinessKey"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[PersonBusinessKey]" />
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Vorname]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Vorname"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Vorname]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="dbDate"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="wstr"
+                      length="4"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      dataType="i4"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\UpdatePersonenSCD\OLE DB Command 1.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\UpdatePersonenSCD\OLE DB Command 1.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UpdatePersonenSCD\OLE DB Command 1.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\UpdatePersonenSCD\OLE DB Command 1.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UpdatePersonenSCD\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UpdatePersonenSCD\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\UpdatePersonenSCD\OLE DB Command 2"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command 2"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimPersonen] SET [Vorname] = ? WHERE [PersonBusinessKey] = ? AND [History] = 'Current'</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UpdatePersonenSCD\OLE DB Command 2.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.AusbildungsEvaluierungWarehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.AusbildungsEvaluierungWarehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\UpdatePersonenSCD\OLE DB Command 2.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command 2.Inputs[OLE DB Command Input].Columns[PersonBusinessKey]"
+                      cachedDataType="i4"
+                      cachedName="PersonBusinessKey"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\OLE DB Command 2.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[PersonBusinessKey]" />
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command 2.Inputs[OLE DB Command Input].Columns[Vorname]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Vorname"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\OLE DB Command 2.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Vorname]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command 2.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command 2.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\UpdatePersonenSCD\OLE DB Command 2.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\UpdatePersonenSCD\OLE DB Command 2.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UpdatePersonenSCD\OLE DB Command 2.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\UpdatePersonenSCD\OLE DB Command 2.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command 2.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UpdatePersonenSCD\OLE DB Command 2.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\OLE DB Command 2.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UpdatePersonenSCD\OLE DB Command 2.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\UpdatePersonenSCD\Personen SCD"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
+              name="Personen SCD"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SELECT statement used to create a schema rowset."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Art], [GebDat], [Geschlecht], [Nachname], [PersonBusinessKey], [Vorname],[History] FROM [dbo].[DimPersonen]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
+                  name="CurrentRowWhere">[History] = 'Current'</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
+                  name="UpdateChangingAttributeHistory">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
+                  name="FailOnFixedAttributeChange">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column name for the inferred member."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether inferred member updates are detected."
+                  name="EnableInferredMember">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when a lookup of an existing record fails."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies that all rows in the input are new or the transformation detects the change type."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UpdatePersonenSCD\Personen SCD.Connections[LookupConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.AusbildungsEvaluierungWarehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.AusbildungsEvaluierungWarehouse]"
+                  description="Defines the connection to use for lookups in the dimension table"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input]"
+                  name="Slowly Changing Dimension Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input].Columns[Art]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Art"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[Art]"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Art]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input].Columns[GebDat]"
+                      cachedDataType="dbDate"
+                      cachedName="GebDat"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[GebDat]"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[GebDat]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input].Columns[Geschlecht]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Geschlecht"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[Geschlecht]"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Geschlecht]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input].Columns[Nachname]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Nachname"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[Nachname]"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Nachname]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input].Columns[PersonBusinessKey]"
+                      cachedDataType="i4"
+                      cachedName="PersonBusinessKey"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[PersonBusinessKey]"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[PersonBusinessKey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input].Columns[Vorname]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Vorname"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[Vorname]"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Vorname]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[Art]"
+                      dataType="wstr"
+                      length="50"
+                      name="Art" />
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[GebDat]"
+                      dataType="dbDate"
+                      name="GebDat" />
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[Geschlecht]"
+                      dataType="wstr"
+                      length="4"
+                      name="Geschlecht" />
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[Nachname]"
+                      dataType="wstr"
+                      length="50"
+                      name="Nachname" />
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[PersonBusinessKey]"
+                      dataType="i4"
+                      name="PersonBusinessKey" />
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[Vorname]"
+                      dataType="wstr"
+                      length="50"
+                      name="Vorname" />
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[History]"
+                      dataType="wstr"
+                      length="50"
+                      name="History" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\UpdatePersonenSCD\Personen SCD.Outputs[Unchanged Output]"
+                  description="Unchanged rows"
+                  exclusionGroup="1"
+                  name="Unchanged Output"
+                  synchronousInputId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UpdatePersonenSCD\Personen SCD.Outputs[New Output]"
+                  description="New rows"
+                  exclusionGroup="1"
+                  name="New Output"
+                  synchronousInputId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UpdatePersonenSCD\Personen SCD.Outputs[Fixed Attribute Output]"
+                  description="Rows with changes in columns tagged FixedAttribute"
+                  exclusionGroup="1"
+                  name="Fixed Attribute Output"
+                  synchronousInputId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UpdatePersonenSCD\Personen SCD.Outputs[Changing Attribute Updates Output]"
+                  description="These rows contain new information for ChangingAttribute (Type 1) column changes"
+                  exclusionGroup="1"
+                  name="Changing Attribute Updates Output"
+                  synchronousInputId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UpdatePersonenSCD\Personen SCD.Outputs[Historical Attribute Inserts Output]"
+                  description="HistoricalAttribute (Type 2) changes result in these new rows"
+                  exclusionGroup="2"
+                  name="Historical Attribute Inserts Output"
+                  synchronousInputId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UpdatePersonenSCD\Personen SCD.Outputs[Inferred Member Updates Output]"
+                  description="Information to update unpopulated initial dimension row"
+                  exclusionGroup="1"
+                  name="Inferred Member Updates Output"
+                  synchronousInputId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\UpdatePersonenSCD\Staging Personen"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Staging Personen"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Personen]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UpdatePersonenSCD\Staging Personen.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.AusbildungsEvaluierungStaging]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.AusbildungsEvaluierungStaging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[PersonBusinessKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[PersonBusinessKey]"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[PersonBusinessKey]"
+                      name="PersonBusinessKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Vorname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Vorname]"
+                      length="50"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Vorname]"
+                      name="Vorname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Nachname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Nachname]"
+                      length="50"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Nachname]"
+                      name="Nachname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[GebDat]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[GebDat]"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[GebDat]"
+                      name="GebDat"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Art]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Art]"
+                      length="50"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Art]"
+                      name="Art"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Geschlecht]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Geschlecht]"
+                      length="10"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Geschlecht]"
+                      name="Geschlecht"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[PersonBusinessKey]"
+                      dataType="i4"
+                      name="PersonBusinessKey" />
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Vorname]"
+                      dataType="wstr"
+                      length="50"
+                      name="Vorname" />
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Nachname]"
+                      dataType="wstr"
+                      length="50"
+                      name="Nachname" />
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[GebDat]"
+                      dataType="dbDate"
+                      name="GebDat" />
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Art]"
+                      dataType="wstr"
+                      length="50"
+                      name="Art" />
+                    <externalMetadataColumn
+                      refId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Geschlecht]"
+                      dataType="wstr"
+                      length="10"
+                      name="Geschlecht" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Error Output].Columns[PersonBusinessKey]"
+                      dataType="i4"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Error Output].Columns[PersonBusinessKey]"
+                      name="PersonBusinessKey" />
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Vorname]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Vorname]"
+                      name="Vorname" />
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Nachname]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Nachname]"
+                      name="Nachname" />
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Error Output].Columns[GebDat]"
+                      dataType="dbDate"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Error Output].Columns[GebDat]"
+                      name="GebDat" />
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Art]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Art]"
+                      name="Art" />
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Geschlecht]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Geschlecht]"
+                      name="Geschlecht" />
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\UpdatePersonenSCD\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\UpdatePersonenSCD\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Union All.Inputs[Union All Input 1].Columns[PersonBusinessKey]"
+                      cachedDataType="i4"
+                      cachedName="PersonBusinessKey"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[PersonBusinessKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[PersonBusinessKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Union All.Inputs[Union All Input 1].Columns[Vorname]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Vorname"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Vorname]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[Vorname]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Union All.Inputs[Union All Input 1].Columns[Nachname]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Nachname"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Nachname]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[Nachname]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Union All.Inputs[Union All Input 1].Columns[GebDat]"
+                      cachedDataType="dbDate"
+                      cachedName="GebDat"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[GebDat]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[GebDat]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Union All.Inputs[Union All Input 1].Columns[Art]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Art"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Art]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[Art]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Union All.Inputs[Union All Input 1].Columns[Geschlecht]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Geschlecht"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Geschlecht]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[Geschlecht]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\UpdatePersonenSCD\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Union All.Inputs[Union All Input 2].Columns[PersonBusinessKey]"
+                      cachedDataType="i4"
+                      cachedName="PersonBusinessKey"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[PersonBusinessKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[PersonBusinessKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Union All.Inputs[Union All Input 2].Columns[Vorname]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Vorname"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Vorname]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[Vorname]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Union All.Inputs[Union All Input 2].Columns[Nachname]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Nachname"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Nachname]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[Nachname]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Union All.Inputs[Union All Input 2].Columns[GebDat]"
+                      cachedDataType="dbDate"
+                      cachedName="GebDat"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[GebDat]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[GebDat]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Union All.Inputs[Union All Input 2].Columns[Art]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Art"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Art]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[Art]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\UpdatePersonenSCD\Union All.Inputs[Union All Input 2].Columns[Geschlecht]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Geschlecht"
+                      lineageId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output].Columns[Geschlecht]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[Geschlecht]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\UpdatePersonenSCD\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[PersonBusinessKey]"
+                      dataType="i4"
+                      lineageId="Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[PersonBusinessKey]"
+                      name="PersonBusinessKey" />
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[Vorname]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[Vorname]"
+                      name="Vorname" />
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[Nachname]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[Nachname]"
+                      name="Nachname" />
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[GebDat]"
+                      dataType="dbDate"
+                      lineageId="Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[GebDat]"
+                      name="GebDat" />
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[Art]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[Art]"
+                      name="Art" />
+                    <outputColumn
+                      refId="Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[Geschlecht]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1].Columns[Geschlecht]"
+                      name="Geschlecht" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\UpdatePersonenSCD.Paths[Changing Attribute Updates Output]"
+              endId="Package\UpdatePersonenSCD\OLE DB Command 2.Inputs[OLE DB Command Input]"
+              name="Changing Attribute Updates Output"
+              startId="Package\UpdatePersonenSCD\Personen SCD.Outputs[Changing Attribute Updates Output]" />
+            <path
+              refId="Package\UpdatePersonenSCD.Paths[Derived Column Output]"
+              endId="Package\UpdatePersonenSCD\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\UpdatePersonenSCD\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\UpdatePersonenSCD.Paths[Derived Column Output1]"
+              endId="Package\UpdatePersonenSCD\Insert Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\UpdatePersonenSCD\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\UpdatePersonenSCD.Paths[Historical Attribute Inserts Output]"
+              endId="Package\UpdatePersonenSCD\Derived Column.Inputs[Derived Column Input]"
+              name="Historical Attribute Inserts Output"
+              startId="Package\UpdatePersonenSCD\Personen SCD.Outputs[Historical Attribute Inserts Output]" />
+            <path
+              refId="Package\UpdatePersonenSCD.Paths[Inferred Member Updates Output]"
+              endId="Package\UpdatePersonenSCD\OLE DB Command 1.Inputs[OLE DB Command Input]"
+              name="Inferred Member Updates Output"
+              startId="Package\UpdatePersonenSCD\Personen SCD.Outputs[Inferred Member Updates Output]" />
+            <path
+              refId="Package\UpdatePersonenSCD.Paths[New Output]"
+              endId="Package\UpdatePersonenSCD\Union All.Inputs[Union All Input 1]"
+              name="New Output"
+              startId="Package\UpdatePersonenSCD\Personen SCD.Outputs[New Output]" />
+            <path
+              refId="Package\UpdatePersonenSCD.Paths[OLE DB Command Output]"
+              endId="Package\UpdatePersonenSCD\Union All.Inputs[Union All Input 2]"
+              name="OLE DB Command Output"
+              startId="Package\UpdatePersonenSCD\OLE DB Command.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\UpdatePersonenSCD.Paths[OLE DB Source Output]"
+              endId="Package\UpdatePersonenSCD\Personen SCD.Inputs[Slowly Changing Dimension Input]"
+              name="OLE DB Source Output"
+              startId="Package\UpdatePersonenSCD\Staging Personen.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\UpdatePersonenSCD.Paths[Union All Output 1]"
+              endId="Package\UpdatePersonenSCD\Derived Column 1.Inputs[Derived Column Input]"
+              name="Union All Output 1"
+              startId="Package\UpdatePersonenSCD\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="175.2,41.6"
+          Id="Package\UpdatePersonenSCD"
+          TopLeft="458.571436380854,216.411767740976" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\UpdatePersonenSCD">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="160.8,41.6"
+          Id="Package\UpdatePersonenSCD\Staging Personen"
+          TopLeft="150.5,5.49999999999995" />
+        <NodeLayout
+          Size="144.8,41.6"
+          Id="Package\UpdatePersonenSCD\Personen SCD"
+          TopLeft="158.5,107.1" />
+        <EdgeLayout
+          Id="Package\UpdatePersonenSCD.Paths[OLE DB Source Output]"
+          TopLeft="230.9,47.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\UpdatePersonenSCD\Derived Column"
+          TopLeft="17.5,208.7" />
+        <EdgeLayout
+          Id="Package\UpdatePersonenSCD.Paths[Historical Attribute Inserts Output]"
+          TopLeft="189.86,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-95.96,60"
+              Start="0,0"
+              End="-95.96,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.1341557440247" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.1341557440247"
+                    Point2="0,18.1341557440247"
+                    Point3="-4,18.1341557440247" />
+                  <mssgle:LineSegment
+                    End="-91.96,18.1341557440247" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-91.96,18.1341557440247"
+                    Point2="-95.96,18.1341557440247"
+                    Point3="-95.96,22.1341557440247" />
+                  <mssgle:LineSegment
+                    End="-95.96,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-123.03638671875,23.1341557440247,150.1127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\UpdatePersonenSCD\OLE DB Command"
+          TopLeft="5.49999999999997,310.3" />
+        <EdgeLayout
+          Id="Package\UpdatePersonenSCD.Paths[Derived Column Output]"
+          TopLeft="90.9,250.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\UpdatePersonenSCD\Union All"
+          TopLeft="170.9,411.9" />
+        <EdgeLayout
+          Id="Package\UpdatePersonenSCD.Paths[New Output]"
+          TopLeft="217.22,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="32.3466666666667,263.2"
+              Start="0,0"
+              End="32.3466666666667,255.7">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,138.318015879512" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,138.318015879512"
+                    Point2="0,142.318015879512"
+                    Point3="4,142.318015879512" />
+                  <mssgle:LineSegment
+                    End="28.3466666666667,142.318015879512" />
+                  <mssgle:CubicBezierSegment
+                    Point1="28.3466666666667,142.318015879512"
+                    Point2="32.3466666666667,142.318015879512"
+                    Point3="32.3466666666667,146.318015879512" />
+                  <mssgle:LineSegment
+                    End="32.3466666666667,255.7" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-10.9180533854167,147.318015879512,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\UpdatePersonenSCD.Paths[OLE DB Command Output]"
+          TopLeft="87.9,351.9">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="124.333333333333,59.9999999999998"
+              Start="0,0"
+              End="124.333333333333,52.4999999999998">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5263157894736" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5263157894736"
+                    Point2="0,35.5263157894736"
+                    Point3="4,35.5263157894736" />
+                  <mssgle:LineSegment
+                    End="120.333333333333,35.5263157894736" />
+                  <mssgle:CubicBezierSegment
+                    Point1="120.333333333333,35.5263157894736"
+                    Point2="124.333333333333,35.5263157894736"
+                    Point3="124.333333333333,39.5263157894736" />
+                  <mssgle:LineSegment
+                    End="124.333333333333,52.4999999999998" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\UpdatePersonenSCD\Derived Column 1"
+          TopLeft="149.7,513.5" />
+        <EdgeLayout
+          Id="Package\UpdatePersonenSCD.Paths[Union All Output 1]"
+          TopLeft="230.9,453.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\UpdatePersonenSCD\Insert Destination"
+          TopLeft="149.7,615.099999999999" />
+        <EdgeLayout
+          Id="Package\UpdatePersonenSCD.Paths[Derived Column Output1]"
+          TopLeft="230.9,555.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\UpdatePersonenSCD\OLE DB Command 1"
+          TopLeft="292.41428572645,208.7" />
+        <EdgeLayout
+          Id="Package\UpdatePersonenSCD.Paths[Inferred Member Updates Output]"
+          TopLeft="244.58,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="135.03428572645,59.9999999999999"
+              Start="0,0"
+              End="135.03428572645,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.8700427089688" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.8700427089688"
+                    Point2="0,26.8700427089688"
+                    Point3="4,26.8700427089688" />
+                  <mssgle:LineSegment
+                    End="131.03428572645,26.8700427089688" />
+                  <mssgle:CubicBezierSegment
+                    Point1="131.03428572645,26.8700427089688"
+                    Point2="135.03428572645,26.8700427089688"
+                    Point3="135.03428572645,30.8700427089688" />
+                  <mssgle:LineSegment
+                    End="135.03428572645,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-6.88584541802507,31.8700427089688,148.8059765625,11.658203125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\UpdatePersonenSCD\OLE DB Command 2"
+          TopLeft="526.7,208.7" />
+        <EdgeLayout
+          Id="Package\UpdatePersonenSCD.Paths[Changing Attribute Updates Output]"
+          TopLeft="271.94,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="341.96,59.9999999999999"
+              Start="0,0"
+              End="341.96,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.1341557440246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.1341557440246"
+                    Point2="0,18.1341557440246"
+                    Point3="4,18.1341557440246" />
+                  <mssgle:LineSegment
+                    End="337.96,18.1341557440246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="337.96,18.1341557440246"
+                    Point2="341.96,18.1341557440246"
+                    Point3="341.96,22.1341557440246" />
+                  <mssgle:LineSegment
+                    End="341.96,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="92.44609375,23.1341557440246,157.0678125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\UpdatePersonenSCD\Staging Personen">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\UpdatePersonenSCD\Personen SCD">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionID&gt;{EF7DC57E-0FE2-4864-9609-17EB92D89E46}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[DimPersonen]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Staging Personen.Outputs[OLE DB Source Output].Columns[Art]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Art&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Staging Personen.Outputs[OLE DB Source Output].Columns[GebDat]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;GebDat&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Staging Personen.Outputs[OLE DB Source Output].Columns[Geschlecht]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Geschlecht&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Staging Personen.Outputs[OLE DB Source Output].Columns[Nachname]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Nachname&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Staging Personen.Outputs[OLE DB Source Output].Columns[PersonBusinessKey]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;PersonBusinessKey&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Staging Personen.Outputs[OLE DB Source Output].Columns[Vorname]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Vorname&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Union All&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command 2&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;true&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn&gt;History&lt;/CurrentIndicatorColumn&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent&gt;Current&lt;/ValueCurrent&gt;
+  &lt;ValueExpired&gt;Expired&lt;/ValueExpired&gt;
+  &lt;StartDateColumn /&gt;
+  &lt;EndDateColumn /&gt;
+  &lt;DateVariable /&gt;
+  &lt;EnableInferredSupport&gt;true&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

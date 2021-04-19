@@ -1,0 +1,70 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/19/2021 11:10:49 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ATGRAZ408"
+  DTS:CreatorName="BRATEGGE\weihsp"
+  DTS:DTSID="{C2B73C98-1ECF-4C16-B7F5-185F88D1EAB8}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.157"
+  DTS:LocaleID="3079"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{44CB7DB6-7F6C-4ECA-89EC-4059A38D0D0E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.AusbildungsEvaluierungStaging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3B6E2201-9792-41E0-8C7E-16819F132A66}"
+      DTS:ObjectName="localhost.AusbildungsEvaluierungStaging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=AusbildungsEvaluierungStaging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\LookupKeysAndMergeFacts"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{06C2ACD3-F1FF-4F01-B352-BFCE2F290DB0}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="LookupKeysAndMergeFacts"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3B6E2201-9792-41E0-8C7E-16819F132A66}"
+          SQLTask:SqlStatementSource="MERGE INTO AusbildungsEvaluierungWarehouse.dbo.FactEvaluierungen AS tgt USING &#xA;(Select e.[EvaluierungBusinessKey],&#xA;p.PersonKey,&#xA;v.VerantstaltungsKey,&#xA;e.Datum,&#xA;e.AufbauUndGliederungDerLerhveranstaltung,&#xA;e.LehrveranstaltungsleitungKompetenz,&#xA;e.LehrveranstaltungsleitungEingehenAufFragen,&#xA;e.BesondersGut,&#xA;e.BewertungGesamt,&#xA;e.AlterPerson&#xA;FROM AusbildungsEvaluierungStaging.dbo.Evaluierungen e INNER JOIN AusbildungsEvaluierungWarehouse.dbo.DimPersonen p ON p.[PersonBusinessKey] = e.[PersonBusinessKey] and p.History = 'Current'&#xA;INNER JOIN AusbildungsEvaluierungWarehouse.dbo.DimVeranstaltungen v ON v.[VerantstaltungsBusinessKey] = e.[VerantstaltungBusinessKey] and v.History = 'Current'&#xA;) AS src&#xA;ON (&#xA;src.[EvaluierungBusinessKey] = tgt.[EvaluierungBusinessKey]&#xA;)&#xA;WHEN MATCHED THEN&#xA;UPDATE SET tgt.AufbauUndGliederungDerLerhveranstaltung =&#xA;src.AufbauUndGliederungDerLerhveranstaltung,&#xA;tgt.LehrveranstaltungsleitungKompetenz = &#xA;src.LehrveranstaltungsleitungKompetenz,&#xA;tgt.LehrveranstaltungsleitungEingehenAufFragen =&#xA;src.LehrveranstaltungsleitungEingehenAufFragen,&#xA;tgt.BesondersGut = src.BesondersGut,&#xA;tgt.bewertungGesamt = src.bewertungGesamt&#xA;WHEN NOT MATCHED THEN&#xA;INSERT ([EvaluierungBusinessKey], PersonKey,&#xA;VerantstaltungsKey,&#xA;Datum,&#xA;AufbauUndGliederungDerLerhveranstaltung,&#xA;LehrveranstaltungsleitungKompetenz,&#xA;LehrveranstaltungsleitungEingehenAufFragen,&#xA;BesondersGut,&#xA;bewertungGesamt,&#xA;alterPerson ) VALUES (src.[EvaluierungBusinessKey], src.PersonKey, src.VerantstaltungsKey, Datum,&#xA;AufbauUndGliederungDerLerhveranstaltung,&#xA;LehrveranstaltungsleitungKompetenz,&#xA;LehrveranstaltungsleitungEingehenAufFragen,&#xA;BesondersGut,&#xA;BewertungGesamt,&#xA;AlterPerson );" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="206.4,41.6"
+          Id="Package\LookupKeysAndMergeFacts"
+          TopLeft="463.571436466003,151.411766829375" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
