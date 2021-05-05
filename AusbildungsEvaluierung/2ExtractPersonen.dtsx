@@ -7,12 +7,12 @@
   DTS:CreatorName="BRATEGGE\weihsp"
   DTS:DTSID="{E28EBD67-102E-47B7-97EC-CDD503AB0F78}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.157"
+  DTS:LastModifiedProductVersion="15.0.2000.166"
   DTS:LocaleID="3079"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{F6D7187C-733C-48A3-BDF1-C2B38EB4D26F}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{9383D84E-C31C-4B1A-A57D-84DC0471E1E1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -23,7 +23,33 @@
       DTS:ObjectName="localhost">
       <DTS:ObjectData>
         <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=localhost;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9749F905-03BB-47F4-A663-EB5A5FC79E68}"
+      DTS:ObjectName="localhost 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.AusbildungsEvaluierung]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{ECD71085-B568-477E-80A5-0C5DA8D1759A}"
+      DTS:ObjectName="localhost.AusbildungsEvaluierung">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=AusbildungsEvaluierung;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -33,6 +59,8 @@
       DTS:ObjectName="localhost.AusbildungsEvaluierungStaging">
       <DTS:ObjectData>
         <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=localhost;Initial Catalog=AusbildungsEvaluierungStaging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -185,8 +213,8 @@
               <connections>
                 <connection
                   refId="Package\Extract Personen\Source Personen.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.AusbildungsEvaluierung]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.AusbildungsEvaluierung]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -528,19 +556,19 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
-<!--If you manually edit this section and make a mistake, you can delete it. -->
-<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<!--Dieser CDATA-Abschnitt enthält die Layoutinformationen des Pakets, z.B. Informationen wie X-/Y-Koordinaten, Breite und Höhe.-->
+<!--Wenn Sie diesen Abschnitt manuell ändern und Ihnen ein Fehler unterläuft, können Sie ihn löschen. -->
+<!--Das Paket kann zwar weiterhin normal geladen werden, aber frühere Layoutinformationen gehen verloren, und die Elemente auf der Entwurfsoberfläche werden vom Designer automatisch neu angeordnet.-->
 <Objects
   Version="8">
-  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <!--Jeder darunter liegende Knoten enthält Eigenschaften, die sich nicht auf das Laufzeitverhalten auswirken.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="157.6,41.6"
+          Size="158,42"
           Id="Package\Extract Personen"
           TopLeft="581.428581330241,214.117650061743" />
       </GraphLayout>
@@ -552,11 +580,15 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="156.8,41.6"
+          Size="157,42"
           Id="Package\Extract Personen\Source Personen"
           TopLeft="481.428579627251,159.823531653229" />
         <NodeLayout
-          Size="172.8,41.6"
+          Size="161,42"
+          Id="Package\Extract Personen\Staging Personen"
+          TopLeft="480.714293900802,386.176476004215" />
+        <NodeLayout
+          Size="173,42"
           Id="Package\Extract Personen\Mapping Geschlecht"
           TopLeft="476.428579542102,266.117650791023" />
         <EdgeLayout
@@ -581,10 +613,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="160.8,41.6"
-          Id="Package\Extract Personen\Staging Personen"
-          TopLeft="480.714293900802,386.176476004215" />
         <EdgeLayout
           Id="Package\Extract Personen.Paths[Derived Column Output]"
           TopLeft="561.971436721452,307.717650791023">

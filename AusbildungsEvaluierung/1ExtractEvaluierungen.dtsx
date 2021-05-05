@@ -7,12 +7,12 @@
   DTS:CreatorName="BRATEGGE\weihsp"
   DTS:DTSID="{FDA283A1-0FA2-4FC4-9C32-46D164A7CF4F}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.157"
+  DTS:LastModifiedProductVersion="15.0.2000.166"
   DTS:LocaleID="3079"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{678452C2-CC4A-45CC-988D-F649BC4A4278}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{1AE1CD31-8228-42A3-B7E1-6F58626C3DBE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -23,7 +23,9 @@
       DTS:ObjectName="ATGRAZ408">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=ATGRAZ408;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=AusbildungsEvaluierung;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -33,7 +35,21 @@
       DTS:ObjectName="localhost">
       <DTS:ObjectData>
         <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=localhost;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.AusbildungsEvaluierung]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{EB90DC7B-DF7F-444B-B982-CB9995032B70}"
+      DTS:ObjectName="localhost.AusbildungsEvaluierung">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=AusbildungsEvaluierung;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -43,6 +59,8 @@
       DTS:ObjectName="localhost.AusbildungsEvaluierungStaging">
       <DTS:ObjectData>
         <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=localhost;Initial Catalog=AusbildungsEvaluierungStaging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -291,8 +309,8 @@ INNER JOIN Personen p ON(e.PersonNrFK = p.PersonNr)</property>
               <connections>
                 <connection
                   refId="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.AusbildungsEvaluierung]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.AusbildungsEvaluierung]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -721,19 +739,19 @@ INNER JOIN Personen p ON(e.PersonNrFK = p.PersonNr)</property>
     </DTS:Executable>
   </DTS:Executables>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
-<!--If you manually edit this section and make a mistake, you can delete it. -->
-<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<!--Dieser CDATA-Abschnitt enthält die Layoutinformationen des Pakets, z.B. Informationen wie X-/Y-Koordinaten, Breite und Höhe.-->
+<!--Wenn Sie diesen Abschnitt manuell ändern und Ihnen ein Fehler unterläuft, können Sie ihn löschen. -->
+<!--Das Paket kann zwar weiterhin normal geladen werden, aber frühere Layoutinformationen gehen verloren, und die Elemente auf der Entwurfsoberfläche werden vom Designer automatisch neu angeordnet.-->
 <Objects
   Version="8">
-  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <!--Jeder darunter liegende Knoten enthält Eigenschaften, die sich nicht auf das Laufzeitverhalten auswirken.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="180.8,41.6"
+          Size="181,42"
           Id="Package\Extract Evaluierungen"
           TopLeft="524.285723214247,243.176473998693" />
       </GraphLayout>
@@ -745,39 +763,21 @@ INNER JOIN Personen p ON(e.PersonNrFK = p.PersonNr)</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="255.2,41.6"
-          Id="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen"
-          TopLeft="537.857152016795,177.411767194016" />
-        <NodeLayout
-          Size="210.4,41.6"
+          Size="210,42"
           Id="Package\Extract Evaluierungen\Calculate BewertungGesamt"
           TopLeft="561.428580989643,302.82353365875" />
         <NodeLayout
-          Size="146.4,41.6"
+          Size="255,42"
+          Id="Package\Extract Evaluierungen\Source_Evaluierungen_join_Personen"
+          TopLeft="537.857152016795,177.411767194016" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Extract Evaluierungen\Staging_Evaluierungen"
+          TopLeft="585.714295688941,513.117654255105" />
+        <NodeLayout
+          Size="146,42"
           Id="Package\Extract Evaluierungen\Calculate Alter"
           TopLeft="597.857153038589,400.70588797269" />
-        <EdgeLayout
-          Id="Package\Extract Evaluierungen.Paths[OLE DB Source Output]"
-          TopLeft="666.042866503219,219.011767194016">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,83.8117664647348"
-              Start="0,0"
-              End="0,76.3117664647348">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,76.3117664647348" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Extract Evaluierungen.Paths[Derived Column Output]"
           TopLeft="668.842867014116,344.42353365875">
@@ -800,10 +800,28 @@ INNER JOIN Personen p ON(e.PersonNrFK = p.PersonNr)</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="186.4,41.6"
-          Id="Package\Extract Evaluierungen\Staging_Evaluierungen"
-          TopLeft="585.714295688941,513.117654255105" />
+        <EdgeLayout
+          Id="Package\Extract Evaluierungen.Paths[OLE DB Source Output]"
+          TopLeft="666.042866503219,219.011767194016">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,83.8117664647348"
+              Start="0,0"
+              End="0,76.3117664647348">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.3117664647348" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Extract Evaluierungen.Paths[Derived Column Output1]"
           TopLeft="674.985724363765,442.30588797269">
