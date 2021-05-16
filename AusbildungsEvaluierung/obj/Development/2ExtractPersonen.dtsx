@@ -1,37 +1,37 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="4/19/2021 10:44:56 AM"
+  DTS:CreationDate="4/19/2021 10:17:13 AM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="ATGRAZ408"
   DTS:CreatorName="BRATEGGE\weihsp"
-  DTS:DTSID="{3E4C5E84-1AA9-41EE-AFEF-88E1F57B5B03}"
+  DTS:DTSID="{E28EBD67-102E-47B7-97EC-CDD503AB0F78}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.166"
   DTS:LocaleID="3079"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{FD3FD4CA-321F-4255-ACE1-323FC204FC50}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{543E8850-0149-4FBB-B5B5-83F1D19122B3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[localhost]"
+      DTS:refId="Package.ConnectionManagers[localhost.AusbildungsEvaluierung]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{108E12BC-EBFC-416F-8126-897DD941E05D}"
-      DTS:ObjectName="localhost">
+      DTS:DTSID="{ECD71085-B568-477E-80A5-0C5DA8D1759A}"
+      DTS:ObjectName="localhost.AusbildungsEvaluierung">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=AusbildungsEvaluierung;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[localhost.AusbildungsEvaluierungStaging]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{034A8FA2-1345-416F-A1F8-9D73828DA9B3}"
+      DTS:DTSID="{2AF791ED-0F4D-41B6-8063-223D7C77B834}"
       DTS:ObjectName="localhost.AusbildungsEvaluierungStaging">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -40,29 +40,17 @@
           DTS:ConnectionString="Data Source=localhost;Initial Catalog=AusbildungsEvaluierungStaging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[localhost.AusbildungsEvaluierungWarehouse]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{76EF2F49-B7D8-4099-9B42-3486A0F25E9B}"
-      DTS:ObjectName="localhost.AusbildungsEvaluierungWarehouse">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=AusbildungsEvaluierungWarehouse;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Load Personen"
+      DTS:refId="Package\Extract Personen"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{F6028DE7-6EBA-43AE-8088-DA86B545A99E}"
+      DTS:DTSID="{05AD170A-1902-4A2C-9D16-1EFE60089957}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Load Personen"
+      DTS:ObjectName="Extract Personen"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -70,72 +58,79 @@
           version="1">
           <components>
             <component
-              refId="Package\Load Personen\Fill History"
+              refId="Package\Extract Personen\Mapping Geschlecht"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Fill History"
+              name="Mapping Geschlecht"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\Load Personen\Fill History.Inputs[Derived Column Input]"
+                  refId="Package\Extract Personen\Mapping Geschlecht.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract Personen\Mapping Geschlecht.Inputs[Derived Column Input].Columns[Geschlecht]"
+                      cachedDataType="bool"
+                      cachedName="Geschlecht"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[Geschlecht]" />
+                  </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load Personen\Fill History.Outputs[Derived Column Output]"
+                  refId="Package\Extract Personen\Mapping Geschlecht.Outputs[Derived Column Output]"
                   description="Default Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   name="Derived Column Output"
-                  synchronousInputId="Package\Load Personen\Fill History.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\Extract Personen\Mapping Geschlecht.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Personen\Fill History.Outputs[Derived Column Output].Columns[Hist]"
+                      refId="Package\Extract Personen\Mapping Geschlecht.Outputs[Derived Column Output].Columns[GeschlechtText]"
                       dataType="wstr"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      length="7"
-                      lineageId="Package\Load Personen\Fill History.Outputs[Derived Column Output].Columns[Hist]"
-                      name="Hist"
+                      length="4"
+                      lineageId="Package\Extract Personen\Mapping Geschlecht.Outputs[Derived Column Output].Columns[GeschlechtText]"
+                      name="GeschlechtText"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">"Current"</property>
+                          name="Expression">#{Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[Geschlecht]} ? "Frau" : "Mann"</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">"Current"</property>
+                          name="FriendlyExpression">Geschlecht ? "Frau" : "Mann"</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load Personen\Fill History.Outputs[Derived Column Error Output]"
+                  refId="Package\Extract Personen\Mapping Geschlecht.Outputs[Derived Column Error Output]"
                   description="Error Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Derived Column Error Output"
-                  synchronousInputId="Package\Load Personen\Fill History.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\Extract Personen\Mapping Geschlecht.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Personen\Fill History.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\Extract Personen\Mapping Geschlecht.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load Personen\Fill History.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Extract Personen\Mapping Geschlecht.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load Personen\Fill History.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\Extract Personen\Mapping Geschlecht.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load Personen\Fill History.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Extract Personen\Mapping Geschlecht.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -144,11 +139,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Load Personen\Staging Personen"
+              refId="Package\Extract Personen\Source Personen"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
-              name="Staging Personen"
+              name="Source Personen"
               usesDispositions="true"
               version="7">
               <properties>
@@ -193,157 +188,178 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Load Personen\Staging Personen.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.AusbildungsEvaluierungStaging]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.AusbildungsEvaluierungStaging]"
+                  refId="Package\Extract Personen\Source Personen.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.AusbildungsEvaluierung]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.AusbildungsEvaluierung]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output]"
+                  refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[PersonBusinessKey]"
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[PersonNr]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[PersonBusinessKey]"
-                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[PersonBusinessKey]"
-                      name="PersonBusinessKey"
+                      externalMetadataColumnId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].ExternalColumns[PersonNr]"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[PersonNr]"
+                      name="PersonNr"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Vorname]"
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[Vorname]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Vorname]"
+                      externalMetadataColumnId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].ExternalColumns[Vorname]"
                       length="50"
-                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Vorname]"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[Vorname]"
                       name="Vorname"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Nachname]"
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[Nachname]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Nachname]"
+                      externalMetadataColumnId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].ExternalColumns[Nachname]"
                       length="50"
-                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Nachname]"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[Nachname]"
                       name="Nachname"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[GebDat]"
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[GebDat]"
                       dataType="dbDate"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[GebDat]"
-                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[GebDat]"
+                      externalMetadataColumnId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].ExternalColumns[GebDat]"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[GebDat]"
                       name="GebDat"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Art]"
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[Geschlecht]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].ExternalColumns[Geschlecht]"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[Geschlecht]"
+                      name="Geschlecht"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[Art]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Art]"
+                      externalMetadataColumnId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].ExternalColumns[Art]"
                       length="50"
-                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Art]"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[Art]"
                       name="Art"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Geschlecht]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[HauptwohnsitzBundesland]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Geschlecht]"
-                      length="10"
-                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Geschlecht]"
-                      name="Geschlecht"
+                      externalMetadataColumnId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].ExternalColumns[HauptwohnsitzBundesland]"
+                      length="255"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[HauptwohnsitzBundesland]"
+                      name="HauptwohnsitzBundesland"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[PersonBusinessKey]"
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].ExternalColumns[PersonNr]"
                       dataType="i4"
-                      name="PersonBusinessKey" />
+                      name="PersonNr" />
                     <externalMetadataColumn
-                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Vorname]"
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].ExternalColumns[Vorname]"
                       dataType="wstr"
                       length="50"
                       name="Vorname" />
                     <externalMetadataColumn
-                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Nachname]"
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].ExternalColumns[Nachname]"
                       dataType="wstr"
                       length="50"
                       name="Nachname" />
                     <externalMetadataColumn
-                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[GebDat]"
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].ExternalColumns[GebDat]"
                       dataType="dbDate"
                       name="GebDat" />
                     <externalMetadataColumn
-                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Art]"
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].ExternalColumns[Geschlecht]"
+                      dataType="bool"
+                      name="Geschlecht" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].ExternalColumns[Art]"
                       dataType="wstr"
                       length="50"
                       name="Art" />
                     <externalMetadataColumn
-                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Geschlecht]"
-                      dataType="wstr"
-                      length="10"
-                      name="Geschlecht" />
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].ExternalColumns[HauptwohnsitzBundesland]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="HauptwohnsitzBundesland" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output]"
+                  refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[PersonBusinessKey]"
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Error Output].Columns[PersonNr]"
                       dataType="i4"
-                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[PersonBusinessKey]"
-                      name="PersonBusinessKey" />
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Error Output].Columns[PersonNr]"
+                      name="PersonNr" />
                     <outputColumn
-                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Vorname]"
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Error Output].Columns[Vorname]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Vorname]"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Error Output].Columns[Vorname]"
                       name="Vorname" />
                     <outputColumn
-                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Nachname]"
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Error Output].Columns[Nachname]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Nachname]"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Error Output].Columns[Nachname]"
                       name="Nachname" />
                     <outputColumn
-                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[GebDat]"
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Error Output].Columns[GebDat]"
                       dataType="dbDate"
-                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[GebDat]"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Error Output].Columns[GebDat]"
                       name="GebDat" />
                     <outputColumn
-                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Art]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Art]"
-                      name="Art" />
-                    <outputColumn
-                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Geschlecht]"
-                      dataType="wstr"
-                      length="10"
-                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Geschlecht]"
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Error Output].Columns[Geschlecht]"
+                      dataType="bool"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Error Output].Columns[Geschlecht]"
                       name="Geschlecht" />
                     <outputColumn
-                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Error Output].Columns[Art]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Error Output].Columns[Art]"
+                      name="Art" />
+                    <outputColumn
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Error Output].Columns[HauptwohnsitzBundesland]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Error Output].Columns[HauptwohnsitzBundesland]"
+                      name="HauptwohnsitzBundesland" />
+                    <outputColumn
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -352,11 +368,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Load Personen\Warehouse DimPersonen"
+              refId="Package\Extract Personen\Staging Personen"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="Warehouse DimPersonen"
+              name="Staging Personen"
               usesDispositions="true"
               version="4">
               <properties>
@@ -367,7 +383,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[DimPersonen]</property>
+                  name="OpenRowset">[dbo].[Personen]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -409,128 +425,126 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Load Personen\Warehouse DimPersonen.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.AusbildungsEvaluierungWarehouse]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.AusbildungsEvaluierungWarehouse]"
+                  refId="Package\Extract Personen\Staging Personen.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.AusbildungsEvaluierungStaging]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.AusbildungsEvaluierungStaging]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
               <inputs>
                 <input
-                  refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input]"
+                  refId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].Columns[PersonBusinessKey]"
-                      cachedDataType="i4"
-                      cachedName="PersonBusinessKey"
-                      externalMetadataColumnId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[PersonBusinessKey]"
-                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[PersonBusinessKey]" />
-                    <inputColumn
-                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].Columns[Vorname]"
+                      refId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].Columns[Vorname]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Vorname"
-                      externalMetadataColumnId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[Vorname]"
-                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Vorname]" />
+                      externalMetadataColumnId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].ExternalColumns[Vorname]"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[Vorname]" />
                     <inputColumn
-                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].Columns[Nachname]"
+                      refId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].Columns[Nachname]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Nachname"
-                      externalMetadataColumnId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[Nachname]"
-                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Nachname]" />
+                      externalMetadataColumnId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].ExternalColumns[Nachname]"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[Nachname]" />
                     <inputColumn
-                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].Columns[GebDat]"
+                      refId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].Columns[GebDat]"
                       cachedDataType="dbDate"
                       cachedName="GebDat"
-                      externalMetadataColumnId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[GebDat]"
-                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[GebDat]" />
+                      externalMetadataColumnId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].ExternalColumns[GebDat]"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[GebDat]" />
                     <inputColumn
-                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].Columns[Art]"
+                      refId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].Columns[Art]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Art"
-                      externalMetadataColumnId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[Art]"
-                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Art]" />
+                      externalMetadataColumnId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].ExternalColumns[Art]"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[Art]" />
                     <inputColumn
-                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].Columns[Geschlecht]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="Geschlecht"
-                      externalMetadataColumnId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[Geschlecht]"
-                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Geschlecht]" />
+                      refId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].Columns[PersonNr]"
+                      cachedDataType="i4"
+                      cachedName="PersonNr"
+                      externalMetadataColumnId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].ExternalColumns[PersonBusinessKey]"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[PersonNr]" />
                     <inputColumn
-                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].Columns[Hist]"
+                      refId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].Columns[GeschlechtText]"
                       cachedDataType="wstr"
-                      cachedLength="7"
-                      cachedName="Hist"
-                      externalMetadataColumnId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[History]"
-                      lineageId="Package\Load Personen\Fill History.Outputs[Derived Column Output].Columns[Hist]" />
+                      cachedLength="4"
+                      cachedName="GeschlechtText"
+                      externalMetadataColumnId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].ExternalColumns[Geschlecht]"
+                      lineageId="Package\Extract Personen\Mapping Geschlecht.Outputs[Derived Column Output].Columns[GeschlechtText]" />
+                    <inputColumn
+                      refId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].Columns[HauptwohnsitzBundesland]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="HauptwohnsitzBundesland"
+                      externalMetadataColumnId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].ExternalColumns[HauptwohnsitzBundesland]"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[HauptwohnsitzBundesland]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[PersonKey]"
-                      dataType="i4"
-                      name="PersonKey" />
-                    <externalMetadataColumn
-                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[PersonBusinessKey]"
+                      refId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].ExternalColumns[PersonBusinessKey]"
                       dataType="i4"
                       name="PersonBusinessKey" />
                     <externalMetadataColumn
-                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[Vorname]"
+                      refId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].ExternalColumns[Vorname]"
                       dataType="wstr"
                       length="50"
                       name="Vorname" />
                     <externalMetadataColumn
-                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[Nachname]"
+                      refId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].ExternalColumns[Nachname]"
                       dataType="wstr"
                       length="50"
                       name="Nachname" />
                     <externalMetadataColumn
-                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[GebDat]"
+                      refId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].ExternalColumns[GebDat]"
                       dataType="dbDate"
                       name="GebDat" />
                     <externalMetadataColumn
-                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[Art]"
+                      refId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].ExternalColumns[Art]"
                       dataType="wstr"
                       length="50"
                       name="Art" />
                     <externalMetadataColumn
-                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[Geschlecht]"
+                      refId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].ExternalColumns[Geschlecht]"
                       dataType="wstr"
-                      length="4"
+                      length="10"
                       name="Geschlecht" />
                     <externalMetadataColumn
-                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[History]"
-                      dataType="wstr"
-                      length="50"
-                      name="History" />
+                      refId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].ExternalColumns[HauptwohnsitzBundesland]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="HauptwohnsitzBundesland" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load Personen\Warehouse DimPersonen.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Extract Personen\Staging Personen.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Personen\Warehouse DimPersonen.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Extract Personen\Staging Personen.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load Personen\Warehouse DimPersonen.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Extract Personen\Staging Personen.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load Personen\Warehouse DimPersonen.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Extract Personen\Staging Personen.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load Personen\Warehouse DimPersonen.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Extract Personen\Staging Personen.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -541,15 +555,15 @@
           </components>
           <paths>
             <path
-              refId="Package\Load Personen.Paths[Derived Column Output]"
-              endId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input]"
+              refId="Package\Extract Personen.Paths[Derived Column Output]"
+              endId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
-              startId="Package\Load Personen\Fill History.Outputs[Derived Column Output]" />
+              startId="Package\Extract Personen\Mapping Geschlecht.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Load Personen.Paths[OLE DB Source Output]"
-              endId="Package\Load Personen\Fill History.Inputs[Derived Column Input]"
+              refId="Package\Extract Personen.Paths[OLE DB Source Output]"
+              endId="Package\Extract Personen\Mapping Geschlecht.Inputs[Derived Column Input]"
               name="OLE DB Source Output"
-              startId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output]" />
+              startId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -568,43 +582,43 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="148,42"
-          Id="Package\Load Personen"
-          TopLeft="431.428578775756,226.352944350985" />
+          Size="158,42"
+          Id="Package\Extract Personen"
+          TopLeft="581.428581330241,214.117650061743" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Load Personen">
+    design-time-name="Package\Extract Personen">
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="157,42"
+          Id="Package\Extract Personen\Source Personen"
+          TopLeft="481.428579627251,159.823531653229" />
+        <NodeLayout
           Size="161,42"
-          Id="Package\Load Personen\Staging Personen"
-          TopLeft="485.714293985951,169.764708263239" />
+          Id="Package\Extract Personen\Staging Personen"
+          TopLeft="480.714293900802,386.176476004215" />
         <NodeLayout
-          Size="127,42"
-          Id="Package\Load Personen\Fill History"
-          TopLeft="498.57143706205,264.588239004868" />
-        <NodeLayout
-          Size="197,42"
-          Id="Package\Load Personen\Warehouse DimPersonen"
-          TopLeft="461.428579286653,380.823534752671" />
+          Size="173,42"
+          Id="Package\Extract Personen\Mapping Geschlecht"
+          TopLeft="476.428579542102,266.117650791023" />
         <EdgeLayout
-          Id="Package\Load Personen.Paths[Derived Column Output]"
-          TopLeft="561.000008174351,306.188239004868">
+          Id="Package\Extract Personen.Paths[OLE DB Source Output]"
+          TopLeft="561.328579584677,201.423531653229">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,74.6352957478032"
+              EndConnector="0,64.6941191377936"
               Start="0,0"
-              End="0,67.1352957478032">
+              End="0,57.1941191377936">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,67.1352957478032" />
+                    End="0,57.1941191377936" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -614,19 +628,19 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Personen.Paths[OLE DB Source Output]"
-          TopLeft="564.142865524,211.364708263239">
+          Id="Package\Extract Personen.Paths[Derived Column Output]"
+          TopLeft="561.971436721452,307.717650791023">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,53.223530741629"
+              EndConnector="0,78.4588252131915"
               Start="0,0"
-              End="0,45.723530741629">
+              End="0,70.9588252131915">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,45.723530741629" />
+                    End="0,70.9588252131915" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -639,7 +653,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Personen\Staging Personen">
+    design-time-name="Package\Extract Personen\Source Personen">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -652,7 +666,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Personen\Warehouse DimPersonen">
+    design-time-name="Package\Extract Personen\Staging Personen">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

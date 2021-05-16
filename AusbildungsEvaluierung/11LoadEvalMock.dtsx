@@ -1,25 +1,37 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="5/5/2021 8:09:56 PM"
+  DTS:CreationDate="5/16/2021 4:19:07 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="URP00007"
   DTS:CreatorName="KNAPP_LOGISTIK\ortbauer"
-  DTS:DTSID="{6578FCDB-D97D-44E2-AC0F-C4E269A8A43A}"
+  DTS:DTSID="{DA15CEA6-2E0E-41BF-9266-8CE82D2224EF}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.166"
   DTS:LocaleID="3079"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{61BA77B2-4337-473E-B5AB-2C0BEEAFC453}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{019EC248-8E6F-40C4-87C2-FC342AA15E51}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F0309C11-8681-494E-8A62-EDA464DDDC33}"
+      DTS:ObjectName="localhost">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[localhost.AusbildungsEvaluierung]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{CCE67F77-186A-4161-81D8-A1FF3C76AF51}"
+      DTS:DTSID="{B394A34D-E38D-4C08-95EE-1486F968B87B}"
       DTS:ObjectName="localhost.AusbildungsEvaluierung">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -29,10 +41,11 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Personen.csv]"
+      DTS:refId="Package.ConnectionManagers[Verbindungs-Manager für Flatfiles]"
       DTS:CreationName="FLATFILE"
-      DTS:DTSID="{50F1A89E-3093-4662-97FF-C44DE22B6076}"
-      DTS:ObjectName="Personen.csv">
+      DTS:Description="Eval1"
+      DTS:DTSID="{407EA834-86CE-4DD9-A749-F50AD8E24F19}"
+      DTS:ObjectName="Verbindungs-Manager für Flatfiles">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Format="Delimited"
@@ -42,7 +55,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\ortbauer\Documents\Code\DWBI\DWBI_Projektarbeit_Gruppe5\Personen_mock.csv">
+          DTS:ConnectionString="C:\Users\ortbauer\Documents\Code\DWBI\DWBI_Projektarbeit_Gruppe5\Evaluierung_mock_1.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -50,8 +63,8 @@
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
-              DTS:ObjectName="PersonNr"
-              DTS:DTSID="{5C5E76F6-6217-4545-9B2B-557E76907D38}"
+              DTS:ObjectName="id"
+              DTS:DTSID="{C4142E7B-7066-4222-9D33-5FA9D26CB36F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -59,8 +72,8 @@
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
-              DTS:ObjectName="Vorname"
-              DTS:DTSID="{67873892-8926-40FE-A292-F7E4E2E84677}"
+              DTS:ObjectName="PersonenNrFK"
+              DTS:DTSID="{A1BCF2B8-70D7-4047-B62D-7A42710BA415}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -68,8 +81,8 @@
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
-              DTS:ObjectName="Nachname"
-              DTS:DTSID="{426FB4C1-D890-41A2-82E0-F537B7B5572E}"
+              DTS:ObjectName="VeranstaltungNrFk"
+              DTS:DTSID="{ADE7126D-BAC6-4A78-9F32-3D87685BC730}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -77,8 +90,8 @@
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
-              DTS:ObjectName="GebDat"
-              DTS:DTSID="{D98BBCF0-8F2C-43D2-A0BF-85E7F285A5A5}"
+              DTS:ObjectName="Datum"
+              DTS:DTSID="{5D9ACD79-8A1A-4E33-9A6B-4264FDD00C04}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -86,8 +99,8 @@
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
-              DTS:ObjectName="Geschlecht"
-              DTS:DTSID="{30BC4B89-7AA6-4584-BE3E-F3DDE6D55FC4}"
+              DTS:ObjectName="AufbauUndGliederungDerLehrveranstaltung"
+              DTS:DTSID="{A6D61A06-F674-4200-95D5-4437AC0ED05C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -95,17 +108,118 @@
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
-              DTS:ObjectName="Art"
-              DTS:DTSID="{40A2C94F-DDCC-4877-9B8E-EF473310B693}"
+              DTS:ObjectName="LehrveranstaltungsleitungKompetenz"
+              DTS:DTSID="{E8D4DC3A-B8C4-44D5-A2A4-CB6A92C6B15B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:ColumnDelimiter="_x002C_"
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
-              DTS:ObjectName="HauptwohnsitzBundesland"
-              DTS:DTSID="{06F6488C-E2C7-469F-9E19-46CEEDA2BA9A}"
+              DTS:ObjectName="LehrveranstaltungsleitungEingehenAufFragen"
+              DTS:DTSID="{D624CE26-3FFC-4303-B7FB-36B4112C4039}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BesondersGut"
+              DTS:DTSID="{E679BAA9-2A2B-41AB-AF6A-9631E0C37A47}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Verbindungs-Manager für Flatfiles 1]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{CDC82F40-E1CD-4BB4-93B6-8D258B36D953}"
+      DTS:ObjectName="Verbindungs-Manager für Flatfiles 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="3079"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\ortbauer\Documents\Code\DWBI\DWBI_Projektarbeit_Gruppe5\Eval_mock.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EvaluierungNr"
+              DTS:DTSID="{10AA0516-8799-48C8-832E-F705C9A7AED2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PersonenNrFK"
+              DTS:DTSID="{51FE0AA1-7D9E-4283-9DF1-35BC28C49099}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="VeranstaltungNrFK"
+              DTS:DTSID="{2DE498CB-9938-4357-BDD0-7DAC15F3E6A9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Datum"
+              DTS:DTSID="{97FA00B5-1342-4448-AB56-CE0036257CAB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AufbauUndGliederungDerLehrveranstaltung"
+              DTS:DTSID="{DD83C027-7E2C-4DF9-9439-6EBF93CA9187}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="LehrveranstaltungsleitungKompetenz"
+              DTS:DTSID="{DFC5AAEE-C808-4528-AA63-159BDBB69064}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="LehrveranstaltungsleitungEingehenAufFragen"
+              DTS:DTSID="{6D023F4A-1C9E-441F-B94A-3125732CEF26}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BesondersGut"
+              DTS:DTSID="{76EF4DBA-F6D6-4329-86C8-E183F5B99D99}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -118,7 +232,7 @@
       DTS:refId="Package\Datenflusstask"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Datenflusstask"
-      DTS:DTSID="{AFEAD9C1-05ED-43D7-AF60-0DCA51DFE407}"
+      DTS:DTSID="{FFB5C753-2E2A-4608-8778-D2F3426B9CBF}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Datenflusstask"
@@ -141,40 +255,54 @@
                   name="Eingabe der Datenkonvertierung">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[Vorname]"
+                      refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[PersonenNrFK]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="Vorname"
-                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[Vorname]" />
+                      cachedName="PersonenNrFK"
+                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[PersonenNrFK]" />
                     <inputColumn
-                      refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[Nachname]"
+                      refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[VeranstaltungNrFK]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="Nachname"
-                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[Nachname]" />
+                      cachedName="VeranstaltungNrFK"
+                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[VeranstaltungNrFK]" />
                     <inputColumn
-                      refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[GebDat]"
+                      refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[Datum]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="GebDat"
-                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[GebDat]" />
+                      cachedName="Datum"
+                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[Datum]" />
                     <inputColumn
-                      refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[Geschlecht]"
+                      refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[AufbauUndGliederungDerLehrveranstaltung]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="Geschlecht"
-                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[Geschlecht]" />
+                      cachedName="AufbauUndGliederungDerLehrveranstaltung"
+                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[AufbauUndGliederungDerLehrveranstaltung]" />
                     <inputColumn
-                      refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[Art]"
+                      refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[LehrveranstaltungsleitungKompetenz]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="Art"
-                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[Art]" />
+                      cachedName="LehrveranstaltungsleitungKompetenz"
+                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[LehrveranstaltungsleitungKompetenz]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[LehrveranstaltungsleitungEingehenAufFragen]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="LehrveranstaltungsleitungEingehenAufFragen"
+                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[LehrveranstaltungsleitungEingehenAufFragen]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[BesondersGut]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="BesondersGut"
+                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[BesondersGut]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -187,20 +315,19 @@
                   synchronousInputId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Vorname&quot;]"
-                      dataType="wstr"
+                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;PersonenNrFK&quot;]"
+                      dataType="ui4"
                       errorOrTruncationOperation="Konvertierung"
                       errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Vorname&quot;]"
-                      name="Kopie von &quot;Vorname&quot;"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;PersonenNrFK&quot;]"
+                      name="Kopie von &quot;PersonenNrFK&quot;"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
-                          name="SourceInputColumnLineageID">#{Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[Vorname]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[PersonenNrFK]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
@@ -208,20 +335,19 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Nachname&quot;]"
-                      dataType="wstr"
+                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;VeranstaltungNrFk&quot;]"
+                      dataType="ui4"
                       errorOrTruncationOperation="Konvertierung"
                       errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Nachname&quot;]"
-                      name="Kopie von &quot;Nachname&quot;"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;VeranstaltungNrFk&quot;]"
+                      name="Kopie von &quot;VeranstaltungNrFk&quot;"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
-                          name="SourceInputColumnLineageID">#{Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[Nachname]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[VeranstaltungNrFK]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
@@ -229,19 +355,19 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;GebDat&quot;]"
+                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Datum&quot;]"
                       dataType="date"
                       errorOrTruncationOperation="Konvertierung"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;GebDat&quot;]"
-                      name="Kopie von &quot;GebDat&quot;"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Datum&quot;]"
+                      name="Kopie von &quot;Datum&quot;"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
-                          name="SourceInputColumnLineageID">#{Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[GebDat]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[Datum]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
@@ -249,20 +375,19 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Geschlecht&quot;]"
-                      dataType="wstr"
+                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;AufbauUndGliederungDerLehrveranstaltung&quot;]"
+                      dataType="ui4"
                       errorOrTruncationOperation="Konvertierung"
                       errorRowDisposition="FailComponent"
-                      length="4"
-                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Geschlecht&quot;]"
-                      name="Kopie von &quot;Geschlecht&quot;"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;AufbauUndGliederungDerLehrveranstaltung&quot;]"
+                      name="Kopie von &quot;AufbauUndGliederungDerLehrveranstaltung&quot;"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
-                          name="SourceInputColumnLineageID">#{Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[Geschlecht]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[AufbauUndGliederungDerLehrveranstaltung]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
@@ -270,20 +395,60 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Art&quot;]"
+                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;LehrveranstaltungsleitungKompetenz&quot;]"
+                      dataType="ui4"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;LehrveranstaltungsleitungKompetenz&quot;]"
+                      name="Kopie von &quot;LehrveranstaltungsleitungKompetenz&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[LehrveranstaltungsleitungKompetenz]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;LehrveranstaltungsleitungEingehenAufFragen&quot;]"
+                      dataType="ui4"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;LehrveranstaltungsleitungEingehenAufFragen&quot;]"
+                      name="Kopie von &quot;LehrveranstaltungsleitungEingehenAufFragen&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[LehrveranstaltungsleitungEingehenAufFragen]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;BesondersGut&quot;]"
                       dataType="wstr"
                       errorOrTruncationOperation="Konvertierung"
                       errorRowDisposition="FailComponent"
                       length="50"
-                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Art&quot;]"
-                      name="Kopie von &quot;Art&quot;"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;BesondersGut&quot;]"
+                      name="Kopie von &quot;BesondersGut&quot;"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
-                          name="SourceInputColumnLineageID">#{Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[Art]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[BesondersGut]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
@@ -339,8 +504,8 @@
               <connections>
                 <connection
                   refId="Package\Datenflusstask\Flatfilequelle.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Personen.csv]"
-                  connectionManagerRefId="Package.ConnectionManagers[Personen.csv]"
+                  connectionManagerID="Package.ConnectionManagers[Verbindungs-Manager für Flatfiles 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Verbindungs-Manager für Flatfiles 1]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
@@ -349,15 +514,15 @@
                   name="Ausgabe der Flatfilequelle">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[Vorname]"
+                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[PersonenNrFK]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Konvertierung"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Vorname]"
+                      externalMetadataColumnId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[PersonenNrFK]"
                       length="50"
-                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[Vorname]"
-                      name="Vorname"
+                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[PersonenNrFK]"
+                      name="PersonenNrFK"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -371,15 +536,15 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[Nachname]"
+                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[Datum]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Konvertierung"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Nachname]"
+                      externalMetadataColumnId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Datum]"
                       length="50"
-                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[Nachname]"
-                      name="Nachname"
+                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[Datum]"
+                      name="Datum"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -393,15 +558,15 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[GebDat]"
+                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[AufbauUndGliederungDerLehrveranstaltung]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Konvertierung"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[GebDat]"
+                      externalMetadataColumnId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[AufbauUndGliederungDerLehrveranstaltung]"
                       length="50"
-                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[GebDat]"
-                      name="GebDat"
+                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[AufbauUndGliederungDerLehrveranstaltung]"
+                      name="AufbauUndGliederungDerLehrveranstaltung"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -415,15 +580,15 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[Geschlecht]"
+                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[LehrveranstaltungsleitungKompetenz]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Konvertierung"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Geschlecht]"
+                      externalMetadataColumnId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[LehrveranstaltungsleitungKompetenz]"
                       length="50"
-                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[Geschlecht]"
-                      name="Geschlecht"
+                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[LehrveranstaltungsleitungKompetenz]"
+                      name="LehrveranstaltungsleitungKompetenz"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -437,15 +602,15 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[Art]"
+                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[LehrveranstaltungsleitungEingehenAufFragen]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Konvertierung"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Art]"
+                      externalMetadataColumnId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[LehrveranstaltungsleitungEingehenAufFragen]"
                       length="50"
-                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[Art]"
-                      name="Art"
+                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[LehrveranstaltungsleitungEingehenAufFragen]"
+                      name="LehrveranstaltungsleitungEingehenAufFragen"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -459,15 +624,59 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[HauptwohnsitzBundesland]"
+                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[BesondersGut]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Konvertierung"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[HauptwohnsitzBundesland]"
+                      externalMetadataColumnId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[BesondersGut]"
                       length="50"
-                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[HauptwohnsitzBundesland]"
-                      name="HauptwohnsitzBundesland"
+                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[BesondersGut]"
+                      name="BesondersGut"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[EvaluierungNr]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[EvaluierungNr]"
+                      length="50"
+                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[EvaluierungNr]"
+                      name="EvaluierungNr"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[VeranstaltungNrFK]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[VeranstaltungNrFK]"
+                      length="50"
+                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[VeranstaltungNrFK]"
+                      name="VeranstaltungNrFK"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -484,47 +693,53 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[PersonNr]"
+                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[PersonenNrFK]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      name="PersonNr" />
+                      name="PersonenNrFK" />
                     <externalMetadataColumn
-                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Vorname]"
+                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Datum]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      name="Vorname" />
+                      name="Datum" />
                     <externalMetadataColumn
-                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Nachname]"
+                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[AufbauUndGliederungDerLehrveranstaltung]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      name="Nachname" />
+                      name="AufbauUndGliederungDerLehrveranstaltung" />
                     <externalMetadataColumn
-                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[GebDat]"
+                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[LehrveranstaltungsleitungKompetenz]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      name="GebDat" />
+                      name="LehrveranstaltungsleitungKompetenz" />
                     <externalMetadataColumn
-                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Geschlecht]"
+                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[LehrveranstaltungsleitungEingehenAufFragen]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      name="Geschlecht" />
+                      name="LehrveranstaltungsleitungEingehenAufFragen" />
                     <externalMetadataColumn
-                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Art]"
+                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[BesondersGut]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      name="Art" />
+                      name="BesondersGut" />
                     <externalMetadataColumn
-                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[HauptwohnsitzBundesland]"
+                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[EvaluierungNr]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      name="HauptwohnsitzBundesland" />
+                      name="EvaluierungNr" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[VeranstaltungNrFK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="VeranstaltungNrFK" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -572,7 +787,7 @@
                 <property
                   dataType="System.String"
                   description="Gibt den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts an."
-                  name="OpenRowset">[dbo].[Personen]</property>
+                  name="OpenRowset">[dbo].[Evaluierungen]</property>
                 <property
                   dataType="System.String"
                   description="Gibt die Variable an, die den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts enthält."
@@ -629,83 +844,84 @@
                   name="Eingabe des OLE DB-Ziels">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;Art&quot;]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Kopie von &quot;Art&quot;"
-                      externalMetadataColumnId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Art]"
-                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Art&quot;]" />
-                    <inputColumn
-                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;Geschlecht&quot;]"
-                      cachedDataType="wstr"
-                      cachedLength="4"
-                      cachedName="Kopie von &quot;Geschlecht&quot;"
-                      externalMetadataColumnId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Geschlecht]"
-                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Geschlecht&quot;]" />
-                    <inputColumn
-                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;GebDat&quot;]"
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;Datum&quot;]"
                       cachedDataType="date"
-                      cachedName="Kopie von &quot;GebDat&quot;"
-                      externalMetadataColumnId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[GebDat]"
-                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;GebDat&quot;]" />
+                      cachedName="Kopie von &quot;Datum&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Datum]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Datum&quot;]" />
                     <inputColumn
-                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;Nachname&quot;]"
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;BesondersGut&quot;]"
                       cachedDataType="wstr"
                       cachedLength="50"
-                      cachedName="Kopie von &quot;Nachname&quot;"
-                      externalMetadataColumnId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Nachname]"
-                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Nachname&quot;]" />
+                      cachedName="Kopie von &quot;BesondersGut&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[BesondersGut]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;BesondersGut&quot;]" />
                     <inputColumn
-                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;Vorname&quot;]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Kopie von &quot;Vorname&quot;"
-                      externalMetadataColumnId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Vorname]"
-                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Vorname&quot;]" />
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;LehrveranstaltungsleitungEingehenAufFragen&quot;]"
+                      cachedDataType="ui4"
+                      cachedName="Kopie von &quot;LehrveranstaltungsleitungEingehenAufFragen&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[LehrveranstaltungsleitungEingehenAufFragen]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;LehrveranstaltungsleitungEingehenAufFragen&quot;]" />
                     <inputColumn
-                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[HauptwohnsitzBundesland]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="HauptwohnsitzBundesland"
-                      externalMetadataColumnId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[HauptwohnsitzBundesland]"
-                      lineageId="Package\Datenflusstask\Flatfilequelle.Outputs[Ausgabe der Flatfilequelle].Columns[HauptwohnsitzBundesland]" />
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;LehrveranstaltungsleitungKompetenz&quot;]"
+                      cachedDataType="ui4"
+                      cachedName="Kopie von &quot;LehrveranstaltungsleitungKompetenz&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[LehrveranstaltungsleitungKompetenz]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;LehrveranstaltungsleitungKompetenz&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;AufbauUndGliederungDerLehrveranstaltung&quot;]"
+                      cachedDataType="ui4"
+                      cachedName="Kopie von &quot;AufbauUndGliederungDerLehrveranstaltung&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[AufbauUndGliederungDerLerhveranstaltung]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;AufbauUndGliederungDerLehrveranstaltung&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;VeranstaltungNrFk&quot;]"
+                      cachedDataType="ui4"
+                      cachedName="Kopie von &quot;VeranstaltungNrFk&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[VerantstaltungNrFK]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;VeranstaltungNrFk&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;PersonenNrFK&quot;]"
+                      cachedDataType="ui4"
+                      cachedName="Kopie von &quot;PersonenNrFK&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[PersonNrFK]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;PersonenNrFK&quot;]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[PersonNr]"
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[EvaluierungNr]"
                       dataType="i4"
-                      name="PersonNr" />
+                      name="EvaluierungNr" />
                     <externalMetadataColumn
-                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Vorname]"
-                      dataType="wstr"
-                      length="50"
-                      name="Vorname" />
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[PersonNrFK]"
+                      dataType="i4"
+                      name="PersonNrFK" />
                     <externalMetadataColumn
-                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Nachname]"
-                      dataType="wstr"
-                      length="50"
-                      name="Nachname" />
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[VerantstaltungNrFK]"
+                      dataType="i4"
+                      name="VerantstaltungNrFK" />
                     <externalMetadataColumn
-                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[GebDat]"
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Datum]"
                       dataType="dbDate"
-                      name="GebDat" />
+                      name="Datum" />
                     <externalMetadataColumn
-                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Geschlecht]"
-                      dataType="bool"
-                      name="Geschlecht" />
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[AufbauUndGliederungDerLerhveranstaltung]"
+                      dataType="i4"
+                      name="AufbauUndGliederungDerLerhveranstaltung" />
                     <externalMetadataColumn
-                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Art]"
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[LehrveranstaltungsleitungKompetenz]"
+                      dataType="i4"
+                      name="LehrveranstaltungsleitungKompetenz" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[LehrveranstaltungsleitungEingehenAufFragen]"
+                      dataType="i4"
+                      name="LehrveranstaltungsleitungEingehenAufFragen" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[BesondersGut]"
                       dataType="wstr"
                       length="50"
-                      name="Art" />
-                    <externalMetadataColumn
-                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[HauptwohnsitzBundesland]"
-                      codePage="1252"
-                      dataType="str"
-                      length="255"
-                      name="HauptwohnsitzBundesland" />
+                      name="BesondersGut" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -750,34 +966,7 @@
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Task &quot;SQL ausführen&quot;"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Task &quot;SQL ausführen&quot;"
-      DTS:DTSID="{2FFEB2BD-1C1D-408F-BC96-94D747F7D22A}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Task &quot;SQL ausführen&quot;"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{CCE67F77-186A-4161-81D8-A1FF3C76AF51}"
-          SQLTask:SqlStatementSource="IF COL_LENGTH('Personen', 'HauptwohnsitzBundesland ') IS NULL&#xA;BEGIN&#xA;  ALTER TABLE Personen ADD HauptwohnsitzBundesland varchar(255);&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
   </DTS:Executables>
-  <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Einschränkung 1]"
-      DTS:CreationName=""
-      DTS:DTSID="{B78DE417-0947-454C-BEE4-0DAC00FDD87A}"
-      DTS:From="Package\Task &quot;SQL ausführen&quot;"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Einschränkung 1"
-      DTS:To="Package\Datenflusstask" />
-  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Dieser CDATA-Abschnitt enthält die Layoutinformationen des Pakets, z.B. Informationen wie X-/Y-Koordinaten, Breite und Höhe.-->
 <!--Wenn Sie diesen Abschnitt manuell ändern und Ihnen ein Fehler unterläuft, können Sie ihn löschen. -->
@@ -789,41 +978,53 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
           Size="151,42"
           Id="Package\Datenflusstask"
-          TopLeft="339,248" />
+          TopLeft="474,120" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Datenflusstask">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="187,42"
-          Id="Package\Task &quot;SQL ausführen&quot;"
-          TopLeft="245,43" />
+          Size="141,42"
+          Id="Package\Datenflusstask\Flatfilequelle"
+          TopLeft="310,94" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Datenflusstask\Datenkonvertierung"
+          TopLeft="429,193" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Einschränkung 1]"
-          TopLeft="338.5,85">
+          Id="Package\Datenflusstask.Paths[Ausgabe der Flatfilequelle]"
+          TopLeft="380.5,136">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="76,163"
+              EndConnector="136,57"
               Start="0,0"
-              End="76,155.5">
+              End="136,49.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,77.5" />
+                    End="0,24.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,77.5"
-                    Point2="0,81.5"
-                    Point3="4,81.5" />
+                    Point1="0,24.5"
+                    Point2="0,28.5"
+                    Point3="4,28.5" />
                   <mssgle:LineSegment
-                    End="72,81.5" />
+                    End="132,28.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="72,81.5"
-                    Point2="76,81.5"
-                    Point3="76,85.5" />
+                    Point1="132,28.5"
+                    Point2="136,28.5"
+                    Point3="136,32.5" />
                   <mssgle:LineSegment
-                    End="76,155.5" />
+                    End="136,49.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -832,64 +1033,36 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </Package>
-  <TaskHost
-    design-time-name="Package\Datenflusstask">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="141,42"
           Id="Package\Datenflusstask\OLE DB-Ziel"
-          TopLeft="177,267" />
-        <NodeLayout
-          Size="175,42"
-          Id="Package\Datenflusstask\Datenkonvertierung"
-          TopLeft="158,162" />
-        <NodeLayout
-          Size="141,42"
-          Id="Package\Datenflusstask\Flatfilequelle"
-          TopLeft="169,57" />
-        <EdgeLayout
-          Id="Package\Datenflusstask.Paths[Ausgabe der Flatfilequelle]"
-          TopLeft="242.5,99">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,63"
-              Start="0,0"
-              End="0,55.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,55.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,19.75,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="513,310" />
         <EdgeLayout
           Id="Package\Datenflusstask.Paths[Ausgabe der Datenkonvertierung]"
-          TopLeft="246.5,204">
+          TopLeft="516.5,235">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,63"
+              EndConnector="67,75"
               Start="0,0"
-              End="0,55.5">
+              End="67,67.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,55.5" />
+                    End="0,33.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.5"
+                    Point2="0,37.5"
+                    Point3="4,37.5" />
+                  <mssgle:LineSegment
+                    End="63,37.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="63,37.5"
+                    Point2="67,37.5"
+                    Point3="67,41.5" />
+                  <mssgle:LineSegment
+                    End="67,67.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

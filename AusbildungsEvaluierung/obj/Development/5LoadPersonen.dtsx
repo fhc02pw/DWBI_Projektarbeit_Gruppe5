@@ -1,48 +1,54 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="4/19/2021 10:49:28 AM"
+  DTS:CreationDate="4/19/2021 10:44:56 AM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="ATGRAZ408"
   DTS:CreatorName="BRATEGGE\weihsp"
-  DTS:DTSID="{38A3AF31-4749-46DC-89B8-EBD2A58F06AF}"
+  DTS:DTSID="{3E4C5E84-1AA9-41EE-AFEF-88E1F57B5B03}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.157"
+  DTS:LastModifiedProductVersion="15.0.2000.166"
   DTS:LocaleID="3079"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{4B63AA7E-399A-4D8C-AC23-73EAD011D964}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{FD3FD4CA-321F-4255-ACE1-323FC204FC50}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[localhost]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{D6EE28F7-E1B4-46B8-9335-B3B804AEEFE7}"
+      DTS:DTSID="{108E12BC-EBFC-416F-8126-897DD941E05D}"
       DTS:ObjectName="localhost">
       <DTS:ObjectData>
         <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=localhost;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[localhost.AusbildungsEvaluierungStaging]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{4D022A0C-8579-485A-B9F2-102FFBE5FD44}"
+      DTS:DTSID="{034A8FA2-1345-416F-A1F8-9D73828DA9B3}"
       DTS:ObjectName="localhost.AusbildungsEvaluierungStaging">
       <DTS:ObjectData>
         <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=localhost;Initial Catalog=AusbildungsEvaluierungStaging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[localhost.AusbildungsEvaluierungWarehouse]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{B77C0B1A-BB72-4069-87EC-FF35A19AF4B0}"
+      DTS:DTSID="{76EF2F49-B7D8-4099-9B42-3486A0F25E9B}"
       DTS:ObjectName="localhost.AusbildungsEvaluierungWarehouse">
       <DTS:ObjectData>
         <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=localhost;Initial Catalog=AusbildungsEvaluierungWarehouse;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -50,13 +56,13 @@
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Load Veranstaltungen"
+      DTS:refId="Package\Load Personen"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{35E134BC-470B-46B7-A366-C057D5371979}"
+      DTS:DTSID="{F6028DE7-6EBA-43AE-8088-DA86B545A99E}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Load Veranstaltungen"
+      DTS:ObjectName="Load Personen"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -64,7 +70,7 @@
           version="1">
           <components>
             <component
-              refId="Package\Load Veranstaltungen\Fill History"
+              refId="Package\Load Personen\Fill History"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
@@ -72,7 +78,7 @@
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\Load Veranstaltungen\Fill History.Inputs[Derived Column Input]"
+                  refId="Package\Load Personen\Fill History.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
                   <externalMetadataColumns />
@@ -80,19 +86,19 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load Veranstaltungen\Fill History.Outputs[Derived Column Output]"
+                  refId="Package\Load Personen\Fill History.Outputs[Derived Column Output]"
                   description="Default Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   name="Derived Column Output"
-                  synchronousInputId="Package\Load Veranstaltungen\Fill History.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\Load Personen\Fill History.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Veranstaltungen\Fill History.Outputs[Derived Column Output].Columns[Hist]"
+                      refId="Package\Load Personen\Fill History.Outputs[Derived Column Output].Columns[Hist]"
                       dataType="wstr"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
                       length="7"
-                      lineageId="Package\Load Veranstaltungen\Fill History.Outputs[Derived Column Output].Columns[Hist]"
+                      lineageId="Package\Load Personen\Fill History.Outputs[Derived Column Output].Columns[Hist]"
                       name="Hist"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -113,23 +119,23 @@
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Load Veranstaltungen\Fill History.Outputs[Derived Column Error Output]"
+                  refId="Package\Load Personen\Fill History.Outputs[Derived Column Error Output]"
                   description="Error Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Derived Column Error Output"
-                  synchronousInputId="Package\Load Veranstaltungen\Fill History.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\Load Personen\Fill History.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Veranstaltungen\Fill History.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\Load Personen\Fill History.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load Veranstaltungen\Fill History.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load Personen\Fill History.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load Veranstaltungen\Fill History.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load Personen\Fill History.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load Veranstaltungen\Fill History.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load Personen\Fill History.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -138,11 +144,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Load Veranstaltungen\Staging Veranstaltungen"
+              refId="Package\Load Personen\Staging Personen"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
-              name="Staging Veranstaltungen"
+              name="Staging Personen"
               usesDispositions="true"
               version="7">
               <properties>
@@ -153,7 +159,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[Veranstaltungen]</property>
+                  name="OpenRowset">[dbo].[Personen]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -187,7 +193,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Load Veranstaltungen\Staging Veranstaltungen.Connections[OleDbConnection]"
+                  refId="Package\Load Personen\Staging Personen.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[localhost.AusbildungsEvaluierungStaging]"
                   connectionManagerRefId="Package.ConnectionManagers[localhost.AusbildungsEvaluierungStaging]"
                   description="The OLE DB runtime connection used to access the database."
@@ -195,131 +201,149 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output]"
+                  refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].Columns[VerantstaltungsBusinessKey]"
+                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[PersonBusinessKey]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].ExternalColumns[VerantstaltungsBusinessKey]"
-                      lineageId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].Columns[VerantstaltungsBusinessKey]"
-                      name="VerantstaltungsBusinessKey"
+                      externalMetadataColumnId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[PersonBusinessKey]"
+                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[PersonBusinessKey]"
+                      name="PersonBusinessKey"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].Columns[Veranstaltungsname]"
+                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Vorname]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].ExternalColumns[Veranstaltungsname]"
+                      externalMetadataColumnId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Vorname]"
                       length="50"
-                      lineageId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].Columns[Veranstaltungsname]"
-                      name="Veranstaltungsname"
+                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Vorname]"
+                      name="Vorname"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].Columns[Veranstaltungsart]"
+                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Nachname]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].ExternalColumns[Veranstaltungsart]"
+                      externalMetadataColumnId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Nachname]"
                       length="50"
-                      lineageId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].Columns[Veranstaltungsart]"
-                      name="Veranstaltungsart"
+                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Nachname]"
+                      name="Nachname"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].Columns[Studiengangsname]"
+                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[GebDat]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[GebDat]"
+                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[GebDat]"
+                      name="GebDat"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Art]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].ExternalColumns[Studiengangsname]"
+                      externalMetadataColumnId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Art]"
                       length="50"
-                      lineageId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].Columns[Studiengangsname]"
-                      name="Studiengangsname"
+                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Art]"
+                      name="Art"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].Columns[Studienrichtung]"
+                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Geschlecht]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].ExternalColumns[Studienrichtung]"
-                      length="50"
-                      lineageId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].Columns[Studienrichtung]"
-                      name="Studienrichtung"
+                      externalMetadataColumnId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Geschlecht]"
+                      length="10"
+                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Geschlecht]"
+                      name="Geschlecht"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].ExternalColumns[VerantstaltungsBusinessKey]"
+                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[PersonBusinessKey]"
                       dataType="i4"
-                      name="VerantstaltungsBusinessKey" />
+                      name="PersonBusinessKey" />
                     <externalMetadataColumn
-                      refId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].ExternalColumns[Veranstaltungsname]"
+                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Vorname]"
                       dataType="wstr"
                       length="50"
-                      name="Veranstaltungsname" />
+                      name="Vorname" />
                     <externalMetadataColumn
-                      refId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].ExternalColumns[Veranstaltungsart]"
+                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Nachname]"
                       dataType="wstr"
                       length="50"
-                      name="Veranstaltungsart" />
+                      name="Nachname" />
                     <externalMetadataColumn
-                      refId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].ExternalColumns[Studiengangsname]"
+                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[GebDat]"
+                      dataType="dbDate"
+                      name="GebDat" />
+                    <externalMetadataColumn
+                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Art]"
                       dataType="wstr"
                       length="50"
-                      name="Studiengangsname" />
+                      name="Art" />
                     <externalMetadataColumn
-                      refId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].ExternalColumns[Studienrichtung]"
+                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[Geschlecht]"
                       dataType="wstr"
-                      length="50"
-                      name="Studienrichtung" />
+                      length="10"
+                      name="Geschlecht" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Error Output]"
+                  refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Error Output].Columns[VerantstaltungsBusinessKey]"
+                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[PersonBusinessKey]"
                       dataType="i4"
-                      lineageId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Error Output].Columns[VerantstaltungsBusinessKey]"
-                      name="VerantstaltungsBusinessKey" />
+                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[PersonBusinessKey]"
+                      name="PersonBusinessKey" />
                     <outputColumn
-                      refId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Error Output].Columns[Veranstaltungsname]"
+                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Vorname]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Error Output].Columns[Veranstaltungsname]"
-                      name="Veranstaltungsname" />
+                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Vorname]"
+                      name="Vorname" />
                     <outputColumn
-                      refId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Error Output].Columns[Veranstaltungsart]"
+                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Nachname]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Error Output].Columns[Veranstaltungsart]"
-                      name="Veranstaltungsart" />
+                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Nachname]"
+                      name="Nachname" />
                     <outputColumn
-                      refId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Error Output].Columns[Studiengangsname]"
+                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[GebDat]"
+                      dataType="dbDate"
+                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[GebDat]"
+                      name="GebDat" />
+                    <outputColumn
+                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Art]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Error Output].Columns[Studiengangsname]"
-                      name="Studiengangsname" />
+                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Art]"
+                      name="Art" />
                     <outputColumn
-                      refId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Error Output].Columns[Studienrichtung]"
+                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Geschlecht]"
                       dataType="wstr"
-                      length="50"
-                      lineageId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Error Output].Columns[Studienrichtung]"
-                      name="Studienrichtung" />
+                      length="10"
+                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Geschlecht]"
+                      name="Geschlecht" />
                     <outputColumn
-                      refId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -328,11 +352,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen"
+              refId="Package\Load Personen\Warehouse DimPersonen"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="Warehouse DimVeranstaltungen"
+              name="Warehouse DimPersonen"
               usesDispositions="true"
               version="4">
               <properties>
@@ -343,7 +367,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[DimVeranstaltungen]</property>
+                  name="OpenRowset">[dbo].[DimPersonen]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -385,7 +409,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Connections[OleDbConnection]"
+                  refId="Package\Load Personen\Warehouse DimPersonen.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[localhost.AusbildungsEvaluierungWarehouse]"
                   connectionManagerRefId="Package.ConnectionManagers[localhost.AusbildungsEvaluierungWarehouse]"
                   description="The OLE DB runtime connection used to access the database."
@@ -393,86 +417,96 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Inputs[OLE DB Destination Input]"
+                  refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Inputs[OLE DB Destination Input].Columns[VerantstaltungsBusinessKey]"
+                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].Columns[PersonBusinessKey]"
                       cachedDataType="i4"
-                      cachedName="VerantstaltungsBusinessKey"
-                      externalMetadataColumnId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Inputs[OLE DB Destination Input].ExternalColumns[VerantstaltungsBusinessKey]"
-                      lineageId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].Columns[VerantstaltungsBusinessKey]" />
+                      cachedName="PersonBusinessKey"
+                      externalMetadataColumnId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[PersonBusinessKey]"
+                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[PersonBusinessKey]" />
                     <inputColumn
-                      refId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Inputs[OLE DB Destination Input].Columns[Veranstaltungsname]"
+                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].Columns[Vorname]"
                       cachedDataType="wstr"
                       cachedLength="50"
-                      cachedName="Veranstaltungsname"
-                      externalMetadataColumnId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Inputs[OLE DB Destination Input].ExternalColumns[Veranstaltungsname]"
-                      lineageId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].Columns[Veranstaltungsname]" />
+                      cachedName="Vorname"
+                      externalMetadataColumnId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[Vorname]"
+                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Vorname]" />
                     <inputColumn
-                      refId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Inputs[OLE DB Destination Input].Columns[Veranstaltungsart]"
+                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].Columns[Nachname]"
                       cachedDataType="wstr"
                       cachedLength="50"
-                      cachedName="Veranstaltungsart"
-                      externalMetadataColumnId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Inputs[OLE DB Destination Input].ExternalColumns[Veranstaltungsart]"
-                      lineageId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].Columns[Veranstaltungsart]" />
+                      cachedName="Nachname"
+                      externalMetadataColumnId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[Nachname]"
+                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Nachname]" />
                     <inputColumn
-                      refId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Inputs[OLE DB Destination Input].Columns[Studiengangsname]"
+                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].Columns[GebDat]"
+                      cachedDataType="dbDate"
+                      cachedName="GebDat"
+                      externalMetadataColumnId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[GebDat]"
+                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[GebDat]" />
+                    <inputColumn
+                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].Columns[Art]"
                       cachedDataType="wstr"
                       cachedLength="50"
-                      cachedName="Studiengangsname"
-                      externalMetadataColumnId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Inputs[OLE DB Destination Input].ExternalColumns[Studiengangsname]"
-                      lineageId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].Columns[Studiengangsname]" />
+                      cachedName="Art"
+                      externalMetadataColumnId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[Art]"
+                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Art]" />
                     <inputColumn
-                      refId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Inputs[OLE DB Destination Input].Columns[Studienrichtung]"
+                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].Columns[Geschlecht]"
                       cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Studienrichtung"
-                      externalMetadataColumnId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Inputs[OLE DB Destination Input].ExternalColumns[Studienrichtung]"
-                      lineageId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output].Columns[Studienrichtung]" />
+                      cachedLength="10"
+                      cachedName="Geschlecht"
+                      externalMetadataColumnId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[Geschlecht]"
+                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Geschlecht]" />
                     <inputColumn
-                      refId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Inputs[OLE DB Destination Input].Columns[Hist]"
+                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].Columns[Hist]"
                       cachedDataType="wstr"
                       cachedLength="7"
                       cachedName="Hist"
-                      externalMetadataColumnId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Inputs[OLE DB Destination Input].ExternalColumns[History]"
-                      lineageId="Package\Load Veranstaltungen\Fill History.Outputs[Derived Column Output].Columns[Hist]" />
+                      externalMetadataColumnId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[History]"
+                      lineageId="Package\Load Personen\Fill History.Outputs[Derived Column Output].Columns[Hist]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Inputs[OLE DB Destination Input].ExternalColumns[VerantstaltungsKey]"
+                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[PersonKey]"
                       dataType="i4"
-                      name="VerantstaltungsKey" />
+                      name="PersonKey" />
                     <externalMetadataColumn
-                      refId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Inputs[OLE DB Destination Input].ExternalColumns[VerantstaltungsBusinessKey]"
+                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[PersonBusinessKey]"
                       dataType="i4"
-                      name="VerantstaltungsBusinessKey" />
+                      name="PersonBusinessKey" />
                     <externalMetadataColumn
-                      refId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Inputs[OLE DB Destination Input].ExternalColumns[Veranstaltungsname]"
+                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[Vorname]"
                       dataType="wstr"
                       length="50"
-                      name="Veranstaltungsname" />
+                      name="Vorname" />
                     <externalMetadataColumn
-                      refId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Inputs[OLE DB Destination Input].ExternalColumns[Veranstaltungsart]"
+                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[Nachname]"
                       dataType="wstr"
                       length="50"
-                      name="Veranstaltungsart" />
+                      name="Nachname" />
                     <externalMetadataColumn
-                      refId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Inputs[OLE DB Destination Input].ExternalColumns[Studiengangsname]"
+                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[GebDat]"
+                      dataType="dbDate"
+                      name="GebDat" />
+                    <externalMetadataColumn
+                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[Art]"
                       dataType="wstr"
                       length="50"
-                      name="Studiengangsname" />
+                      name="Art" />
                     <externalMetadataColumn
-                      refId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Inputs[OLE DB Destination Input].ExternalColumns[Studienrichtung]"
+                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[Geschlecht]"
                       dataType="wstr"
-                      length="50"
-                      name="Studienrichtung" />
+                      length="4"
+                      name="Geschlecht" />
                     <externalMetadataColumn
-                      refId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Inputs[OLE DB Destination Input].ExternalColumns[History]"
+                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[History]"
                       dataType="wstr"
                       length="50"
                       name="History" />
@@ -481,22 +515,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Load Personen\Warehouse DimPersonen.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Load Personen\Warehouse DimPersonen.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load Personen\Warehouse DimPersonen.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load Personen\Warehouse DimPersonen.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load Personen\Warehouse DimPersonen.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -507,66 +541,70 @@
           </components>
           <paths>
             <path
-              refId="Package\Load Veranstaltungen.Paths[Derived Column Output]"
-              endId="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen.Inputs[OLE DB Destination Input]"
+              refId="Package\Load Personen.Paths[Derived Column Output]"
+              endId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
-              startId="Package\Load Veranstaltungen\Fill History.Outputs[Derived Column Output]" />
+              startId="Package\Load Personen\Fill History.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Load Veranstaltungen.Paths[OLE DB Source Output]"
-              endId="Package\Load Veranstaltungen\Fill History.Inputs[Derived Column Input]"
+              refId="Package\Load Personen.Paths[OLE DB Source Output]"
+              endId="Package\Load Personen\Fill History.Inputs[Derived Column Input]"
               name="OLE DB Source Output"
-              startId="Package\Load Veranstaltungen\Staging Veranstaltungen.Outputs[OLE DB Source Output]" />
+              startId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
-<!--If you manually edit this section and make a mistake, you can delete it. -->
-<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<!--Dieser CDATA-Abschnitt enthält die Layoutinformationen des Pakets, z.B. Informationen wie X-/Y-Koordinaten, Breite und Höhe.-->
+<!--Wenn Sie diesen Abschnitt manuell ändern und Ihnen ein Fehler unterläuft, können Sie ihn löschen. -->
+<!--Das Paket kann zwar weiterhin normal geladen werden, aber frühere Layoutinformationen gehen verloren, und die Elemente auf der Entwurfsoberfläche werden vom Designer automatisch neu angeordnet.-->
 <Objects
   Version="8">
-  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <!--Jeder darunter liegende Knoten enthält Eigenschaften, die sich nicht auf das Laufzeitverhalten auswirken.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="180.8,41.6"
-          Id="Package\Load Veranstaltungen"
-          TopLeft="559.285723810293,263.82353311179" />
+          Size="148,42"
+          Id="Package\Load Personen"
+          TopLeft="431.428578775756,226.352944350985" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Load Veranstaltungen">
+    design-time-name="Package\Load Personen">
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="193.6,41.6"
-          Id="Package\Load Veranstaltungen\Staging Veranstaltungen"
-          TopLeft="414.285721340958,196.529414520957" />
+          Size="161,42"
+          Id="Package\Load Personen\Staging Personen"
+          TopLeft="485.714293985951,169.764708263239" />
         <NodeLayout
-          Size="127.2,41.6"
-          Id="Package\Load Veranstaltungen\Fill History"
-          TopLeft="450.714293389905,285.235298117965" />
+          Size="127,42"
+          Id="Package\Load Personen\Fill History"
+          TopLeft="498.57143706205,264.588239004868" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Load Personen\Warehouse DimPersonen"
+          TopLeft="461.428579286653,380.823534752671" />
         <EdgeLayout
-          Id="Package\Load Veranstaltungen.Paths[OLE DB Source Output]"
-          TopLeft="512.700007365431,238.129414520957">
+          Id="Package\Load Personen.Paths[Derived Column Output]"
+          TopLeft="561.000008174351,306.188239004868">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,47.1058835970078"
+              EndConnector="0,74.6352957478032"
               Start="0,0"
-              End="0,39.6058835970078">
+              End="0,67.1352957478032">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.6058835970078" />
+                    End="0,67.1352957478032" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -575,24 +613,20 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="229.6,41.6"
-          Id="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen"
-          TopLeft="397.85714963261,383.882358324982" />
         <EdgeLayout
-          Id="Package\Load Veranstaltungen.Paths[Derived Column Output]"
-          TopLeft="513.485721511257,326.835298117965">
+          Id="Package\Load Personen.Paths[OLE DB Source Output]"
+          TopLeft="564.142865524,211.364708263239">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,57.0470602070172"
+              EndConnector="0,53.223530741629"
               Start="0,0"
-              End="0,49.5470602070172">
+              End="0,45.723530741629">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,49.5470602070172" />
+                    End="0,45.723530741629" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -605,7 +639,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Veranstaltungen\Staging Veranstaltungen">
+    design-time-name="Package\Load Personen\Staging Personen">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -618,7 +652,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Veranstaltungen\Warehouse DimVeranstaltungen">
+    design-time-name="Package\Load Personen\Warehouse DimPersonen">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

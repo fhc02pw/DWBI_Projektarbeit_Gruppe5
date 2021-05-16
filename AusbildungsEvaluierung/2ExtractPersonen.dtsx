@@ -11,35 +11,11 @@
   DTS:LocaleID="3079"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{9383D84E-C31C-4B1A-A57D-84DC0471E1E1}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{543E8850-0149-4FBB-B5B5-83F1D19122B3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[localhost]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{FB02BA1C-923D-48A0-8241-6EB123C6303E}"
-      DTS:ObjectName="localhost">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[localhost 1]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{9749F905-03BB-47F4-A663-EB5A5FC79E68}"
-      DTS:ObjectName="localhost 1">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[localhost.AusbildungsEvaluierung]"
       DTS:CreationName="OLEDB"
@@ -280,6 +256,17 @@
                       lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[Art]"
                       name="Art"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[HauptwohnsitzBundesland]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].ExternalColumns[HauptwohnsitzBundesland]"
+                      length="255"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[HauptwohnsitzBundesland]"
+                      name="HauptwohnsitzBundesland"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -310,6 +297,12 @@
                       dataType="wstr"
                       length="50"
                       name="Art" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].ExternalColumns[HauptwohnsitzBundesland]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="HauptwohnsitzBundesland" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -350,6 +343,13 @@
                       length="50"
                       lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Error Output].Columns[Art]"
                       name="Art" />
+                    <outputColumn
+                      refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Error Output].Columns[HauptwohnsitzBundesland]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Error Output].Columns[HauptwohnsitzBundesland]"
+                      name="HauptwohnsitzBundesland" />
                     <outputColumn
                       refId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -479,6 +479,14 @@
                       cachedName="GeschlechtText"
                       externalMetadataColumnId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].ExternalColumns[Geschlecht]"
                       lineageId="Package\Extract Personen\Mapping Geschlecht.Outputs[Derived Column Output].Columns[GeschlechtText]" />
+                    <inputColumn
+                      refId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].Columns[HauptwohnsitzBundesland]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="HauptwohnsitzBundesland"
+                      externalMetadataColumnId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].ExternalColumns[HauptwohnsitzBundesland]"
+                      lineageId="Package\Extract Personen\Source Personen.Outputs[OLE DB Source Output].Columns[HauptwohnsitzBundesland]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -510,6 +518,12 @@
                       dataType="wstr"
                       length="10"
                       name="Geschlecht" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Personen\Staging Personen.Inputs[OLE DB Destination Input].ExternalColumns[HauptwohnsitzBundesland]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="HauptwohnsitzBundesland" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
