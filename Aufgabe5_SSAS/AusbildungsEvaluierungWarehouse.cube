@@ -1,0 +1,576 @@
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="f8e7f7fd-911c-4c48-a3ef-d3ac75189957" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>AusbildungsEvaluierungWarehouse</ID>
+  <Name>AusbildungsEvaluierungWarehouse</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="8" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-12861" scrolltop="-1171" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="98" x="31724" y="16298" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DimDatum" left="1973" top="0" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="3000" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000b80b000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_DimDatum" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DimVeranstaltungen" left="9326" top="4781" logicalid="2" controlid="2" masterid="0" hint1="0" hint2="0" width="4736" height="3995" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000801200009b0f0000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_DimVeranstaltungen" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DimPersonen" left="1634" top="11679" logicalid="3" controlid="3" masterid="0" hint1="0" hint2="0" width="3678" height="4419" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e00005e0e000043110000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_DimPersonen" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FactEvaluierungen" left="-358" top="4414" logicalid="4" controlid="4" masterid="0" hint1="0" hint2="0" width="6906" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000fa1a000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_FactEvaluierungen" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="1974" top="1380" logicalid="5" controlid="5" masterid="0" hint1="0" hint2="0" width="871" height="3334" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[FK_FactEvaluierungen_DimDatum]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="1" destid="4" sourceattachpoint="1" destattachpoint="10" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="2373" y="1879" />
+              <point x="2373" y="3146" />
+              <point x="2545" y="3146" />
+              <point x="2545" y="4414" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="6248" top="6379" logicalid="6" controlid="6" masterid="0" hint1="0" hint2="0" width="3378" height="835" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[FK_FactEvaluierungen_DimVeranstaltungen]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="2" destid="4" sourceattachpoint="24" destattachpoint="35" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="9326" y="6778" />
+              <point x="7937" y="6778" />
+              <point x="7937" y="6914" />
+              <point x="6548" y="6914" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="1424" top="9114" logicalid="7" controlid="7" masterid="0" hint1="0" hint2="0" width="871" height="3065" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[FK_FactEvaluierungen_DimPersonen]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="3" destid="4" sourceattachpoint="0" destattachpoint="9" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="1823" y="11679" />
+              <point x="1823" y="10547" />
+              <point x="1995" y="10547" />
+              <point x="1995" y="9414" />
+            </connector>
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-12861</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-1171</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>-358</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>98</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Translations>
+    <Translation dwd:design-time-name="2f02f16c-1cd4-4bf8-abac-f0b8ca048f6c">
+      <Language>1033</Language>
+      <Caption>Training evaluation warehouse</Caption>
+    </Translation>
+  </Translations>
+  <Dimensions>
+    <Dimension dwd:design-time-name="b82482fd-0af1-40ed-b939-9a3f0fa6a0d0">
+      <ID>Dim Personen</ID>
+      <Name>Dim Personen</Name>
+      <Translations>
+        <Translation dwd:design-time-name="ff180d19-1ae1-4674-905a-68ab12e239e3">
+          <Language>1033</Language>
+          <Caption>Dim Persons</Caption>
+        </Translation>
+      </Translations>
+      <DimensionID>Dim Personen</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="9bc315c6-ca36-40bd-918e-c4fa3fbf5462">
+          <AttributeID>Person Key</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="fb15b325-c3a0-4df4-bbd6-ac6884f09524">
+          <AttributeID>Geschlecht</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="2aa73d90-9ace-4bd9-87d6-c065b567b6b7">
+      <ID>Dim Veranstaltungen</ID>
+      <Name>Dim Veranstaltungen</Name>
+      <Translations>
+        <Translation dwd:design-time-name="eeff1e08-c991-4707-99f7-15280194e0dd">
+          <Language>1033</Language>
+          <Caption>Dim Courses</Caption>
+        </Translation>
+      </Translations>
+      <DimensionID>Dim Veranstaltungen</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="6c3f7f23-9d36-41c3-9c1c-c57b0b8957cf">
+          <AttributeID>Verantstaltungs Key</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="4204f7e1-5ba9-4bd7-b4f9-3856589ab650">
+          <AttributeID>Studienrichtung</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="9820b8ad-374a-40e5-93cf-ab9e45fad4d1">
+          <AttributeID>Studiengangsname</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="7505e089-3eea-4b0a-9ad0-8f47df449b3f">
+          <AttributeID>Veranstaltungsart</AttributeID>
+        </Attribute>
+      </Attributes>
+      <Hierarchies>
+        <Hierarchy dwd:design-time-name="7a1a3cac-5a15-480b-9b9e-abf197c5b3d5">
+          <HierarchyID>Hierarchy</HierarchyID>
+        </Hierarchy>
+      </Hierarchies>
+    </Dimension>
+    <Dimension dwd:design-time-name="25f401cf-be15-48f7-9604-02b2bd869b63">
+      <ID>Dim Datum</ID>
+      <Name>Dim Datum</Name>
+      <Translations>
+        <Translation dwd:design-time-name="e796a6d7-09fe-4f17-bc5e-c92f533dd2bc">
+          <Language>1033</Language>
+          <Caption>Dim Dates</Caption>
+        </Translation>
+      </Translations>
+      <DimensionID>Dim Datum</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="3b3e40ad-7509-44bb-804f-ccf84f76cc13">
+          <AttributeID>Datum Key</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+  </Dimensions>
+  <MeasureGroups>
+    <MeasureGroup dwd:design-time-name="08ae8aad-19bd-4ba6-a890-8c0baccf81fc">
+      <ID>Fact Evaluierungen</ID>
+      <Name>Fact Evaluierungen</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Measures>
+        <Measure dwd:design-time-name="56e2268f-b4fb-4bc9-8bb0-b5ee0b7ef08f">
+          <ID>Evaluierung Business Key</ID>
+          <Name>Evaluierung Business Key</Name>
+          <Source dwd:design-time-name="50afa7d6-67b2-4dc6-826f-ca872aa05143">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="aa70865a-71ba-446b-a96f-6de8387fb1ae">
+              <TableID>dbo_FactEvaluierungen</TableID>
+              <ColumnID>EvaluierungBusinessKey</ColumnID>
+            </Source>
+          </Source>
+          <Translations>
+            <Translation dwd:design-time-name="ab340d39-3d84-4f7b-bca0-eefbf2304468">
+              <Language>1033</Language>
+              <Caption>Evaluation Business Key</Caption>
+            </Translation>
+          </Translations>
+        </Measure>
+        <Measure dwd:design-time-name="389df0e5-979d-479d-b7d5-b7fc3d2fdaa0">
+          <ID>Aufbau Und Gliederung Der Lerhveranstaltung</ID>
+          <Name>Aufbau Und Gliederung Der Lerhveranstaltung</Name>
+          <Source dwd:design-time-name="44559e7d-00af-4631-94f4-13a080c8f179">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="da2b51a4-b033-4e5a-8fab-8f862479fa97">
+              <TableID>dbo_FactEvaluierungen</TableID>
+              <ColumnID>AufbauUndGliederungDerLerhveranstaltung</ColumnID>
+            </Source>
+          </Source>
+          <Translations>
+            <Translation dwd:design-time-name="58d7853c-015f-427f-b32a-81f6fe60ec5e">
+              <Language>1033</Language>
+              <Caption>Structure</Caption>
+            </Translation>
+          </Translations>
+        </Measure>
+        <Measure dwd:design-time-name="e3e9d211-c733-4cdd-93c5-df69f67de2d9">
+          <ID>Lehrveranstaltungsleitung Kompetenz</ID>
+          <Name>Lehrveranstaltungsleitung Kompetenz</Name>
+          <Source dwd:design-time-name="0fcd1ff8-875a-4175-9678-ff080dcdbf81">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="2bedc814-2aa6-4984-99c9-67f8f647a948">
+              <TableID>dbo_FactEvaluierungen</TableID>
+              <ColumnID>LehrveranstaltungsleitungKompetenz</ColumnID>
+            </Source>
+          </Source>
+          <Translations>
+            <Translation dwd:design-time-name="de5350b7-ead6-46dc-9e44-126ae960ad9e">
+              <Language>1033</Language>
+              <Caption>Course management competence</Caption>
+            </Translation>
+          </Translations>
+        </Measure>
+        <Measure dwd:design-time-name="450ae836-f979-4521-9384-86573d2832ca">
+          <ID>Lehrveranstaltungsleitung Eingehen Auf Fragen</ID>
+          <Name>Lehrveranstaltungsleitung Eingehen Auf Fragen</Name>
+          <Source dwd:design-time-name="e3e0a22f-78b8-4d23-aee9-0745ee339637">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="d4b58b03-8020-42ca-a42e-3c66f06d5303">
+              <TableID>dbo_FactEvaluierungen</TableID>
+              <ColumnID>LehrveranstaltungsleitungEingehenAufFragen</ColumnID>
+            </Source>
+          </Source>
+          <Translations>
+            <Translation dwd:design-time-name="eb66204a-ebae-47a7-8156-94ca486c8ece">
+              <Language>1033</Language>
+              <Caption>Course management responding to questions</Caption>
+            </Translation>
+          </Translations>
+        </Measure>
+        <Measure dwd:design-time-name="e43dd3c7-c36f-46ef-a545-3c3b8683ca53">
+          <ID>Bewertung Gesamt</ID>
+          <Name>Bewertung Gesamt</Name>
+          <Source dwd:design-time-name="ea0d3f7b-cd6c-47db-8468-671a4fe9e2d6">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="79d8c895-82c0-42e0-ba60-ea71f630d005">
+              <TableID>dbo_FactEvaluierungen</TableID>
+              <ColumnID>BewertungGesamt</ColumnID>
+            </Source>
+          </Source>
+          <Translations>
+            <Translation dwd:design-time-name="41ad36d7-7738-4e2b-bdca-4d8e44c4ed03">
+              <Language>1033</Language>
+              <Caption>Overall rating</Caption>
+            </Translation>
+          </Translations>
+        </Measure>
+        <Measure dwd:design-time-name="b4281368-bf77-41e1-b693-95b2ef6cbef4">
+          <ID>Alter Person</ID>
+          <Name>Alter Person</Name>
+          <Source dwd:design-time-name="7f4a4d96-5820-4d15-873f-6350af4e6c59">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="c3ce025c-fd84-4355-8a38-542416c5d037">
+              <TableID>dbo_FactEvaluierungen</TableID>
+              <ColumnID>AlterPerson</ColumnID>
+            </Source>
+          </Source>
+          <Translations>
+            <Translation dwd:design-time-name="fce3b12d-931e-40f6-a1df-02d817e92e76">
+              <Language>1033</Language>
+              <Caption>Age of person</Caption>
+            </Translation>
+          </Translations>
+        </Measure>
+        <Measure dwd:design-time-name="e418dc75-fa04-454a-bd4c-1ee3aa5bba2d">
+          <ID>Fact Evaluierungen Count</ID>
+          <Name>Fact Evaluierungen Count</Name>
+          <AggregateFunction>Count</AggregateFunction>
+          <Source dwd:design-time-name="08e1ee98-c931-4f51-a894-61bb89d02359">
+            <DataType>Integer</DataType>
+            <DataSize>4</DataSize>
+            <Source xsi:type="RowBinding" dwd:design-time-name="1df67814-4b97-400f-ae37-80ee3ea9ad31">
+              <TableID>dbo_FactEvaluierungen</TableID>
+            </Source>
+          </Source>
+          <Translations>
+            <Translation dwd:design-time-name="e0bdc990-1430-4df3-8e4d-ef3085b0d58c">
+              <Language>1033</Language>
+              <Caption>Fact evaluations</Caption>
+            </Translation>
+          </Translations>
+        </Measure>
+      </Measures>
+      <StorageMode>Molap</StorageMode>
+      <ProcessingMode>Regular</ProcessingMode>
+      <Dimensions>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="d62dd27c-8b7c-4235-b21b-41f7cb6edc06">
+          <CubeDimensionID>Dim Personen</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="381d12c2-0ca4-446d-acb9-fe6471e0baed">
+              <AttributeID>Person Key</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="6f3fd69f-ac17-4402-9e93-5383d699e7ca">
+                  <DataType>Integer</DataType>
+                  <NullProcessing>UnknownMember</NullProcessing>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="9753f28b-288d-49c9-ba18-8b0f4ee1e86e">
+                    <TableID>dbo_FactEvaluierungen</TableID>
+                    <ColumnID>PersonKey</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="e3a5b9c0-ff68-4275-9583-0044b755b81d">
+          <CubeDimensionID>Dim Datum</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="675db37d-4dce-48bb-80e9-5b71ca7d3093">
+              <AttributeID>Datum Key</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="e5feb40f-335a-4502-ada0-a91ab19d90f3">
+                  <DataType>Date</DataType>
+                  <NullProcessing>UnknownMember</NullProcessing>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="d444fe87-9d16-4b14-99ad-28ae9f1d5f1c">
+                    <TableID>dbo_FactEvaluierungen</TableID>
+                    <ColumnID>Datum</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="d20be6c9-d1ad-4e2d-92c3-d67dd9acdcb8">
+          <CubeDimensionID>Dim Veranstaltungen</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="837d03d1-bf2c-45e8-8fda-9380b92fdd16">
+              <AttributeID>Verantstaltungs Key</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="2b57393b-6da7-4d26-ad95-a12e23049760">
+                  <DataType>Integer</DataType>
+                  <NullProcessing>UnknownMember</NullProcessing>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="6686d2dd-47e8-4654-b36d-726535ca3f56">
+                    <TableID>dbo_FactEvaluierungen</TableID>
+                    <ColumnID>VerantstaltungsKey</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+      </Dimensions>
+      <Partitions />
+    </MeasureGroup>
+  </MeasureGroups>
+  <Source dwd:design-time-name="63585f34-e48d-4dc6-954a-78155f622d48">
+    <DataSourceViewID>AusbildungsEvaluierungWarehouse</DataSourceViewID>
+  </Source>
+  <MdxScripts>
+    <MdxScript dwd:design-time-name="006256eb-826a-42df-b79b-bae415feb8a1">
+      <ID>MdxScript</ID>
+      <Name>MdxScript</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <Commands>
+        <Command>
+          <Text>/*
+The CALCULATE command controls the aggregation of leaf cells in the cube.
+If the CALCULATE command is deleted or modified, the data within the cube is affected.
+You should edit this command only if you manually specify how the cube is aggregated.
+*/
+CALCULATE; 
+CREATE MEMBER CURRENTCUBE.[Measures].BewertungDurchschnitt
+ AS [Measures].[Bewertung Gesamt]/[Measures].[Fact Evaluierungen Count], 
+VISIBLE = 1  ; 
+CREATE MEMBER CURRENTCUBE.[Measures].KompetenzDurchschnitt
+ AS [Measures].[Lehrveranstaltungsleitung Kompetenz]/[Measures].[Fact Evaluierungen Count], 
+VISIBLE = 1  ; 
+CREATE MEMBER CURRENTCUBE.[Measures].LVAufbauDurchschnitt
+ AS [Measures].[Aufbau Und Gliederung Der Lerhveranstaltung]/[Measures].[Fact Evaluierungen Count], 
+VISIBLE = 1  ; </Text>
+        </Command>
+      </Commands>
+      <CalculationProperties>
+        <CalculationProperty dwd:design-time-name="cced3757-0273-4b4e-9a64-f43a877a0c83">
+          <CalculationReference>[Measures].BewertungDurchschnitt</CalculationReference>
+          <CalculationType>Member</CalculationType>
+          <Translations>
+            <Translation dwd:design-time-name="cad8f7bc-9119-41b0-b4d0-932b0fc8877e">
+              <Language>1033</Language>
+              <Caption>Rating average</Caption>
+            </Translation>
+          </Translations>
+        </CalculationProperty>
+        <CalculationProperty dwd:design-time-name="74586e44-b1a3-4edb-a051-91d6b48eacb4">
+          <CalculationReference>[Measures].KompetenzDurchschnitt</CalculationReference>
+          <CalculationType>Member</CalculationType>
+          <Translations>
+            <Translation dwd:design-time-name="2428e5bb-4620-4754-88fa-dcc9b71704f5">
+              <Language>1033</Language>
+              <Caption>Competence average</Caption>
+            </Translation>
+          </Translations>
+        </CalculationProperty>
+        <CalculationProperty dwd:design-time-name="ec61528d-e911-4654-b6ed-489eb76c43c2">
+          <CalculationReference>[Measures].LVAufbauDurchschnitt</CalculationReference>
+          <CalculationType>Member</CalculationType>
+          <Translations>
+            <Translation dwd:design-time-name="35a8bf36-45d1-4c02-9b6a-e12575730450">
+              <Language>1033</Language>
+              <Caption>Structure average</Caption>
+            </Translation>
+          </Translations>
+        </CalculationProperty>
+      </CalculationProperties>
+    </MdxScript>
+  </MdxScripts>
+  <Kpis>
+    <Kpi dwd:design-time-name="e6791fa8-b9cb-426f-858f-1b7cecc9082c">
+      <ID>KPI</ID>
+      <Name>KPIBewertung</Name>
+      <Translations>
+        <Translation dwd:design-time-name="e0857126-9d73-48b4-bfdf-d3b86c376432">
+          <Language>1033</Language>
+          <Caption>KPI Rating</Caption>
+        </Translation>
+      </Translations>
+      <Value>[Measures].[BewertungDurchschnitt]</Value>
+      <Goal>16</Goal>
+      <Status>Case  
+  When KpiValue("KPIBewertung") / KpiGoal("KPIBewertung") &gt; 1  
+    Then 1  
+  When KpiValue("KPIBewertung") / KpiGoal("KPIBewertung") = 1
+    Then 0  
+  Else -1  
+End</Status>
+      <TrendGraphic>Standard Arrow</TrendGraphic>
+      <StatusGraphic>Gauge - Ascending</StatusGraphic>
+    </Kpi>
+    <Kpi dwd:design-time-name="39da9791-9eed-4fef-ad17-d9d07dffa44f">
+      <ID>KPI 1</ID>
+      <Name>KPIKompetenz</Name>
+      <Translations>
+        <Translation dwd:design-time-name="79928f1f-f5b3-42b4-8346-097822312eea">
+          <Language>1033</Language>
+          <Caption>KPI Competence</Caption>
+        </Translation>
+      </Translations>
+      <Value>[Measures].[KompetenzDurchschnitt]</Value>
+      <Goal>5.5</Goal>
+      <Status>Case  
+  When KpiValue("KPIKompetenz") / KpiGoal("KPIKompetenz") &gt; 1  
+    Then 1  
+  When KpiValue("KPIKompetenz") / KpiGoal("KPIKompetenz") = 1
+    Then 0  
+  Else -1  
+End</Status>
+      <TrendGraphic>Standard Arrow</TrendGraphic>
+      <StatusGraphic>Gauge - Ascending</StatusGraphic>
+    </Kpi>
+    <Kpi dwd:design-time-name="f014bdad-f3a6-4d31-a3a7-50d5cfce07f2">
+      <ID>KPI 2</ID>
+      <Name>KPIAufbauLV</Name>
+      <Translations>
+        <Translation dwd:design-time-name="fbc713bd-d013-4503-8162-edb0fb6121ce">
+          <Language>1033</Language>
+          <Caption>KPI Structure</Caption>
+        </Translation>
+      </Translations>
+      <Value>[Measures].[LVAufbauDurchschnitt]</Value>
+      <Goal>5.5</Goal>
+      <Status>Case  
+  When KpiValue("KPIAufbauLV") / KpiGoal("KPIAufbauLV") &gt; 1  
+    Then 1  
+  When KpiValue("KPIAufbauLV") / KpiGoal("KPIAufbauLV") = 1
+    Then 0  
+  Else -1  
+End</Status>
+      <TrendGraphic>Standard Arrow</TrendGraphic>
+      <StatusGraphic>Gauge - Ascending</StatusGraphic>
+    </Kpi>
+  </Kpis>
+  <Actions>
+    <Action xsi:type="StandardAction" dwd:design-time-name="525b3479-7021-46af-8454-edee37154099">
+      <ID>Action</ID>
+      <Name>GoToEachWIKI</Name>
+      <TargetType>AttributeMembers</TargetType>
+      <Target>[Dim Veranstaltungen].[Studienrichtung]</Target>
+      <Type>Url</Type>
+      <Expression>"https://de.wikipedia.org/wiki/" + [Studienrichtung].CurrentMember.Name</Expression>
+    </Action>
+    <Action xsi:type="StandardAction" dwd:design-time-name="bc2830ad-8b27-443d-af3b-f49e25214f85">
+      <ID>Action 1</ID>
+      <Name>GoToCampus02Studienrichtungen</Name>
+      <TargetType>AttributeMembers</TargetType>
+      <Target>[Dim Veranstaltungen].[Studienrichtung]</Target>
+      <Type>Url</Type>
+      <Expression>"https://www.campus02.at/unsere-hochschule/studienrichtungen/"</Expression>
+    </Action>
+  </Actions>
+</Cube>
