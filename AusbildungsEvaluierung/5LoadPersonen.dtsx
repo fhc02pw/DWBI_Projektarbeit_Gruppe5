@@ -7,12 +7,12 @@
   DTS:CreatorName="BRATEGGE\weihsp"
   DTS:DTSID="{3E4C5E84-1AA9-41EE-AFEF-88E1F57B5B03}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.166"
+  DTS:LastModifiedProductVersion="15.0.2000.157"
   DTS:LocaleID="3079"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{FD3FD4CA-321F-4255-ACE1-323FC204FC50}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{5A468039-5223-4687-978C-B092ACDCEF9E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -23,8 +23,6 @@
       DTS:ObjectName="localhost">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=localhost;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -35,8 +33,6 @@
       DTS:ObjectName="localhost.AusbildungsEvaluierungStaging">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=localhost;Initial Catalog=AusbildungsEvaluierungStaging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -47,8 +43,6 @@
       DTS:ObjectName="localhost.AusbildungsEvaluierungWarehouse">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=localhost;Initial Catalog=AusbildungsEvaluierungWarehouse;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -262,6 +256,17 @@
                       lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[Geschlecht]"
                       name="Geschlecht"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[HauptwohnsitzBundesland]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[HauptwohnsitzBundesland]"
+                      length="255"
+                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[HauptwohnsitzBundesland]"
+                      name="HauptwohnsitzBundesland"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -293,6 +298,12 @@
                       dataType="wstr"
                       length="10"
                       name="Geschlecht" />
+                    <externalMetadataColumn
+                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].ExternalColumns[HauptwohnsitzBundesland]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="HauptwohnsitzBundesland" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -334,6 +345,13 @@
                       length="10"
                       lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[Geschlecht]"
                       name="Geschlecht" />
+                    <outputColumn
+                      refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[HauptwohnsitzBundesland]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[HauptwohnsitzBundesland]"
+                      name="HauptwohnsitzBundesland" />
                     <outputColumn
                       refId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -470,6 +488,14 @@
                       cachedName="Hist"
                       externalMetadataColumnId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[History]"
                       lineageId="Package\Load Personen\Fill History.Outputs[Derived Column Output].Columns[Hist]" />
+                    <inputColumn
+                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].Columns[HauptwohnsitzBundesland]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="HauptwohnsitzBundesland"
+                      externalMetadataColumnId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[HauptwohnsitzBundesland]"
+                      lineageId="Package\Load Personen\Staging Personen.Outputs[OLE DB Source Output].Columns[HauptwohnsitzBundesland]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -510,6 +536,12 @@
                       dataType="wstr"
                       length="50"
                       name="History" />
+                    <externalMetadataColumn
+                      refId="Package\Load Personen\Warehouse DimPersonen.Inputs[OLE DB Destination Input].ExternalColumns[HauptwohnsitzBundesland]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="HauptwohnsitzBundesland" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -556,19 +588,19 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--Dieser CDATA-Abschnitt enthält die Layoutinformationen des Pakets, z.B. Informationen wie X-/Y-Koordinaten, Breite und Höhe.-->
-<!--Wenn Sie diesen Abschnitt manuell ändern und Ihnen ein Fehler unterläuft, können Sie ihn löschen. -->
-<!--Das Paket kann zwar weiterhin normal geladen werden, aber frühere Layoutinformationen gehen verloren, und die Elemente auf der Entwurfsoberfläche werden vom Designer automatisch neu angeordnet.-->
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
   Version="8">
-  <!--Jeder darunter liegende Knoten enthält Eigenschaften, die sich nicht auf das Laufzeitverhalten auswirken.-->
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="148,42"
+          Size="148,41.6"
           Id="Package\Load Personen"
           TopLeft="431.428578775756,226.352944350985" />
       </GraphLayout>
@@ -580,15 +612,15 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="161,42"
+          Size="160.8,41.6"
           Id="Package\Load Personen\Staging Personen"
           TopLeft="485.714293985951,169.764708263239" />
         <NodeLayout
-          Size="127,42"
+          Size="127.2,41.6"
           Id="Package\Load Personen\Fill History"
           TopLeft="498.57143706205,264.588239004868" />
         <NodeLayout
-          Size="197,42"
+          Size="196.8,41.6"
           Id="Package\Load Personen\Warehouse DimPersonen"
           TopLeft="461.428579286653,380.823534752671" />
         <EdgeLayout
