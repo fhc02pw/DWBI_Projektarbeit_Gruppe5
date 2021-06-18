@@ -1,0 +1,185 @@
+CREATE DATABASE [AusbildungsEvaluierungDataVault]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'AusbildungsEvaluierungDataVault', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\AusbildungsEvaluierungDataVault.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'AusbildungsEvaluierungDataVault_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\AusbildungsEvaluierungDataVault_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET COMPATIBILITY_LEVEL = 150
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [AusbildungsEvaluierungDataVault].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET RECOVERY FULL 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET  MULTI_USER 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET TARGET_RECOVERY_TIME = 0 SECONDS 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'AusbildungsEvaluierungDataVault', N'ON'
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET QUERY_STORE = OFF
+GO
+USE [AusbildungsEvaluierungDataVault]
+GO
+create table HUB_Personen(
+	[PersonenID] [int] IDENTITY(1,1) NOT NULL,
+	[PersonNr] [int]  NOT NULL,
+	[Vorname] [nvarchar](50) NULL,
+	[Nachname] [nvarchar](50) NULL,
+	[GebDat] [date] NULL,
+	[Geschlecht] [nvarchar](50) NULL,
+	[Art] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Personen] PRIMARY KEY CLUSTERED 
+(
+	[PersonenID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+create table HUB_Veranstalung(
+	[VerantstaltungsID] [int] IDENTITY(1,1) NOT NULL,
+	[VerantstaltungsNr] [int] NOT NULL,
+	[Veranstaltungsname] [nvarchar](50) NULL,
+	[ECTS] [decimal](10, 2) NULL,
+ CONSTRAINT [PK_Veranstaltung] PRIMARY KEY CLUSTERED 
+(
+	[VerantstaltungsID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+create table HUB_Studienrichtung(
+	[StudienrichtungID] [int] IDENTITY(1,1) NOT NULL,
+	[StudienrichtungNr] [int]  NOT NULL,
+	[Studienrichtung] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Studienrichtung] PRIMARY KEY CLUSTERED 
+(
+	[StudienrichtungID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+create table HUB_Studiengaenge(
+	[StudiengangsID] [int] IDENTITY(1,1) NOT NULL,
+	[StudiengangsNr] [int] NOT NULL,
+	[Studiengangsname] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Studiengaenge] PRIMARY KEY CLUSTERED 
+(
+	[StudiengangsID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+CREATE TABLE HUB_Veranstaltungsarten(
+	[VerantstaltungsArtID] [int] IDENTITY(1,1) NOT NULL,
+	[VerantstaltungsArtNr] [int] NOT NULL,
+	[Veranstaltungsart] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Veranstaltungsarten] PRIMARY KEY CLUSTERED 
+(
+	[VerantstaltungsArtID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+CREATE TABLE LINK_LV(
+	[LVID] [int] IDENTITY(1,1) NOT NULL,
+	[VerantstaltungsIDFK] [int] NULL,
+	[StudiengangIDFK] [int] NULL,
+	[VeranstaltungsArtIDFK] [int] NULL,
+	[StudienrichtungIDFK] [int] NULL,
+ CONSTRAINT [PK_LV] PRIMARY KEY CLUSTERED 
+(
+	[LVID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE LINK_LV  WITH CHECK ADD  CONSTRAINT [FK_LV_Veranstaltungsarten] FOREIGN KEY([VerantstaltungsIDFK])
+REFERENCES HUB_Veranstalung ([VerantstaltungsID])
+GO
+ALTER TABLE LINK_LV  WITH CHECK ADD  CONSTRAINT [FK_LV_Studiengang] FOREIGN KEY([StudiengangIDFK])
+REFERENCES HUB_Studiengaenge ([StudiengangsID])
+GO
+ALTER TABLE LINK_LV  WITH CHECK ADD  CONSTRAINT [FK_LV_Veranstaltungsart] FOREIGN KEY([VeranstaltungsArtIDFK])
+REFERENCES HUB_Veranstaltungsarten ([VerantstaltungsArtID])
+GO
+ALTER TABLE LINK_LV  WITH CHECK ADD  CONSTRAINT [FK_LV_Sudienrichtung] FOREIGN KEY([StudienrichtungIDFK])
+REFERENCES HUB_Studienrichtung ([StudienrichtungID])
+GO
+CREATE TABLE SAT_Evaluierung(
+	[EvaluierunID] [int] IDENTITY(1,1) NOT NULL,
+	[PersonenIDFK] [int] NULL,
+	[LVIDFK] [int] NULL,
+	[Datum] [date] NULL,
+	[AufbauUndGliederungDerLerhveranstaltung] [int] NULL,
+	[LehrveranstaltungsleitungKompetenz] [int] NULL,
+	[LehrveranstaltungsleitungEingehenAufFragen] [int] NULL,
+	[BesondersGut] [nvarchar](50) NULL,
+CONSTRAINT [PK_Evaluierung] PRIMARY KEY CLUSTERED 
+(
+	[EvaluierunID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE SAT_Evaluierung  WITH CHECK ADD  CONSTRAINT [FK_Evaluierung_Personen] FOREIGN KEY([PersonenIDFK])
+REFERENCES HUB_Personen ([PersonenID])
+GO
+ALTER TABLE SAT_Evaluierung  WITH CHECK ADD  CONSTRAINT [FK_Evaluierung_LV] FOREIGN KEY([LVIDFK])
+REFERENCES LINK_LV ([LVID])
+GO
+USE [master]
+GO
+ALTER DATABASE [AusbildungsEvaluierungDataVault] SET  READ_WRITE 
+GO

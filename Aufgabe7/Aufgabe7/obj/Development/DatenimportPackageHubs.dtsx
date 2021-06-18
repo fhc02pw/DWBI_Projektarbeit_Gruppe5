@@ -1,0 +1,2942 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/14/2021 10:46:22 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-LV5FMFK"
+  DTS:CreatorName="DESKTOP-LV5FMFK\Daniel"
+  DTS:DTSID="{DEFA699B-08E7-4461-A378-432DCE3F3A5A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.167"
+  DTS:LocaleID="1031"
+  DTS:ObjectName="DatenimportPackageHubs"
+  DTS:PackageType="5"
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{B8A37B6E-B271-4ADB-8A40-90CE74FA8CBE}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Datenimport"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Datenflusstask"
+      DTS:DTSID="{13D93E79-C91F-4D33-B080-3E78AA2155DA}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Datenimport"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Datenimport\Datenkonvertierung"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Datenkonvertierung;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;0"
+              description="Datenkonvertierung"
+              name="Datenkonvertierung"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Datenimport\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung]"
+                  name="Eingabe der Datenkonvertierung">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Datenimport\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[PersonenID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PersonenID"
+                      lineageId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[PersonenID]" />
+                    <inputColumn
+                      refId="Package\Datenimport\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[PersonenNr]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PersonenNr"
+                      lineageId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[PersonenNr]" />
+                    <inputColumn
+                      refId="Package\Datenimport\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[Vorname]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Vorname"
+                      lineageId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[Vorname]" />
+                    <inputColumn
+                      refId="Package\Datenimport\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[Nachname]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Nachname"
+                      lineageId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[Nachname]" />
+                    <inputColumn
+                      refId="Package\Datenimport\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[GebDat]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="GebDat"
+                      lineageId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[GebDat]" />
+                    <inputColumn
+                      refId="Package\Datenimport\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="gender"
+                      lineageId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[gender]" />
+                    <inputColumn
+                      refId="Package\Datenimport\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[Art]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Art"
+                      lineageId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[Art]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Datenimport\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung]"
+                  exclusionGroup="1"
+                  name="Ausgabe der Datenkonvertierung"
+                  synchronousInputId="Package\Datenimport\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;PersonenID&quot;]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Datenimport\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;PersonenID&quot;]"
+                      name="Kopie von &quot;PersonenID&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[PersonenID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;PersonenNr&quot;]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Datenimport\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;PersonenNr&quot;]"
+                      name="Kopie von &quot;PersonenNr&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[PersonenNr]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Vorname&quot;]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Datenimport\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Vorname&quot;]"
+                      name="Kopie von &quot;Vorname&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[Vorname]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Nachname&quot;]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Datenimport\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Nachname&quot;]"
+                      name="Kopie von &quot;Nachname&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[Nachname]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;GebDat&quot;]"
+                      dataType="date"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Datenimport\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;GebDat&quot;]"
+                      name="Kopie von &quot;GebDat&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[GebDat]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;gender&quot;]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Datenimport\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;gender&quot;]"
+                      name="Kopie von &quot;gender&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[gender]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Art&quot;]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Datenimport\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Art&quot;]"
+                      name="Kopie von &quot;Art&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[Art]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Datenimport\Datenkonvertierung.Outputs[Fehlerausgabe der Datenkonvertierung]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Fehlerausgabe der Datenkonvertierung"
+                  synchronousInputId="Package\Datenimport\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\Datenkonvertierung.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\Datenkonvertierung.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Datenimport\Datenkonvertierung 1"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Datenkonvertierung;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;0"
+              description="Datenkonvertierung"
+              name="Datenkonvertierung 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Datenimport\Datenkonvertierung 1.Inputs[Eingabe der Datenkonvertierung]"
+                  name="Eingabe der Datenkonvertierung">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 1.Inputs[Eingabe der Datenkonvertierung].Columns[StudiengangsID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StudiengangsID"
+                      lineageId="Package\Datenimport\FlatfileStudiengang.Outputs[Ausgabe der Flatfilequelle].Columns[StudiengangsID]" />
+                    <inputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 1.Inputs[Eingabe der Datenkonvertierung].Columns[Studiengangsnr]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Studiengangsnr"
+                      lineageId="Package\Datenimport\FlatfileStudiengang.Outputs[Ausgabe der Flatfilequelle].Columns[Studiengangsnr]" />
+                    <inputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 1.Inputs[Eingabe der Datenkonvertierung].Columns[Studiengangsname]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Studiengangsname"
+                      lineageId="Package\Datenimport\FlatfileStudiengang.Outputs[Ausgabe der Flatfilequelle].Columns[Studiengangsname]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Datenimport\Datenkonvertierung 1.Outputs[Ausgabe der Datenkonvertierung]"
+                  exclusionGroup="1"
+                  name="Ausgabe der Datenkonvertierung"
+                  synchronousInputId="Package\Datenimport\Datenkonvertierung 1.Inputs[Eingabe der Datenkonvertierung]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 1.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;StudiengangsID&quot;]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Datenimport\Datenkonvertierung 1.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;StudiengangsID&quot;]"
+                      name="Kopie von &quot;StudiengangsID&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenimport\FlatfileStudiengang.Outputs[Ausgabe der Flatfilequelle].Columns[StudiengangsID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 1.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Studiengangsnr&quot;]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Datenimport\Datenkonvertierung 1.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Studiengangsnr&quot;]"
+                      name="Kopie von &quot;Studiengangsnr&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenimport\FlatfileStudiengang.Outputs[Ausgabe der Flatfilequelle].Columns[Studiengangsnr]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 1.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Studiengangsname&quot;]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Datenimport\Datenkonvertierung 1.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Studiengangsname&quot;]"
+                      name="Kopie von &quot;Studiengangsname&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenimport\FlatfileStudiengang.Outputs[Ausgabe der Flatfilequelle].Columns[Studiengangsname]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Datenimport\Datenkonvertierung 1.Outputs[Fehlerausgabe der Datenkonvertierung]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Fehlerausgabe der Datenkonvertierung"
+                  synchronousInputId="Package\Datenimport\Datenkonvertierung 1.Inputs[Eingabe der Datenkonvertierung]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 1.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\Datenkonvertierung 1.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 1.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\Datenkonvertierung 1.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Datenimport\Datenkonvertierung 2"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Datenkonvertierung;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;0"
+              description="Datenkonvertierung"
+              name="Datenkonvertierung 2"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Datenimport\Datenkonvertierung 2.Inputs[Eingabe der Datenkonvertierung]"
+                  name="Eingabe der Datenkonvertierung">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 2.Inputs[Eingabe der Datenkonvertierung].Columns[StudienrichtungID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StudienrichtungID"
+                      lineageId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Ausgabe der Flatfilequelle].Columns[StudienrichtungID]" />
+                    <inputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 2.Inputs[Eingabe der Datenkonvertierung].Columns[Studienrichtungnr]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Studienrichtungnr"
+                      lineageId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Ausgabe der Flatfilequelle].Columns[Studienrichtungnr]" />
+                    <inputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 2.Inputs[Eingabe der Datenkonvertierung].Columns[Studienrichtung]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Studienrichtung"
+                      lineageId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Ausgabe der Flatfilequelle].Columns[Studienrichtung]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Datenimport\Datenkonvertierung 2.Outputs[Ausgabe der Datenkonvertierung]"
+                  exclusionGroup="1"
+                  name="Ausgabe der Datenkonvertierung"
+                  synchronousInputId="Package\Datenimport\Datenkonvertierung 2.Inputs[Eingabe der Datenkonvertierung]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 2.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;StudienrichtungID&quot;]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Datenimport\Datenkonvertierung 2.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;StudienrichtungID&quot;]"
+                      name="Kopie von &quot;StudienrichtungID&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenimport\FlatfileStudienrichtung.Outputs[Ausgabe der Flatfilequelle].Columns[StudienrichtungID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 2.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Studienrichtungnr&quot;]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Datenimport\Datenkonvertierung 2.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Studienrichtungnr&quot;]"
+                      name="Kopie von &quot;Studienrichtungnr&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenimport\FlatfileStudienrichtung.Outputs[Ausgabe der Flatfilequelle].Columns[Studienrichtungnr]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 2.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Studienrichtung&quot;]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Datenimport\Datenkonvertierung 2.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Studienrichtung&quot;]"
+                      name="Kopie von &quot;Studienrichtung&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenimport\FlatfileStudienrichtung.Outputs[Ausgabe der Flatfilequelle].Columns[Studienrichtung]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Datenimport\Datenkonvertierung 2.Outputs[Fehlerausgabe der Datenkonvertierung]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Fehlerausgabe der Datenkonvertierung"
+                  synchronousInputId="Package\Datenimport\Datenkonvertierung 2.Inputs[Eingabe der Datenkonvertierung]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 2.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\Datenkonvertierung 2.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 2.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\Datenkonvertierung 2.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Datenimport\Datenkonvertierung 3"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Datenkonvertierung;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;0"
+              description="Datenkonvertierung"
+              name="Datenkonvertierung 3"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Datenimport\Datenkonvertierung 3.Inputs[Eingabe der Datenkonvertierung]"
+                  name="Eingabe der Datenkonvertierung">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 3.Inputs[Eingabe der Datenkonvertierung].Columns[VeranstaltungsID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="VeranstaltungsID"
+                      lineageId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].Columns[VeranstaltungsID]" />
+                    <inputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 3.Inputs[Eingabe der Datenkonvertierung].Columns[Veranstaltungsnr]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Veranstaltungsnr"
+                      lineageId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].Columns[Veranstaltungsnr]" />
+                    <inputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 3.Inputs[Eingabe der Datenkonvertierung].Columns[Veranstaltungsname]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Veranstaltungsname"
+                      lineageId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].Columns[Veranstaltungsname]" />
+                    <inputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 3.Inputs[Eingabe der Datenkonvertierung].Columns[ECTS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ECTS"
+                      lineageId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].Columns[ECTS]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Datenimport\Datenkonvertierung 3.Outputs[Ausgabe der Datenkonvertierung]"
+                  exclusionGroup="1"
+                  name="Ausgabe der Datenkonvertierung"
+                  synchronousInputId="Package\Datenimport\Datenkonvertierung 3.Inputs[Eingabe der Datenkonvertierung]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 3.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;VeranstaltungsID&quot;]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Datenimport\Datenkonvertierung 3.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;VeranstaltungsID&quot;]"
+                      name="Kopie von &quot;VeranstaltungsID&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].Columns[VeranstaltungsID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 3.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Veranstaltungsnr&quot;]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Datenimport\Datenkonvertierung 3.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Veranstaltungsnr&quot;]"
+                      name="Kopie von &quot;Veranstaltungsnr&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].Columns[Veranstaltungsnr]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 3.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Veranstaltungsname&quot;]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Datenimport\Datenkonvertierung 3.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Veranstaltungsname&quot;]"
+                      name="Kopie von &quot;Veranstaltungsname&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].Columns[Veranstaltungsname]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 3.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;ECTS&quot;]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Datenimport\Datenkonvertierung 3.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;ECTS&quot;]"
+                      name="Kopie von &quot;ECTS&quot;"
+                      precision="18"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].Columns[ECTS]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Datenimport\Datenkonvertierung 3.Outputs[Fehlerausgabe der Datenkonvertierung]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Fehlerausgabe der Datenkonvertierung"
+                  synchronousInputId="Package\Datenimport\Datenkonvertierung 3.Inputs[Eingabe der Datenkonvertierung]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 3.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\Datenkonvertierung 3.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 3.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\Datenkonvertierung 3.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Datenimport\Datenkonvertierung 4"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Datenkonvertierung;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;0"
+              description="Datenkonvertierung"
+              name="Datenkonvertierung 4"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Datenimport\Datenkonvertierung 4.Inputs[Eingabe der Datenkonvertierung]"
+                  name="Eingabe der Datenkonvertierung">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 4.Inputs[Eingabe der Datenkonvertierung].Columns[VeranstaltungsartID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="VeranstaltungsartID"
+                      lineageId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Ausgabe der Flatfilequelle].Columns[VeranstaltungsartID]" />
+                    <inputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 4.Inputs[Eingabe der Datenkonvertierung].Columns[Veranstaltungsartnr]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Veranstaltungsartnr"
+                      lineageId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Ausgabe der Flatfilequelle].Columns[Veranstaltungsartnr]" />
+                    <inputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 4.Inputs[Eingabe der Datenkonvertierung].Columns[Veranstaltungsart]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Veranstaltungsart"
+                      lineageId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Ausgabe der Flatfilequelle].Columns[Veranstaltungsart]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Datenimport\Datenkonvertierung 4.Outputs[Ausgabe der Datenkonvertierung]"
+                  exclusionGroup="1"
+                  name="Ausgabe der Datenkonvertierung"
+                  synchronousInputId="Package\Datenimport\Datenkonvertierung 4.Inputs[Eingabe der Datenkonvertierung]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 4.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;VeranstaltungsartID&quot;]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Datenimport\Datenkonvertierung 4.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;VeranstaltungsartID&quot;]"
+                      name="Kopie von &quot;VeranstaltungsartID&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Ausgabe der Flatfilequelle].Columns[VeranstaltungsartID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 4.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Veranstaltungsartnr&quot;]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Datenimport\Datenkonvertierung 4.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Veranstaltungsartnr&quot;]"
+                      name="Kopie von &quot;Veranstaltungsartnr&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Ausgabe der Flatfilequelle].Columns[Veranstaltungsartnr]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 4.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Veranstaltungsart&quot;]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Datenimport\Datenkonvertierung 4.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Veranstaltungsart&quot;]"
+                      name="Kopie von &quot;Veranstaltungsart&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Ausgabe der Flatfilequelle].Columns[Veranstaltungsart]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Datenimport\Datenkonvertierung 4.Outputs[Fehlerausgabe der Datenkonvertierung]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Fehlerausgabe der Datenkonvertierung"
+                  synchronousInputId="Package\Datenimport\Datenkonvertierung 4.Inputs[Eingabe der Datenkonvertierung]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 4.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\Datenkonvertierung 4.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenimport\Datenkonvertierung 4.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\Datenkonvertierung 4.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Datenimport\FlatfilePersonen"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flatfilequelle;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;1"
+              description="Flatfilequelle"
+              localeId="1031"
+              name="FlatfilePersonen"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Gibt an, ob Spalten mit der Länge &quot;0&quot; als NULL behandelt werden."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen der Ausgabespalte an, die den Dateinamen enthält. Wenn kein Name angegeben wird, wird keine Ausgabespalte generiert, die den Dateinamen enthält."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Datenimport\FlatfilePersonen.Connections[FlatFileConnection]"
+                  connectionManagerID="{EBA0D046-F0CD-4573-BF67-9E48DF41C498}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Verbindungs-Manager für Personen]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle]"
+                  name="Ausgabe der Flatfilequelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[PersonenID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[PersonenID]"
+                      length="50"
+                      lineageId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[PersonenID]"
+                      name="PersonenID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[PersonenNr]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[PersonenNr]"
+                      length="50"
+                      lineageId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[PersonenNr]"
+                      name="PersonenNr"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[Vorname]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Vorname]"
+                      length="50"
+                      lineageId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[Vorname]"
+                      name="Vorname"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[Nachname]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Nachname]"
+                      length="50"
+                      lineageId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[Nachname]"
+                      name="Nachname"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[GebDat]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[GebDat]"
+                      length="50"
+                      lineageId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[GebDat]"
+                      name="GebDat"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[gender]"
+                      length="50"
+                      lineageId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[gender]"
+                      name="gender"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[Art]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Art]"
+                      length="50"
+                      lineageId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].Columns[Art]"
+                      name="Art"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[PersonenID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PersonenID" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[PersonenNr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PersonenNr" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Vorname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Vorname" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Nachname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Nachname" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[GebDat]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="GebDat" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Art]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Art" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Datenimport\FlatfilePersonen.Outputs[Fehlerausgabe der Flatfilequelle]"
+                  isErrorOut="true"
+                  name="Fehlerausgabe der Flatfilequelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfilePersonen.Outputs[Fehlerausgabe der Flatfilequelle].Columns[Fehlerausgabespalte der Flatfilequelle]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Fehlerausgabespalte der Flatfilequelle"
+                      lineageId="Package\Datenimport\FlatfilePersonen.Outputs[Fehlerausgabe der Flatfilequelle].Columns[Fehlerausgabespalte der Flatfilequelle]"
+                      name="Fehlerausgabespalte der Flatfilequelle" />
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfilePersonen.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\FlatfilePersonen.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfilePersonen.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\FlatfilePersonen.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Datenimport\FlatfileStudiengang"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flatfilequelle;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;1"
+              description="Flatfilequelle"
+              localeId="1031"
+              name="FlatfileStudiengang"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Gibt an, ob Spalten mit der Länge &quot;0&quot; als NULL behandelt werden."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen der Ausgabespalte an, die den Dateinamen enthält. Wenn kein Name angegeben wird, wird keine Ausgabespalte generiert, die den Dateinamen enthält."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Datenimport\FlatfileStudiengang.Connections[FlatFileConnection]"
+                  connectionManagerID="{A957BFA5-199B-406F-B047-00A4220C5AAC}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Verbindungs-Manager für Studiengang]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Datenimport\FlatfileStudiengang.Outputs[Ausgabe der Flatfilequelle]"
+                  name="Ausgabe der Flatfilequelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileStudiengang.Outputs[Ausgabe der Flatfilequelle].Columns[StudiengangsID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenimport\FlatfileStudiengang.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[StudiengangsID]"
+                      length="50"
+                      lineageId="Package\Datenimport\FlatfileStudiengang.Outputs[Ausgabe der Flatfilequelle].Columns[StudiengangsID]"
+                      name="StudiengangsID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileStudiengang.Outputs[Ausgabe der Flatfilequelle].Columns[Studiengangsnr]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenimport\FlatfileStudiengang.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Studiengangsnr]"
+                      length="50"
+                      lineageId="Package\Datenimport\FlatfileStudiengang.Outputs[Ausgabe der Flatfilequelle].Columns[Studiengangsnr]"
+                      name="Studiengangsnr"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileStudiengang.Outputs[Ausgabe der Flatfilequelle].Columns[Studiengangsname]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenimport\FlatfileStudiengang.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Studiengangsname]"
+                      length="50"
+                      lineageId="Package\Datenimport\FlatfileStudiengang.Outputs[Ausgabe der Flatfilequelle].Columns[Studiengangsname]"
+                      name="Studiengangsname"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\FlatfileStudiengang.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[StudiengangsID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StudiengangsID" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\FlatfileStudiengang.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Studiengangsnr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Studiengangsnr" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\FlatfileStudiengang.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Studiengangsname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Studiengangsname" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Datenimport\FlatfileStudiengang.Outputs[Fehlerausgabe der Flatfilequelle]"
+                  isErrorOut="true"
+                  name="Fehlerausgabe der Flatfilequelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileStudiengang.Outputs[Fehlerausgabe der Flatfilequelle].Columns[Fehlerausgabespalte der Flatfilequelle]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Fehlerausgabespalte der Flatfilequelle"
+                      lineageId="Package\Datenimport\FlatfileStudiengang.Outputs[Fehlerausgabe der Flatfilequelle].Columns[Fehlerausgabespalte der Flatfilequelle]"
+                      name="Fehlerausgabespalte der Flatfilequelle" />
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileStudiengang.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\FlatfileStudiengang.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileStudiengang.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\FlatfileStudiengang.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Datenimport\FlatfileStudienrichtung"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flatfilequelle;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;1"
+              description="Flatfilequelle"
+              localeId="1031"
+              name="FlatfileStudienrichtung"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Gibt an, ob Spalten mit der Länge &quot;0&quot; als NULL behandelt werden."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen der Ausgabespalte an, die den Dateinamen enthält. Wenn kein Name angegeben wird, wird keine Ausgabespalte generiert, die den Dateinamen enthält."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Datenimport\FlatfileStudienrichtung.Connections[FlatFileConnection]"
+                  connectionManagerID="{B39042EB-E6BA-4876-8D37-E7599756AB77}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Verbindungs-Manager für Studienrichtung]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Ausgabe der Flatfilequelle]"
+                  name="Ausgabe der Flatfilequelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Ausgabe der Flatfilequelle].Columns[StudienrichtungID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[StudienrichtungID]"
+                      length="50"
+                      lineageId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Ausgabe der Flatfilequelle].Columns[StudienrichtungID]"
+                      name="StudienrichtungID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Ausgabe der Flatfilequelle].Columns[Studienrichtungnr]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Studienrichtungnr]"
+                      length="50"
+                      lineageId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Ausgabe der Flatfilequelle].Columns[Studienrichtungnr]"
+                      name="Studienrichtungnr"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Ausgabe der Flatfilequelle].Columns[Studienrichtung]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Studienrichtung]"
+                      length="50"
+                      lineageId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Ausgabe der Flatfilequelle].Columns[Studienrichtung]"
+                      name="Studienrichtung"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[StudienrichtungID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StudienrichtungID" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Studienrichtungnr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Studienrichtungnr" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Studienrichtung]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Studienrichtung" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Fehlerausgabe der Flatfilequelle]"
+                  isErrorOut="true"
+                  name="Fehlerausgabe der Flatfilequelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Fehlerausgabe der Flatfilequelle].Columns[Fehlerausgabespalte der Flatfilequelle]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Fehlerausgabespalte der Flatfilequelle"
+                      lineageId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Fehlerausgabe der Flatfilequelle].Columns[Fehlerausgabespalte der Flatfilequelle]"
+                      name="Fehlerausgabespalte der Flatfilequelle" />
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Datenimport\FlatfileVeranstaltung"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flatfilequelle;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;1"
+              description="Flatfilequelle"
+              localeId="1031"
+              name="FlatfileVeranstaltung"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Gibt an, ob Spalten mit der Länge &quot;0&quot; als NULL behandelt werden."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen der Ausgabespalte an, die den Dateinamen enthält. Wenn kein Name angegeben wird, wird keine Ausgabespalte generiert, die den Dateinamen enthält."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Datenimport\FlatfileVeranstaltung.Connections[FlatFileConnection]"
+                  connectionManagerID="{E20FD0A3-F50C-4C5B-8A0A-6BA9D6AF9725}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Verbindungs-Manager für Veranstaltung]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle]"
+                  name="Ausgabe der Flatfilequelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].Columns[VeranstaltungsID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[VeranstaltungsID]"
+                      length="50"
+                      lineageId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].Columns[VeranstaltungsID]"
+                      name="VeranstaltungsID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].Columns[Veranstaltungsnr]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Veranstaltungsnr]"
+                      length="50"
+                      lineageId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].Columns[Veranstaltungsnr]"
+                      name="Veranstaltungsnr"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].Columns[Veranstaltungsname]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Veranstaltungsname]"
+                      length="50"
+                      lineageId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].Columns[Veranstaltungsname]"
+                      name="Veranstaltungsname"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].Columns[ECTS]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[ECTS]"
+                      length="50"
+                      lineageId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].Columns[ECTS]"
+                      name="ECTS"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[VeranstaltungsID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="VeranstaltungsID" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Veranstaltungsnr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Veranstaltungsnr" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Veranstaltungsname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Veranstaltungsname" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[ECTS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ECTS" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Fehlerausgabe der Flatfilequelle]"
+                  isErrorOut="true"
+                  name="Fehlerausgabe der Flatfilequelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Fehlerausgabe der Flatfilequelle].Columns[Fehlerausgabespalte der Flatfilequelle]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Fehlerausgabespalte der Flatfilequelle"
+                      lineageId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Fehlerausgabe der Flatfilequelle].Columns[Fehlerausgabespalte der Flatfilequelle]"
+                      name="Fehlerausgabespalte der Flatfilequelle" />
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Datenimport\FlatfileVeranstaltungsart"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flatfilequelle;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;1"
+              description="Flatfilequelle"
+              localeId="1031"
+              name="FlatfileVeranstaltungsart"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Gibt an, ob Spalten mit der Länge &quot;0&quot; als NULL behandelt werden."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen der Ausgabespalte an, die den Dateinamen enthält. Wenn kein Name angegeben wird, wird keine Ausgabespalte generiert, die den Dateinamen enthält."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Datenimport\FlatfileVeranstaltungsart.Connections[FlatFileConnection]"
+                  connectionManagerID="{9524D886-1142-41F2-AB08-88D3BDC0201B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Verbindungs-Manager für Veranstaltungsart]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Ausgabe der Flatfilequelle]"
+                  name="Ausgabe der Flatfilequelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Ausgabe der Flatfilequelle].Columns[VeranstaltungsartID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[VeranstaltungsartID]"
+                      length="50"
+                      lineageId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Ausgabe der Flatfilequelle].Columns[VeranstaltungsartID]"
+                      name="VeranstaltungsartID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Ausgabe der Flatfilequelle].Columns[Veranstaltungsartnr]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Veranstaltungsartnr]"
+                      length="50"
+                      lineageId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Ausgabe der Flatfilequelle].Columns[Veranstaltungsartnr]"
+                      name="Veranstaltungsartnr"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Ausgabe der Flatfilequelle].Columns[Veranstaltungsart]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Veranstaltungsart]"
+                      length="50"
+                      lineageId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Ausgabe der Flatfilequelle].Columns[Veranstaltungsart]"
+                      name="Veranstaltungsart"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[VeranstaltungsartID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="VeranstaltungsartID" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Veranstaltungsartnr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Veranstaltungsartnr" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Veranstaltungsart]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Veranstaltungsart" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Fehlerausgabe der Flatfilequelle]"
+                  isErrorOut="true"
+                  name="Fehlerausgabe der Flatfilequelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Fehlerausgabe der Flatfilequelle].Columns[Fehlerausgabespalte der Flatfilequelle]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Fehlerausgabespalte der Flatfilequelle"
+                      lineageId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Fehlerausgabe der Flatfilequelle].Columns[Fehlerausgabespalte der Flatfilequelle]"
+                      name="Fehlerausgabespalte der Flatfilequelle" />
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Datenimport\OLE DB-Ziel"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB-Ziel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;4"
+              description="OLE DB-Ziel"
+              name="OLE DB-Ziel"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden für das Timeout eines Befehls. Der Wert &quot;0&quot; zeigt einen unendlichen Timeoutwert an."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts an."
+                  name="OpenRowset">[dbo].[HUB_Personen]</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die Variable an, die den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts enthält."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Der auszuführende SQL-Befehl."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Erzwingt die Verwendung des DefaultCodePage-Eigenschaftswerts beim Beschreiben von Zeichendaten."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt den zum Zugreifen auf die Datenbank verwendeten Modus an."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob die für Identitätsspalten übergebenen Werte zum Ziel kopiert werden. Bei &quot;False&quot; werden die Werte für Identitätsspalten am Ziel automatisch generiert. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob für Spalten, die NULL enthalten, NULL am Ziel eingefügt wird. Bei &quot;False&quot; werden für Spalten, die NULL enthalten, am Ziel die Standardwerte eingefügt. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die für die Option &quot;Schnelles Laden&quot; zu verwendenden Optionen an. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt an, wann beim Einfügen von Daten Commits ausgegeben werden. Der Wert &quot;0&quot; gibt an, dass ein Commit am Ende des Einfügens von Daten ausgegeben wird. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Datenimport\OLE DB-Ziel.Connections[OleDbConnection]"
+                  connectionManagerID="{B8289841-1739-41F2-BAFB-B16AB7796EE1}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-LV5FMFK.AusbildungsEvaluierungDataVault]"
+                  description="Die für den Zugriff auf die Datenbank verwendete OLE DB-Laufzeitverbindung."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Datenimport\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels]"
+                  errorOrTruncationOperation="Einfügen"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Eingabe des OLE DB-Ziels">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;Vorname&quot;]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Kopie von &quot;Vorname&quot;"
+                      externalMetadataColumnId="Package\Datenimport\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Vorname]"
+                      lineageId="Package\Datenimport\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Vorname&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;PersonenNr&quot;]"
+                      cachedDataType="i4"
+                      cachedName="Kopie von &quot;PersonenNr&quot;"
+                      externalMetadataColumnId="Package\Datenimport\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[PersonNr]"
+                      lineageId="Package\Datenimport\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;PersonenNr&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;Nachname&quot;]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Kopie von &quot;Nachname&quot;"
+                      externalMetadataColumnId="Package\Datenimport\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Nachname]"
+                      lineageId="Package\Datenimport\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Nachname&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;gender&quot;]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Kopie von &quot;gender&quot;"
+                      externalMetadataColumnId="Package\Datenimport\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Geschlecht]"
+                      lineageId="Package\Datenimport\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;gender&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;GebDat&quot;]"
+                      cachedDataType="date"
+                      cachedName="Kopie von &quot;GebDat&quot;"
+                      externalMetadataColumnId="Package\Datenimport\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[GebDat]"
+                      lineageId="Package\Datenimport\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;GebDat&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;Art&quot;]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Kopie von &quot;Art&quot;"
+                      externalMetadataColumnId="Package\Datenimport\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Art]"
+                      lineageId="Package\Datenimport\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Art&quot;]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[PersonenID]"
+                      dataType="i4"
+                      name="PersonenID" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[PersonNr]"
+                      dataType="i4"
+                      name="PersonNr" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Vorname]"
+                      dataType="wstr"
+                      length="50"
+                      name="Vorname" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Nachname]"
+                      dataType="wstr"
+                      length="50"
+                      name="Nachname" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[GebDat]"
+                      dataType="dbDate"
+                      name="GebDat" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Geschlecht]"
+                      dataType="bool"
+                      name="Geschlecht" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Art]"
+                      dataType="wstr"
+                      length="50"
+                      name="Art" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Datenimport\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Fehlerausgabe des OLE DB-Ziels"
+                  synchronousInputId="Package\Datenimport\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Datenimport\OLE DB-Ziel 1"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB-Ziel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;4"
+              description="OLE DB-Ziel"
+              name="OLE DB-Ziel 1"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden für das Timeout eines Befehls. Der Wert &quot;0&quot; zeigt einen unendlichen Timeoutwert an."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts an."
+                  name="OpenRowset">[dbo].[HUB_Studiengaenge]</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die Variable an, die den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts enthält."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Der auszuführende SQL-Befehl."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Erzwingt die Verwendung des DefaultCodePage-Eigenschaftswerts beim Beschreiben von Zeichendaten."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt den zum Zugreifen auf die Datenbank verwendeten Modus an."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob die für Identitätsspalten übergebenen Werte zum Ziel kopiert werden. Bei &quot;False&quot; werden die Werte für Identitätsspalten am Ziel automatisch generiert. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob für Spalten, die NULL enthalten, NULL am Ziel eingefügt wird. Bei &quot;False&quot; werden für Spalten, die NULL enthalten, am Ziel die Standardwerte eingefügt. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die für die Option &quot;Schnelles Laden&quot; zu verwendenden Optionen an. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt an, wann beim Einfügen von Daten Commits ausgegeben werden. Der Wert &quot;0&quot; gibt an, dass ein Commit am Ende des Einfügens von Daten ausgegeben wird. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Datenimport\OLE DB-Ziel 1.Connections[OleDbConnection]"
+                  connectionManagerID="{B8289841-1739-41F2-BAFB-B16AB7796EE1}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-LV5FMFK.AusbildungsEvaluierungDataVault]"
+                  description="Die für den Zugriff auf die Datenbank verwendete OLE DB-Laufzeitverbindung."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Datenimport\OLE DB-Ziel 1.Inputs[Eingabe des OLE DB-Ziels]"
+                  errorOrTruncationOperation="Einfügen"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Eingabe des OLE DB-Ziels">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 1.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;Studiengangsnr&quot;]"
+                      cachedDataType="i4"
+                      cachedName="Kopie von &quot;Studiengangsnr&quot;"
+                      externalMetadataColumnId="Package\Datenimport\OLE DB-Ziel 1.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[StudiengangsNr]"
+                      lineageId="Package\Datenimport\Datenkonvertierung 1.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Studiengangsnr&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 1.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;Studiengangsname&quot;]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Kopie von &quot;Studiengangsname&quot;"
+                      externalMetadataColumnId="Package\Datenimport\OLE DB-Ziel 1.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Studiengangsname]"
+                      lineageId="Package\Datenimport\Datenkonvertierung 1.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Studiengangsname&quot;]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 1.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[StudiengangsID]"
+                      dataType="i4"
+                      name="StudiengangsID" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 1.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[StudiengangsNr]"
+                      dataType="i4"
+                      name="StudiengangsNr" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 1.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Studiengangsname]"
+                      dataType="wstr"
+                      length="50"
+                      name="Studiengangsname" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Datenimport\OLE DB-Ziel 1.Outputs[Fehlerausgabe des OLE DB-Ziels]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Fehlerausgabe des OLE DB-Ziels"
+                  synchronousInputId="Package\Datenimport\OLE DB-Ziel 1.Inputs[Eingabe des OLE DB-Ziels]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 1.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\OLE DB-Ziel 1.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 1.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\OLE DB-Ziel 1.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Datenimport\OLE DB-Ziel 2"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB-Ziel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;4"
+              description="OLE DB-Ziel"
+              name="OLE DB-Ziel 2"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden für das Timeout eines Befehls. Der Wert &quot;0&quot; zeigt einen unendlichen Timeoutwert an."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts an."
+                  name="OpenRowset">[dbo].[HUB_Studienrichtung]</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die Variable an, die den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts enthält."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Der auszuführende SQL-Befehl."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Erzwingt die Verwendung des DefaultCodePage-Eigenschaftswerts beim Beschreiben von Zeichendaten."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt den zum Zugreifen auf die Datenbank verwendeten Modus an."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob die für Identitätsspalten übergebenen Werte zum Ziel kopiert werden. Bei &quot;False&quot; werden die Werte für Identitätsspalten am Ziel automatisch generiert. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob für Spalten, die NULL enthalten, NULL am Ziel eingefügt wird. Bei &quot;False&quot; werden für Spalten, die NULL enthalten, am Ziel die Standardwerte eingefügt. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die für die Option &quot;Schnelles Laden&quot; zu verwendenden Optionen an. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt an, wann beim Einfügen von Daten Commits ausgegeben werden. Der Wert &quot;0&quot; gibt an, dass ein Commit am Ende des Einfügens von Daten ausgegeben wird. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Datenimport\OLE DB-Ziel 2.Connections[OleDbConnection]"
+                  connectionManagerID="{B8289841-1739-41F2-BAFB-B16AB7796EE1}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-LV5FMFK.AusbildungsEvaluierungDataVault]"
+                  description="Die für den Zugriff auf die Datenbank verwendete OLE DB-Laufzeitverbindung."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Datenimport\OLE DB-Ziel 2.Inputs[Eingabe des OLE DB-Ziels]"
+                  errorOrTruncationOperation="Einfügen"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Eingabe des OLE DB-Ziels">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 2.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;Studienrichtungnr&quot;]"
+                      cachedDataType="i4"
+                      cachedName="Kopie von &quot;Studienrichtungnr&quot;"
+                      externalMetadataColumnId="Package\Datenimport\OLE DB-Ziel 2.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[StudienrichtungNr]"
+                      lineageId="Package\Datenimport\Datenkonvertierung 2.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Studienrichtungnr&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 2.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;Studienrichtung&quot;]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Kopie von &quot;Studienrichtung&quot;"
+                      externalMetadataColumnId="Package\Datenimport\OLE DB-Ziel 2.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Studienrichtung]"
+                      lineageId="Package\Datenimport\Datenkonvertierung 2.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Studienrichtung&quot;]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 2.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[StudienrichtungID]"
+                      dataType="i4"
+                      name="StudienrichtungID" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 2.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[StudienrichtungNr]"
+                      dataType="i4"
+                      name="StudienrichtungNr" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 2.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Studienrichtung]"
+                      dataType="wstr"
+                      length="50"
+                      name="Studienrichtung" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Datenimport\OLE DB-Ziel 2.Outputs[Fehlerausgabe des OLE DB-Ziels]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Fehlerausgabe des OLE DB-Ziels"
+                  synchronousInputId="Package\Datenimport\OLE DB-Ziel 2.Inputs[Eingabe des OLE DB-Ziels]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 2.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\OLE DB-Ziel 2.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 2.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\OLE DB-Ziel 2.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Datenimport\OLE DB-Ziel 3"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB-Ziel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;4"
+              description="OLE DB-Ziel"
+              name="OLE DB-Ziel 3"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden für das Timeout eines Befehls. Der Wert &quot;0&quot; zeigt einen unendlichen Timeoutwert an."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts an."
+                  name="OpenRowset">[dbo].[HUB_Veranstalung]</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die Variable an, die den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts enthält."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Der auszuführende SQL-Befehl."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Erzwingt die Verwendung des DefaultCodePage-Eigenschaftswerts beim Beschreiben von Zeichendaten."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt den zum Zugreifen auf die Datenbank verwendeten Modus an."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob die für Identitätsspalten übergebenen Werte zum Ziel kopiert werden. Bei &quot;False&quot; werden die Werte für Identitätsspalten am Ziel automatisch generiert. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob für Spalten, die NULL enthalten, NULL am Ziel eingefügt wird. Bei &quot;False&quot; werden für Spalten, die NULL enthalten, am Ziel die Standardwerte eingefügt. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die für die Option &quot;Schnelles Laden&quot; zu verwendenden Optionen an. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt an, wann beim Einfügen von Daten Commits ausgegeben werden. Der Wert &quot;0&quot; gibt an, dass ein Commit am Ende des Einfügens von Daten ausgegeben wird. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Datenimport\OLE DB-Ziel 3.Connections[OleDbConnection]"
+                  connectionManagerID="{B8289841-1739-41F2-BAFB-B16AB7796EE1}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-LV5FMFK.AusbildungsEvaluierungDataVault]"
+                  description="Die für den Zugriff auf die Datenbank verwendete OLE DB-Laufzeitverbindung."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Datenimport\OLE DB-Ziel 3.Inputs[Eingabe des OLE DB-Ziels]"
+                  errorOrTruncationOperation="Einfügen"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Eingabe des OLE DB-Ziels">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 3.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;Veranstaltungsnr&quot;]"
+                      cachedDataType="i4"
+                      cachedName="Kopie von &quot;Veranstaltungsnr&quot;"
+                      externalMetadataColumnId="Package\Datenimport\OLE DB-Ziel 3.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[VerantstaltungsNr]"
+                      lineageId="Package\Datenimport\Datenkonvertierung 3.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Veranstaltungsnr&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 3.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;Veranstaltungsname&quot;]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Kopie von &quot;Veranstaltungsname&quot;"
+                      externalMetadataColumnId="Package\Datenimport\OLE DB-Ziel 3.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Veranstaltungsname]"
+                      lineageId="Package\Datenimport\Datenkonvertierung 3.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Veranstaltungsname&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 3.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;ECTS&quot;]"
+                      cachedDataType="numeric"
+                      cachedName="Kopie von &quot;ECTS&quot;"
+                      cachedPrecision="18"
+                      externalMetadataColumnId="Package\Datenimport\OLE DB-Ziel 3.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[ECTS]"
+                      lineageId="Package\Datenimport\Datenkonvertierung 3.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;ECTS&quot;]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 3.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[VerantstaltungsID]"
+                      dataType="i4"
+                      name="VerantstaltungsID" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 3.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[VerantstaltungsNr]"
+                      dataType="i4"
+                      name="VerantstaltungsNr" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 3.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Veranstaltungsname]"
+                      dataType="wstr"
+                      length="50"
+                      name="Veranstaltungsname" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 3.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[ECTS]"
+                      dataType="numeric"
+                      name="ECTS"
+                      precision="10"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Datenimport\OLE DB-Ziel 3.Outputs[Fehlerausgabe des OLE DB-Ziels]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Fehlerausgabe des OLE DB-Ziels"
+                  synchronousInputId="Package\Datenimport\OLE DB-Ziel 3.Inputs[Eingabe des OLE DB-Ziels]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 3.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\OLE DB-Ziel 3.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 3.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\OLE DB-Ziel 3.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Datenimport\OLE DB-Ziel 4"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB-Ziel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;4"
+              description="OLE DB-Ziel"
+              name="OLE DB-Ziel 4"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden für das Timeout eines Befehls. Der Wert &quot;0&quot; zeigt einen unendlichen Timeoutwert an."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts an."
+                  name="OpenRowset">[dbo].[HUB_Veranstaltungsarten]</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die Variable an, die den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts enthält."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Der auszuführende SQL-Befehl."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Erzwingt die Verwendung des DefaultCodePage-Eigenschaftswerts beim Beschreiben von Zeichendaten."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt den zum Zugreifen auf die Datenbank verwendeten Modus an."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob die für Identitätsspalten übergebenen Werte zum Ziel kopiert werden. Bei &quot;False&quot; werden die Werte für Identitätsspalten am Ziel automatisch generiert. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob für Spalten, die NULL enthalten, NULL am Ziel eingefügt wird. Bei &quot;False&quot; werden für Spalten, die NULL enthalten, am Ziel die Standardwerte eingefügt. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die für die Option &quot;Schnelles Laden&quot; zu verwendenden Optionen an. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt an, wann beim Einfügen von Daten Commits ausgegeben werden. Der Wert &quot;0&quot; gibt an, dass ein Commit am Ende des Einfügens von Daten ausgegeben wird. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Datenimport\OLE DB-Ziel 4.Connections[OleDbConnection]"
+                  connectionManagerID="{B8289841-1739-41F2-BAFB-B16AB7796EE1}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-LV5FMFK.AusbildungsEvaluierungDataVault]"
+                  description="Die für den Zugriff auf die Datenbank verwendete OLE DB-Laufzeitverbindung."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Datenimport\OLE DB-Ziel 4.Inputs[Eingabe des OLE DB-Ziels]"
+                  errorOrTruncationOperation="Einfügen"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Eingabe des OLE DB-Ziels">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 4.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;Veranstaltungsartnr&quot;]"
+                      cachedDataType="i4"
+                      cachedName="Kopie von &quot;Veranstaltungsartnr&quot;"
+                      externalMetadataColumnId="Package\Datenimport\OLE DB-Ziel 4.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[VerantstaltungsArtNr]"
+                      lineageId="Package\Datenimport\Datenkonvertierung 4.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Veranstaltungsartnr&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 4.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;Veranstaltungsart&quot;]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Kopie von &quot;Veranstaltungsart&quot;"
+                      externalMetadataColumnId="Package\Datenimport\OLE DB-Ziel 4.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Veranstaltungsart]"
+                      lineageId="Package\Datenimport\Datenkonvertierung 4.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Veranstaltungsart&quot;]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 4.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[VerantstaltungsArtID]"
+                      dataType="i4"
+                      name="VerantstaltungsArtID" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 4.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[VerantstaltungsArtNr]"
+                      dataType="i4"
+                      name="VerantstaltungsArtNr" />
+                    <externalMetadataColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 4.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Veranstaltungsart]"
+                      dataType="wstr"
+                      length="50"
+                      name="Veranstaltungsart" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Datenimport\OLE DB-Ziel 4.Outputs[Fehlerausgabe des OLE DB-Ziels]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Fehlerausgabe des OLE DB-Ziels"
+                  synchronousInputId="Package\Datenimport\OLE DB-Ziel 4.Inputs[Eingabe des OLE DB-Ziels]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 4.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\OLE DB-Ziel 4.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenimport\OLE DB-Ziel 4.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenimport\OLE DB-Ziel 4.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Datenimport.Paths[Ausgabe der Datenkonvertierung]"
+              endId="Package\Datenimport\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels]"
+              name="Ausgabe der Datenkonvertierung"
+              startId="Package\Datenimport\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung]" />
+            <path
+              refId="Package\Datenimport.Paths[Ausgabe der Datenkonvertierung1]"
+              endId="Package\Datenimport\OLE DB-Ziel 1.Inputs[Eingabe des OLE DB-Ziels]"
+              name="Ausgabe der Datenkonvertierung"
+              startId="Package\Datenimport\Datenkonvertierung 1.Outputs[Ausgabe der Datenkonvertierung]" />
+            <path
+              refId="Package\Datenimport.Paths[Ausgabe der Datenkonvertierung2]"
+              endId="Package\Datenimport\OLE DB-Ziel 2.Inputs[Eingabe des OLE DB-Ziels]"
+              name="Ausgabe der Datenkonvertierung"
+              startId="Package\Datenimport\Datenkonvertierung 2.Outputs[Ausgabe der Datenkonvertierung]" />
+            <path
+              refId="Package\Datenimport.Paths[Ausgabe der Datenkonvertierung3]"
+              endId="Package\Datenimport\OLE DB-Ziel 3.Inputs[Eingabe des OLE DB-Ziels]"
+              name="Ausgabe der Datenkonvertierung"
+              startId="Package\Datenimport\Datenkonvertierung 3.Outputs[Ausgabe der Datenkonvertierung]" />
+            <path
+              refId="Package\Datenimport.Paths[Ausgabe der Datenkonvertierung4]"
+              endId="Package\Datenimport\OLE DB-Ziel 4.Inputs[Eingabe des OLE DB-Ziels]"
+              name="Ausgabe der Datenkonvertierung"
+              startId="Package\Datenimport\Datenkonvertierung 4.Outputs[Ausgabe der Datenkonvertierung]" />
+            <path
+              refId="Package\Datenimport.Paths[Ausgabe der Flatfilequelle]"
+              endId="Package\Datenimport\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung]"
+              name="Ausgabe der Flatfilequelle"
+              startId="Package\Datenimport\FlatfilePersonen.Outputs[Ausgabe der Flatfilequelle]" />
+            <path
+              refId="Package\Datenimport.Paths[Ausgabe der Flatfilequelle1]"
+              endId="Package\Datenimport\Datenkonvertierung 1.Inputs[Eingabe der Datenkonvertierung]"
+              name="Ausgabe der Flatfilequelle"
+              startId="Package\Datenimport\FlatfileStudiengang.Outputs[Ausgabe der Flatfilequelle]" />
+            <path
+              refId="Package\Datenimport.Paths[Ausgabe der Flatfilequelle2]"
+              endId="Package\Datenimport\Datenkonvertierung 2.Inputs[Eingabe der Datenkonvertierung]"
+              name="Ausgabe der Flatfilequelle"
+              startId="Package\Datenimport\FlatfileStudienrichtung.Outputs[Ausgabe der Flatfilequelle]" />
+            <path
+              refId="Package\Datenimport.Paths[Ausgabe der Flatfilequelle3]"
+              endId="Package\Datenimport\Datenkonvertierung 3.Inputs[Eingabe der Datenkonvertierung]"
+              name="Ausgabe der Flatfilequelle"
+              startId="Package\Datenimport\FlatfileVeranstaltung.Outputs[Ausgabe der Flatfilequelle]" />
+            <path
+              refId="Package\Datenimport.Paths[Ausgabe der Flatfilequelle4]"
+              endId="Package\Datenimport\Datenkonvertierung 4.Inputs[Eingabe der Datenkonvertierung]"
+              name="Ausgabe der Flatfilequelle"
+              startId="Package\Datenimport\FlatfileVeranstaltungsart.Outputs[Ausgabe der Flatfilequelle]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Dieser CDATA-Abschnitt enthält die Layoutinformationen des Pakets, z.B. Informationen wie X-/Y-Koordinaten, Breite und Höhe.-->
+<!--Wenn Sie diesen Abschnitt manuell ändern und Ihnen ein Fehler unterläuft, können Sie ihn löschen. -->
+<!--Das Paket kann zwar weiterhin normal geladen werden, aber frühere Layoutinformationen gehen verloren, und die Elemente auf der Entwurfsoberfläche werden vom Designer automatisch neu angeordnet.-->
+<Objects
+  Version="8">
+  <!--Jeder darunter liegende Knoten enthält Eigenschaften, die sich nicht auf das Laufzeitverhalten auswirken.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Datenimport"
+          TopLeft="575,173" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Datenimport">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib">
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Datenimport\FlatfilePersonen"
+          TopLeft="13.5,5.5" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Datenimport\Datenkonvertierung"
+          TopLeft="5.50000000000003,107.5" />
+        <EdgeLayout
+          Id="Package\Datenimport.Paths[Ausgabe der Flatfilequelle]"
+          TopLeft="93,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="141,42"
+          Id="Package\Datenimport\OLE DB-Ziel"
+          TopLeft="22.5,209.5" />
+        <EdgeLayout
+          Id="Package\Datenimport.Paths[Ausgabe der Datenkonvertierung]"
+          TopLeft="93,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <GroupLayout
+          Text="Personen"
+          ParentId="Package\Datenimport"
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="186,306"
+          Size="186,350"
+          Id="5de7564a-c0e6-4689-befd-af3704bcc7ef"
+          TopLeft="5.5,5.5">
+          <GroupLayout.ChildrenIds>
+            <s:String>Package\Datenimport\FlatfilePersonen</s:String>
+            <s:String>Package\Datenimport\Datenkonvertierung</s:String>
+            <s:String>Package\Datenimport.Paths[Ausgabe der Flatfilequelle]</s:String>
+            <s:String>Package\Datenimport\OLE DB-Ziel</s:String>
+            <s:String>Package\Datenimport.Paths[Ausgabe der Datenkonvertierung]</s:String>
+          </GroupLayout.ChildrenIds>
+        </GroupLayout>
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Datenimport\FlatfileStudiengang"
+          TopLeft="11,5.5" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Datenimport\Datenkonvertierung 1"
+          TopLeft="5.50000000000003,107.5" />
+        <EdgeLayout
+          Id="Package\Datenimport.Paths[Ausgabe der Flatfilequelle1]"
+          TopLeft="97.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Datenimport\OLE DB-Ziel 1"
+          TopLeft="22.5,209.5" />
+        <EdgeLayout
+          Id="Package\Datenimport.Paths[Ausgabe der Datenkonvertierung1]"
+          TopLeft="97.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <GroupLayout
+          Text="Studiengang"
+          ParentId="Package\Datenimport"
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="195,306"
+          Size="195,350"
+          Id="31a4e9ff-d1a2-43f9-8132-d5cdd1201483"
+          TopLeft="252,5.5">
+          <GroupLayout.ChildrenIds>
+            <s:String>Package\Datenimport\FlatfileStudiengang</s:String>
+            <s:String>Package\Datenimport\Datenkonvertierung 1</s:String>
+            <s:String>Package\Datenimport.Paths[Ausgabe der Flatfilequelle1]</s:String>
+            <s:String>Package\Datenimport\OLE DB-Ziel 1</s:String>
+            <s:String>Package\Datenimport.Paths[Ausgabe der Datenkonvertierung1]</s:String>
+          </GroupLayout.ChildrenIds>
+        </GroupLayout>
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Datenimport\FlatfileStudienrichtung"
+          TopLeft="5.50000000000001,5.5" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Datenimport\Datenkonvertierung 2"
+          TopLeft="7.50000000000003,107.5" />
+        <EdgeLayout
+          Id="Package\Datenimport.Paths[Ausgabe der Flatfilequelle2]"
+          TopLeft="99.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Datenimport\OLE DB-Ziel 2"
+          TopLeft="24.5,209.5" />
+        <EdgeLayout
+          Id="Package\Datenimport.Paths[Ausgabe der Datenkonvertierung2]"
+          TopLeft="99.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <GroupLayout
+          Text="Studienrichtung"
+          ParentId="Package\Datenimport"
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="199,306"
+          Size="199,350"
+          Id="c360ba6a-6b48-4111-9cea-b44720c8e0d2"
+          TopLeft="508,5.5">
+          <GroupLayout.ChildrenIds>
+            <s:String>Package\Datenimport\FlatfileStudienrichtung</s:String>
+            <s:String>Package\Datenimport\Datenkonvertierung 2</s:String>
+            <s:String>Package\Datenimport.Paths[Ausgabe der Flatfilequelle2]</s:String>
+            <s:String>Package\Datenimport\OLE DB-Ziel 2</s:String>
+            <s:String>Package\Datenimport.Paths[Ausgabe der Datenkonvertierung2]</s:String>
+          </GroupLayout.ChildrenIds>
+        </GroupLayout>
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Datenimport\FlatfileVeranstaltung"
+          TopLeft="7.50000000000001,5.5" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Datenimport\Datenkonvertierung 3"
+          TopLeft="5.50000000000003,107.5" />
+        <EdgeLayout
+          Id="Package\Datenimport.Paths[Ausgabe der Flatfilequelle3]"
+          TopLeft="97.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Datenimport\OLE DB-Ziel 3"
+          TopLeft="22.5,209.5" />
+        <EdgeLayout
+          Id="Package\Datenimport.Paths[Ausgabe der Datenkonvertierung3]"
+          TopLeft="97.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <GroupLayout
+          Text="Veranstaltung"
+          ParentId="Package\Datenimport"
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="195,306"
+          Size="195,350"
+          Id="e87322c5-8bef-4849-bda0-844163ad9b05"
+          TopLeft="768,5.49999999999989">
+          <GroupLayout.ChildrenIds>
+            <s:String>Package\Datenimport\FlatfileVeranstaltung</s:String>
+            <s:String>Package\Datenimport\Datenkonvertierung 3</s:String>
+            <s:String>Package\Datenimport.Paths[Ausgabe der Flatfilequelle3]</s:String>
+            <s:String>Package\Datenimport\OLE DB-Ziel 3</s:String>
+            <s:String>Package\Datenimport.Paths[Ausgabe der Datenkonvertierung3]</s:String>
+          </GroupLayout.ChildrenIds>
+        </GroupLayout>
+        <NodeLayout
+          Size="198,42"
+          Id="Package\Datenimport\FlatfileVeranstaltungsart"
+          TopLeft="5.50000000000001,5.5" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Datenimport\Datenkonvertierung 4"
+          TopLeft="12.5,107.5" />
+        <EdgeLayout
+          Id="Package\Datenimport.Paths[Ausgabe der Flatfilequelle4]"
+          TopLeft="104.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Datenimport\OLE DB-Ziel 4"
+          TopLeft="29.5,209.5" />
+        <EdgeLayout
+          Id="Package\Datenimport.Paths[Ausgabe der Datenkonvertierung4]"
+          TopLeft="104.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <GroupLayout
+          Text="Veranstaltungsart"
+          ParentId="Package\Datenimport"
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="209,306"
+          Size="209,350"
+          Id="adabd410-bbeb-486c-985c-321b9e335ac7"
+          TopLeft="1024,5.49999999999989">
+          <GroupLayout.ChildrenIds>
+            <s:String>Package\Datenimport\FlatfileVeranstaltungsart</s:String>
+            <s:String>Package\Datenimport\Datenkonvertierung 4</s:String>
+            <s:String>Package\Datenimport.Paths[Ausgabe der Flatfilequelle4]</s:String>
+            <s:String>Package\Datenimport\OLE DB-Ziel 4</s:String>
+            <s:String>Package\Datenimport.Paths[Ausgabe der Datenkonvertierung4]</s:String>
+          </GroupLayout.ChildrenIds>
+        </GroupLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Datenimport\OLE DB-Ziel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Datenimport\OLE DB-Ziel 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Datenimport\OLE DB-Ziel 2">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Datenimport\OLE DB-Ziel 3">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Datenimport\OLE DB-Ziel 4">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

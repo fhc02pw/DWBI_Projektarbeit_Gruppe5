@@ -1,0 +1,704 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/15/2021 10:38:08 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-LV5FMFK"
+  DTS:CreatorName="DESKTOP-LV5FMFK\Daniel"
+  DTS:DTSID="{BFBF7D40-F797-4E24-B3F5-2BF9894CC887}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.167"
+  DTS:LocaleID="1031"
+  DTS:ObjectName="DatenimportPackageLink"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{E9901857-E642-4980-A65D-25822C0BA1C1}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Datenflusstask"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Datenflusstask"
+      DTS:DTSID="{834B931E-AD0E-4374-B035-F95AFB3FCAEE}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Datenflusstask"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Datenflusstask\Datenkonvertierung"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Datenkonvertierung;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;0"
+              description="Datenkonvertierung"
+              name="Datenkonvertierung"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung]"
+                  name="Eingabe der Datenkonvertierung">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[LVID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="LVID"
+                      lineageId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].Columns[LVID]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[VeranstaltungsIDFK]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="VeranstaltungsIDFK"
+                      lineageId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].Columns[VeranstaltungsIDFK]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[StudiengangIDFK]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StudiengangIDFK"
+                      lineageId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].Columns[StudiengangIDFK]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[VeranstaltungsartIDFK]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="VeranstaltungsartIDFK"
+                      lineageId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].Columns[VeranstaltungsartIDFK]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[StudienrichtungIDFK]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StudienrichtungIDFK"
+                      lineageId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].Columns[StudienrichtungIDFK]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung]"
+                  exclusionGroup="1"
+                  name="Ausgabe der Datenkonvertierung"
+                  synchronousInputId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;LVID&quot;]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;LVID&quot;]"
+                      name="Kopie von &quot;LVID&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].Columns[LVID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;VeranstaltungsIDFK&quot;]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;VeranstaltungsIDFK&quot;]"
+                      name="Kopie von &quot;VeranstaltungsIDFK&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].Columns[VeranstaltungsIDFK]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;StudiengangIDFK&quot;]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;StudiengangIDFK&quot;]"
+                      name="Kopie von &quot;StudiengangIDFK&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].Columns[StudiengangIDFK]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;VeranstaltungsartIDFK&quot;]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;VeranstaltungsartIDFK&quot;]"
+                      name="Kopie von &quot;VeranstaltungsartIDFK&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].Columns[VeranstaltungsartIDFK]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;StudienrichtungIDFK&quot;]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;StudienrichtungIDFK&quot;]"
+                      name="Kopie von &quot;StudienrichtungIDFK&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].Columns[StudienrichtungIDFK]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Fehlerausgabe der Datenkonvertierung]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Fehlerausgabe der Datenkonvertierung"
+                  synchronousInputId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Datenflusstask\FlatfileLV"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flatfilequelle;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;1"
+              description="Flatfilequelle"
+              localeId="1031"
+              name="FlatfileLV"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Gibt an, ob Spalten mit der Länge &quot;0&quot; als NULL behandelt werden."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen der Ausgabespalte an, die den Dateinamen enthält. Wenn kein Name angegeben wird, wird keine Ausgabespalte generiert, die den Dateinamen enthält."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Datenflusstask\FlatfileLV.Connections[FlatFileConnection]"
+                  connectionManagerID="{B8DEECA8-ABF3-4CB4-9A9C-1C2C281A1816}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Verbindungs-Manager für LV]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle]"
+                  name="Ausgabe der Flatfilequelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].Columns[LVID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[LVID]"
+                      length="50"
+                      lineageId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].Columns[LVID]"
+                      name="LVID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].Columns[VeranstaltungsIDFK]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[VeranstaltungsIDFK]"
+                      length="50"
+                      lineageId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].Columns[VeranstaltungsIDFK]"
+                      name="VeranstaltungsIDFK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].Columns[StudiengangIDFK]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[StudiengangIDFK]"
+                      length="50"
+                      lineageId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].Columns[StudiengangIDFK]"
+                      name="StudiengangIDFK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].Columns[VeranstaltungsartIDFK]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[VeranstaltungsartIDFK]"
+                      length="50"
+                      lineageId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].Columns[VeranstaltungsartIDFK]"
+                      name="VeranstaltungsartIDFK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].Columns[StudienrichtungIDFK]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[StudienrichtungIDFK]"
+                      length="50"
+                      lineageId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].Columns[StudienrichtungIDFK]"
+                      name="StudienrichtungIDFK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[LVID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="LVID" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[VeranstaltungsIDFK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="VeranstaltungsIDFK" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[StudiengangIDFK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StudiengangIDFK" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[VeranstaltungsartIDFK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="VeranstaltungsartIDFK" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[StudienrichtungIDFK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StudienrichtungIDFK" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Datenflusstask\FlatfileLV.Outputs[Fehlerausgabe der Flatfilequelle]"
+                  isErrorOut="true"
+                  name="Fehlerausgabe der Flatfilequelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenflusstask\FlatfileLV.Outputs[Fehlerausgabe der Flatfilequelle].Columns[Fehlerausgabespalte der Flatfilequelle]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Fehlerausgabespalte der Flatfilequelle"
+                      lineageId="Package\Datenflusstask\FlatfileLV.Outputs[Fehlerausgabe der Flatfilequelle].Columns[Fehlerausgabespalte der Flatfilequelle]"
+                      name="Fehlerausgabespalte der Flatfilequelle" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\FlatfileLV.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenflusstask\FlatfileLV.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\FlatfileLV.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenflusstask\FlatfileLV.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Datenflusstask\OLE DB-Ziel"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB-Ziel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;4"
+              description="OLE DB-Ziel"
+              name="OLE DB-Ziel"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden für das Timeout eines Befehls. Der Wert &quot;0&quot; zeigt einen unendlichen Timeoutwert an."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts an."
+                  name="OpenRowset">[dbo].[LINK_LV]</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die Variable an, die den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts enthält."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Der auszuführende SQL-Befehl."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Erzwingt die Verwendung des DefaultCodePage-Eigenschaftswerts beim Beschreiben von Zeichendaten."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt den zum Zugreifen auf die Datenbank verwendeten Modus an."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob die für Identitätsspalten übergebenen Werte zum Ziel kopiert werden. Bei &quot;False&quot; werden die Werte für Identitätsspalten am Ziel automatisch generiert. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob für Spalten, die NULL enthalten, NULL am Ziel eingefügt wird. Bei &quot;False&quot; werden für Spalten, die NULL enthalten, am Ziel die Standardwerte eingefügt. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die für die Option &quot;Schnelles Laden&quot; zu verwendenden Optionen an. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt an, wann beim Einfügen von Daten Commits ausgegeben werden. Der Wert &quot;0&quot; gibt an, dass ein Commit am Ende des Einfügens von Daten ausgegeben wird. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Datenflusstask\OLE DB-Ziel.Connections[OleDbConnection]"
+                  connectionManagerID="{B8289841-1739-41F2-BAFB-B16AB7796EE1}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-LV5FMFK.AusbildungsEvaluierungDataVault]"
+                  description="Die für den Zugriff auf die Datenbank verwendete OLE DB-Laufzeitverbindung."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels]"
+                  errorOrTruncationOperation="Einfügen"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Eingabe des OLE DB-Ziels">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;VeranstaltungsIDFK&quot;]"
+                      cachedDataType="i4"
+                      cachedName="Kopie von &quot;VeranstaltungsIDFK&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[VerantstaltungsIDFK]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;VeranstaltungsIDFK&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;StudiengangIDFK&quot;]"
+                      cachedDataType="i4"
+                      cachedName="Kopie von &quot;StudiengangIDFK&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[StudiengangIDFK]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;StudiengangIDFK&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;VeranstaltungsartIDFK&quot;]"
+                      cachedDataType="i4"
+                      cachedName="Kopie von &quot;VeranstaltungsartIDFK&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[VeranstaltungsArtIDFK]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;VeranstaltungsartIDFK&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;StudienrichtungIDFK&quot;]"
+                      cachedDataType="i4"
+                      cachedName="Kopie von &quot;StudienrichtungIDFK&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[StudienrichtungIDFK]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;StudienrichtungIDFK&quot;]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[LVID]"
+                      dataType="i4"
+                      name="LVID" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[VerantstaltungsIDFK]"
+                      dataType="i4"
+                      name="VerantstaltungsIDFK" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[StudiengangIDFK]"
+                      dataType="i4"
+                      name="StudiengangIDFK" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[VeranstaltungsArtIDFK]"
+                      dataType="i4"
+                      name="VeranstaltungsArtIDFK" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[StudienrichtungIDFK]"
+                      dataType="i4"
+                      name="StudienrichtungIDFK" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Datenflusstask\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Fehlerausgabe des OLE DB-Ziels"
+                  synchronousInputId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenflusstask\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenflusstask\OLE DB-Ziel.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Datenflusstask.Paths[Ausgabe der Datenkonvertierung]"
+              endId="Package\Datenflusstask\OLE DB-Ziel.Inputs[Eingabe des OLE DB-Ziels]"
+              name="Ausgabe der Datenkonvertierung"
+              startId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung]" />
+            <path
+              refId="Package\Datenflusstask.Paths[Ausgabe der Flatfilequelle]"
+              endId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung]"
+              name="Ausgabe der Flatfilequelle"
+              startId="Package\Datenflusstask\FlatfileLV.Outputs[Ausgabe der Flatfilequelle]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Dieser CDATA-Abschnitt enthält die Layoutinformationen des Pakets, z.B. Informationen wie X-/Y-Koordinaten, Breite und Höhe.-->
+<!--Wenn Sie diesen Abschnitt manuell ändern und Ihnen ein Fehler unterläuft, können Sie ihn löschen. -->
+<!--Das Paket kann zwar weiterhin normal geladen werden, aber frühere Layoutinformationen gehen verloren, und die Elemente auf der Entwurfsoberfläche werden vom Designer automatisch neu angeordnet.-->
+<Objects
+  Version="8">
+  <!--Jeder darunter liegende Knoten enthält Eigenschaften, die sich nicht auf das Laufzeitverhalten auswirken.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Datenflusstask"
+          TopLeft="370,173" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Datenflusstask">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib">
+        <NodeLayout
+          Size="125,42"
+          Id="Package\Datenflusstask\FlatfileLV"
+          TopLeft="30.5,5.5" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Datenflusstask\Datenkonvertierung"
+          TopLeft="5.50000000000003,107.5" />
+        <EdgeLayout
+          Id="Package\Datenflusstask.Paths[Ausgabe der Flatfilequelle]"
+          TopLeft="93,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="141,42"
+          Id="Package\Datenflusstask\OLE DB-Ziel"
+          TopLeft="22.5,209.5" />
+        <EdgeLayout
+          Id="Package\Datenflusstask.Paths[Ausgabe der Datenkonvertierung]"
+          TopLeft="93,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <GroupLayout
+          Text="LV"
+          ParentId="Package\Datenflusstask"
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="186,306"
+          Size="186,350"
+          Id="7adf918e-7f77-41cb-a9d2-a1e12d074150"
+          TopLeft="5.50000000000004,5.5">
+          <GroupLayout.ChildrenIds>
+            <s:String>Package\Datenflusstask\FlatfileLV</s:String>
+            <s:String>Package\Datenflusstask\Datenkonvertierung</s:String>
+            <s:String>Package\Datenflusstask.Paths[Ausgabe der Flatfilequelle]</s:String>
+            <s:String>Package\Datenflusstask\OLE DB-Ziel</s:String>
+            <s:String>Package\Datenflusstask.Paths[Ausgabe der Datenkonvertierung]</s:String>
+          </GroupLayout.ChildrenIds>
+        </GroupLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Datenflusstask\OLE DB-Ziel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

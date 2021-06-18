@@ -1,0 +1,1404 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/18/2021 4:12:25 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-LV5FMFK"
+  DTS:CreatorName="DESKTOP-LV5FMFK\Daniel"
+  DTS:DTSID="{B59CCCE5-B9C1-40C1-880D-D8C992CDB720}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.167"
+  DTS:LocaleID="1031"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{848CFA42-4390-4BDC-A8C4-5D21824CEFA7}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Verbindungs-Manager für Personen SCM]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{2587EF03-BA61-4700-B619-8B8D452389BF}"
+      DTS:ObjectName="Verbindungs-Manager für Personen SCM">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1031"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\Daniel\source\repos\DWBI_Projektarbeit_Gruppe5\Aufgabe7\Personen_DATA_SCM.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PersonenNr"
+              DTS:DTSID="{F0239B2C-9B21-4E53-8CC9-31C3C4553704}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Vorname"
+              DTS:DTSID="{59395CEA-61A9-4414-B7B6-95EF844DCB32}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Nachname"
+              DTS:DTSID="{159E0E0B-D501-4399-9C37-22AD3C71A287}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="GebDat"
+              DTS:DTSID="{77037F8C-14BB-4DB7-B7C1-997CC7A274F0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="gender"
+              DTS:DTSID="{A54324C5-4946-4CAA-9749-69DC6B36AE46}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Art"
+              DTS:DTSID="{078C405F-2CE5-41D3-B696-59447598404E}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Datenflusstask"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Datenflusstask"
+      DTS:DTSID="{FCA72C18-DCD4-4CC4-98CB-FB423C56BC7E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Datenflusstask"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Datenflusstask\Datenkonvertierung"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Datenkonvertierung;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;0"
+              description="Datenkonvertierung"
+              name="Datenkonvertierung"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung]"
+                  name="Eingabe der Datenkonvertierung">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[PersonenNr]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PersonenNr"
+                      lineageId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[PersonenNr]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[Vorname]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Vorname"
+                      lineageId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[Vorname]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[Nachname]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Nachname"
+                      lineageId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[Nachname]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[GebDat]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="GebDat"
+                      lineageId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[GebDat]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="gender"
+                      lineageId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[gender]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung].Columns[Art]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Art"
+                      lineageId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[Art]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung]"
+                  exclusionGroup="1"
+                  name="Ausgabe der Datenkonvertierung"
+                  synchronousInputId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;PersonenNr&quot;]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;PersonenNr&quot;]"
+                      name="Kopie von &quot;PersonenNr&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[PersonenNr]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Vorname&quot;]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Vorname&quot;]"
+                      name="Kopie von &quot;Vorname&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[Vorname]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Nachname&quot;]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Nachname&quot;]"
+                      name="Kopie von &quot;Nachname&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[Nachname]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;GebDat&quot;]"
+                      dataType="date"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;GebDat&quot;]"
+                      name="Kopie von &quot;GebDat&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[GebDat]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;gender&quot;]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;gender&quot;]"
+                      name="Kopie von &quot;gender&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[gender]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Art&quot;]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Art&quot;]"
+                      name="Kopie von &quot;Art&quot;"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Gibt die Eingabespalte an, die als Quelle der Daten für die Konvertierung verwendet wird."
+                          name="SourceInputColumnLineageID">#{Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[Art]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Fehlerausgabe der Datenkonvertierung]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Fehlerausgabe der Datenkonvertierung"
+                  synchronousInputId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\Datenkonvertierung.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Fehlerausgabe der Datenkonvertierung].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Datenflusstask\Flatfile Personen SCM"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flatfilequelle;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;1"
+              description="Flatfilequelle"
+              localeId="1031"
+              name="Flatfile Personen SCM"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Gibt an, ob Spalten mit der Länge &quot;0&quot; als NULL behandelt werden."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen der Ausgabespalte an, die den Dateinamen enthält. Wenn kein Name angegeben wird, wird keine Ausgabespalte generiert, die den Dateinamen enthält."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Datenflusstask\Flatfile Personen SCM.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Verbindungs-Manager für Personen SCM]"
+                  connectionManagerRefId="Package.ConnectionManagers[Verbindungs-Manager für Personen SCM]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle]"
+                  name="Ausgabe der Flatfilequelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[PersonenNr]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[PersonenNr]"
+                      length="50"
+                      lineageId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[PersonenNr]"
+                      name="PersonenNr"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[Vorname]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Vorname]"
+                      length="50"
+                      lineageId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[Vorname]"
+                      name="Vorname"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[Nachname]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Nachname]"
+                      length="50"
+                      lineageId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[Nachname]"
+                      name="Nachname"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[GebDat]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[GebDat]"
+                      length="50"
+                      lineageId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[GebDat]"
+                      name="GebDat"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[gender]"
+                      length="50"
+                      lineageId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[gender]"
+                      name="gender"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[Art]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Art]"
+                      length="50"
+                      lineageId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].Columns[Art]"
+                      name="Art"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Zeigt an, ob die Spalte die schnelleren gebietsschemaneutralen Analyseroutinen verwendet."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Gibt an, ob die Daten im Binärformat sind."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[PersonenNr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PersonenNr" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Vorname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Vorname" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Nachname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Nachname" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[GebDat]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="GebDat" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle].ExternalColumns[Art]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Art" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Fehlerausgabe der Flatfilequelle]"
+                  isErrorOut="true"
+                  name="Fehlerausgabe der Flatfilequelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Fehlerausgabe der Flatfilequelle].Columns[Fehlerausgabespalte der Flatfilequelle]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Fehlerausgabespalte der Flatfilequelle"
+                      lineageId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Fehlerausgabe der Flatfilequelle].Columns[Fehlerausgabespalte der Flatfilequelle]"
+                      name="Fehlerausgabespalte der Flatfilequelle" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Fehlerausgabe der Flatfilequelle].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Datenflusstask\Langsam veränderliche Dimension"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Langsam veränderliche Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;3"
+              description="Aktualisiert eine SQL Server Analysis Services Data Warehouse-Dimension. Aktualisieren Sie bereits vorhandene Dimensionsdatensätze, und fügen Sie nicht vorhandene Dimensionsdatensätze ein. Aktualisieren Sie beispielsweise die Tabelle &quot;DimProduct&quot; der OLAP-Datenbank &quot;AdventureWorksDW&quot; mit Daten aus der Tabelle &quot;Products&quot; in der OLTP-Datenbank &quot;AdventureWorks&quot;."
+              name="Langsam veränderliche Dimension"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Gibt die zum Erstellen eines Schemarowsets verwendete SELECT-Anweisung an."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Art], [Geschlecht], [Nachname], [PersonNr], [Vorname] FROM [dbo].[HUB_Personen]</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die WHERE-Klausel in der SELECT-Anweisung an, die die aktuelle Zeile unter Zeilen mit identischen Geschäftsschlüsseln auswählt."
+                  name="CurrentRowWhere"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob Updates des Verlaufsattributs zur Aktualisierung von veränderlichen Attributen an die Transformationsausgabe geleitet werden sollen."
+                  name="UpdateChangingAttributeHistory">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob die Transformation fehlschlägt, wenn Spalten mit festen Attributen Änderungen enthalten."
+                  name="FailOnFixedAttributeChange">false</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Spaltennamen für das abgeleitete Element an."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob Updates abgeleiteter Elemente erkannt werden."
+                  name="EnableInferredMember">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob die Transformation bei einem Fehler in der Suche nach einem vorhandenen Datensatz fehlschlägt."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt an, dass alle Zeilen in der Eingabe neu sind. Anderenfalls erkennt die Transformation den Änderungstyp."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Datenflusstask\Langsam veränderliche Dimension.Connections[LookupConnection]"
+                  connectionManagerID="{B8289841-1739-41F2-BAFB-B16AB7796EE1}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-LV5FMFK.AusbildungsEvaluierungDataVault]"
+                  description="Definiert die für Suchvorgänge in der Dimensionstabelle zu verwendende Verbindung."
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Datenflusstask\Langsam veränderliche Dimension.Inputs[Eingabe für langsam veränderliche Dimensionen]"
+                  name="Eingabe für langsam veränderliche Dimensionen">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Datenflusstask\Langsam veränderliche Dimension.Inputs[Eingabe für langsam veränderliche Dimensionen].Columns[Kopie von &quot;Art&quot;]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Kopie von &quot;Art&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\Langsam veränderliche Dimension.Inputs[Eingabe für langsam veränderliche Dimensionen].ExternalColumns[Art]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Art&quot;]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Datenflusstask\Langsam veränderliche Dimension.Inputs[Eingabe für langsam veränderliche Dimensionen].Columns[Kopie von &quot;gender&quot;]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Kopie von &quot;gender&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\Langsam veränderliche Dimension.Inputs[Eingabe für langsam veränderliche Dimensionen].ExternalColumns[Geschlecht]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;gender&quot;]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Datenflusstask\Langsam veränderliche Dimension.Inputs[Eingabe für langsam veränderliche Dimensionen].Columns[Kopie von &quot;Nachname&quot;]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Kopie von &quot;Nachname&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\Langsam veränderliche Dimension.Inputs[Eingabe für langsam veränderliche Dimensionen].ExternalColumns[Nachname]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Nachname&quot;]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Datenflusstask\Langsam veränderliche Dimension.Inputs[Eingabe für langsam veränderliche Dimensionen].Columns[Kopie von &quot;PersonenNr&quot;]"
+                      cachedDataType="i4"
+                      cachedName="Kopie von &quot;PersonenNr&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\Langsam veränderliche Dimension.Inputs[Eingabe für langsam veränderliche Dimensionen].ExternalColumns[PersonNr]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;PersonenNr&quot;]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Datenflusstask\Langsam veränderliche Dimension.Inputs[Eingabe für langsam veränderliche Dimensionen].Columns[Kopie von &quot;Vorname&quot;]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Kopie von &quot;Vorname&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\Langsam veränderliche Dimension.Inputs[Eingabe für langsam veränderliche Dimensionen].ExternalColumns[Vorname]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Vorname&quot;]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\Langsam veränderliche Dimension.Inputs[Eingabe für langsam veränderliche Dimensionen].ExternalColumns[Art]"
+                      dataType="wstr"
+                      length="50"
+                      name="Art" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\Langsam veränderliche Dimension.Inputs[Eingabe für langsam veränderliche Dimensionen].ExternalColumns[Geschlecht]"
+                      dataType="wstr"
+                      length="50"
+                      name="Geschlecht" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\Langsam veränderliche Dimension.Inputs[Eingabe für langsam veränderliche Dimensionen].ExternalColumns[Nachname]"
+                      dataType="wstr"
+                      length="50"
+                      name="Nachname" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\Langsam veränderliche Dimension.Inputs[Eingabe für langsam veränderliche Dimensionen].ExternalColumns[PersonNr]"
+                      dataType="i4"
+                      name="PersonNr" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\Langsam veränderliche Dimension.Inputs[Eingabe für langsam veränderliche Dimensionen].ExternalColumns[Vorname]"
+                      dataType="wstr"
+                      length="50"
+                      name="Vorname" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Datenflusstask\Langsam veränderliche Dimension.Outputs[Nicht geänderte Ausgabe]"
+                  description="Nicht geänderte Zeilen"
+                  exclusionGroup="1"
+                  name="Nicht geänderte Ausgabe"
+                  synchronousInputId="Package\Datenflusstask\Langsam veränderliche Dimension.Inputs[Eingabe für langsam veränderliche Dimensionen]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Datenflusstask\Langsam veränderliche Dimension.Outputs[Neue Ausgabe]"
+                  description="Neue Zeilen"
+                  exclusionGroup="1"
+                  name="Neue Ausgabe"
+                  synchronousInputId="Package\Datenflusstask\Langsam veränderliche Dimension.Inputs[Eingabe für langsam veränderliche Dimensionen]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Datenflusstask\Langsam veränderliche Dimension.Outputs[Ausgabe des festen Attributs]"
+                  description="Zeilen mit Änderungen in Spalten, die als &quot;FixedAttribute&quot; gekennzeichnet sind."
+                  exclusionGroup="1"
+                  name="Ausgabe des festen Attributs"
+                  synchronousInputId="Package\Datenflusstask\Langsam veränderliche Dimension.Inputs[Eingabe für langsam veränderliche Dimensionen]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Datenflusstask\Langsam veränderliche Dimension.Outputs[Ausgabe der Updates von veränderlichen Attributen]"
+                  description="Diese Zeilen enthalten neue Informationen für Änderungen an ChangingAttribute-Spalten (Typ 1)."
+                  exclusionGroup="1"
+                  name="Ausgabe der Updates von veränderlichen Attributen"
+                  synchronousInputId="Package\Datenflusstask\Langsam veränderliche Dimension.Inputs[Eingabe für langsam veränderliche Dimensionen]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Datenflusstask\Langsam veränderliche Dimension.Outputs[Ausgabe der Einfügevorgänge im Verlaufsattribut]"
+                  description="HistoricalAttribute-Änderungen (Typ 2) führen zu diesen neuen Zeilen."
+                  exclusionGroup="2"
+                  name="Ausgabe der Einfügevorgänge im Verlaufsattribut"
+                  synchronousInputId="Package\Datenflusstask\Langsam veränderliche Dimension.Inputs[Eingabe für langsam veränderliche Dimensionen]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Datenflusstask\Langsam veränderliche Dimension.Outputs[Ausgabe der Updates abgeleiteter Elemente]"
+                  description="Informationen zum Aktualisieren nicht aufgefüllter ursprünglicher Dimensionszeilen"
+                  exclusionGroup="1"
+                  name="Ausgabe der Updates abgeleiteter Elemente"
+                  synchronousInputId="Package\Datenflusstask\Langsam veränderliche Dimension.Inputs[Eingabe für langsam veränderliche Dimensionen]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Datenflusstask\OLE DB-Befehl 1"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB-Befehl;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;2"
+              description="Führt eine SQL-Anweisung für jede Zeile in einem Datenfluss aus. Rufen Sie beispielsweise die gespeicherte Prozedur &quot;new employee setup&quot; für jede Zeile in der Tabelle &quot;new employees&quot; auf. Hinweis: Wenn Sie für jede Zeile eines umfangreichen Datenflusses eine SQL-Anweisung ausführen, kann der Vorgang länger dauern."
+              name="OLE DB-Befehl 1"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden für das Timeout eines Befehls. Der Wert &quot;0&quot; zeigt einen unendlichen Timeoutwert an."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Der auszuführende SQL-Befehl."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[HUB_Personen] SET [Art] = ?,[Geschlecht] = ?,[Nachname] = ?,[Vorname] = ? WHERE [PersonNr] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Datenflusstask\OLE DB-Befehl 1.Connections[OleDbConnection]"
+                  connectionManagerID="{B8289841-1739-41F2-BAFB-B16AB7796EE1}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-LV5FMFK.AusbildungsEvaluierungDataVault]"
+                  description="Die für den Zugriff auf die Datenbank verwendete OLE DB-Laufzeitverbindung."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Datenflusstask\OLE DB-Befehl 1.Inputs[Eingabe des OLE DB-Befehls]"
+                  errorOrTruncationOperation="Befehlsausführung"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Eingabe des OLE DB-Befehls">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Datenflusstask\OLE DB-Befehl 1.Inputs[Eingabe des OLE DB-Befehls].Columns[Kopie von &quot;Art&quot;]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Kopie von &quot;Art&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\OLE DB-Befehl 1.Inputs[Eingabe des OLE DB-Befehls].ExternalColumns[Param_0]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Art&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\OLE DB-Befehl 1.Inputs[Eingabe des OLE DB-Befehls].Columns[Kopie von &quot;gender&quot;]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Kopie von &quot;gender&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\OLE DB-Befehl 1.Inputs[Eingabe des OLE DB-Befehls].ExternalColumns[Param_1]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;gender&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\OLE DB-Befehl 1.Inputs[Eingabe des OLE DB-Befehls].Columns[Kopie von &quot;Nachname&quot;]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Kopie von &quot;Nachname&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\OLE DB-Befehl 1.Inputs[Eingabe des OLE DB-Befehls].ExternalColumns[Param_2]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Nachname&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\OLE DB-Befehl 1.Inputs[Eingabe des OLE DB-Befehls].Columns[Kopie von &quot;PersonenNr&quot;]"
+                      cachedDataType="i4"
+                      cachedName="Kopie von &quot;PersonenNr&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\OLE DB-Befehl 1.Inputs[Eingabe des OLE DB-Befehls].ExternalColumns[Param_4]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;PersonenNr&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\OLE DB-Befehl 1.Inputs[Eingabe des OLE DB-Befehls].Columns[Kopie von &quot;Vorname&quot;]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Kopie von &quot;Vorname&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\OLE DB-Befehl 1.Inputs[Eingabe des OLE DB-Befehls].ExternalColumns[Param_3]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Vorname&quot;]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\OLE DB-Befehl 1.Inputs[Eingabe des OLE DB-Befehls].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameterinformationen. Stimmt mit den DBPARAMFLAGSENUM-Werten von OLE DB überein."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\OLE DB-Befehl 1.Inputs[Eingabe des OLE DB-Befehls].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameterinformationen. Stimmt mit den DBPARAMFLAGSENUM-Werten von OLE DB überein."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\OLE DB-Befehl 1.Inputs[Eingabe des OLE DB-Befehls].ExternalColumns[Param_2]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameterinformationen. Stimmt mit den DBPARAMFLAGSENUM-Werten von OLE DB überein."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\OLE DB-Befehl 1.Inputs[Eingabe des OLE DB-Befehls].ExternalColumns[Param_3]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameterinformationen. Stimmt mit den DBPARAMFLAGSENUM-Werten von OLE DB überein."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\OLE DB-Befehl 1.Inputs[Eingabe des OLE DB-Befehls].ExternalColumns[Param_4]"
+                      dataType="i4"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameterinformationen. Stimmt mit den DBPARAMFLAGSENUM-Werten von OLE DB überein."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Datenflusstask\OLE DB-Befehl 1.Outputs[Ausgabe des OLE DB-Befehls]"
+                  exclusionGroup="1"
+                  name="Ausgabe des OLE DB-Befehls"
+                  synchronousInputId="Package\Datenflusstask\OLE DB-Befehl 1.Inputs[Eingabe des OLE DB-Befehls]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Datenflusstask\OLE DB-Befehl 1.Outputs[Fehlerausgabe des OLE DB-Befehls]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Fehlerausgabe des OLE DB-Befehls"
+                  synchronousInputId="Package\Datenflusstask\OLE DB-Befehl 1.Inputs[Eingabe des OLE DB-Befehls]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenflusstask\OLE DB-Befehl 1.Outputs[Fehlerausgabe des OLE DB-Befehls].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenflusstask\OLE DB-Befehl 1.Outputs[Fehlerausgabe des OLE DB-Befehls].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\OLE DB-Befehl 1.Outputs[Fehlerausgabe des OLE DB-Befehls].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenflusstask\OLE DB-Befehl 1.Outputs[Fehlerausgabe des OLE DB-Befehls].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Datenflusstask\Ziel einfügen"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB-Ziel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;4"
+              description="OLE DB-Ziel"
+              name="Ziel einfügen"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden für das Timeout eines Befehls. Der Wert &quot;0&quot; zeigt einen unendlichen Timeoutwert an."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts an."
+                  name="OpenRowset">[dbo].[HUB_Personen]</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die Variable an, die den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts enthält."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Der auszuführende SQL-Befehl."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Erzwingt die Verwendung des DefaultCodePage-Eigenschaftswerts beim Beschreiben von Zeichendaten."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt den zum Zugreifen auf die Datenbank verwendeten Modus an."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob die für Identitätsspalten übergebenen Werte zum Ziel kopiert werden. Bei &quot;False&quot; werden die Werte für Identitätsspalten am Ziel automatisch generiert. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob für Spalten, die NULL enthalten, NULL am Ziel eingefügt wird. Bei &quot;False&quot; werden für Spalten, die NULL enthalten, am Ziel die Standardwerte eingefügt. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die für die Option &quot;Schnelles Laden&quot; zu verwendenden Optionen an. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt an, wann beim Einfügen von Daten Commits ausgegeben werden. Der Wert &quot;0&quot; gibt an, dass ein Commit am Ende des Einfügens von Daten ausgegeben wird. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Datenflusstask\Ziel einfügen.Connections[OleDbConnection]"
+                  connectionManagerID="{B8289841-1739-41F2-BAFB-B16AB7796EE1}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-LV5FMFK.AusbildungsEvaluierungDataVault]"
+                  description="Die für den Zugriff auf die Datenbank verwendete OLE DB-Laufzeitverbindung."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Datenflusstask\Ziel einfügen.Inputs[Eingabe des OLE DB-Ziels]"
+                  errorOrTruncationOperation="Einfügen"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Eingabe des OLE DB-Ziels">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Datenflusstask\Ziel einfügen.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;PersonenNr&quot;]"
+                      cachedDataType="i4"
+                      cachedName="Kopie von &quot;PersonenNr&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\Ziel einfügen.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[PersonNr]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;PersonenNr&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\Ziel einfügen.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;Vorname&quot;]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Kopie von &quot;Vorname&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\Ziel einfügen.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Vorname]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Vorname&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\Ziel einfügen.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;Nachname&quot;]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Kopie von &quot;Nachname&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\Ziel einfügen.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Nachname]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Nachname&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\Ziel einfügen.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;gender&quot;]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Kopie von &quot;gender&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\Ziel einfügen.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Geschlecht]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;gender&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\Ziel einfügen.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;Art&quot;]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Kopie von &quot;Art&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\Ziel einfügen.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Art]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;Art&quot;]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\Ziel einfügen.Inputs[Eingabe des OLE DB-Ziels].Columns[Kopie von &quot;GebDat&quot;]"
+                      cachedDataType="date"
+                      cachedName="Kopie von &quot;GebDat&quot;"
+                      externalMetadataColumnId="Package\Datenflusstask\Ziel einfügen.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[GebDat]"
+                      lineageId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung].Columns[Kopie von &quot;GebDat&quot;]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\Ziel einfügen.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[PersonenID]"
+                      dataType="i4"
+                      name="PersonenID" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\Ziel einfügen.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[PersonNr]"
+                      dataType="i4"
+                      name="PersonNr" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\Ziel einfügen.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Vorname]"
+                      dataType="wstr"
+                      length="50"
+                      name="Vorname" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\Ziel einfügen.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Nachname]"
+                      dataType="wstr"
+                      length="50"
+                      name="Nachname" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\Ziel einfügen.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[GebDat]"
+                      dataType="dbDate"
+                      name="GebDat" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\Ziel einfügen.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Geschlecht]"
+                      dataType="wstr"
+                      length="50"
+                      name="Geschlecht" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\Ziel einfügen.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Art]"
+                      dataType="wstr"
+                      length="50"
+                      name="Art" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Datenflusstask\Ziel einfügen.Outputs[Fehlerausgabe des OLE DB-Ziels]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Fehlerausgabe des OLE DB-Ziels"
+                  synchronousInputId="Package\Datenflusstask\Ziel einfügen.Inputs[Eingabe des OLE DB-Ziels]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenflusstask\Ziel einfügen.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenflusstask\Ziel einfügen.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\Ziel einfügen.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenflusstask\Ziel einfügen.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Datenflusstask.Paths[Ausgabe der Datenkonvertierung]"
+              endId="Package\Datenflusstask\Langsam veränderliche Dimension.Inputs[Eingabe für langsam veränderliche Dimensionen]"
+              name="Ausgabe der Datenkonvertierung"
+              startId="Package\Datenflusstask\Datenkonvertierung.Outputs[Ausgabe der Datenkonvertierung]" />
+            <path
+              refId="Package\Datenflusstask.Paths[Ausgabe der Flatfilequelle]"
+              endId="Package\Datenflusstask\Datenkonvertierung.Inputs[Eingabe der Datenkonvertierung]"
+              name="Ausgabe der Flatfilequelle"
+              startId="Package\Datenflusstask\Flatfile Personen SCM.Outputs[Ausgabe der Flatfilequelle]" />
+            <path
+              refId="Package\Datenflusstask.Paths[Ausgabe der Updates von veränderlichen Attributen]"
+              endId="Package\Datenflusstask\OLE DB-Befehl 1.Inputs[Eingabe des OLE DB-Befehls]"
+              name="Ausgabe der Updates von veränderlichen Attributen"
+              startId="Package\Datenflusstask\Langsam veränderliche Dimension.Outputs[Ausgabe der Updates von veränderlichen Attributen]" />
+            <path
+              refId="Package\Datenflusstask.Paths[Neue Ausgabe]"
+              endId="Package\Datenflusstask\Ziel einfügen.Inputs[Eingabe des OLE DB-Ziels]"
+              name="Neue Ausgabe"
+              startId="Package\Datenflusstask\Langsam veränderliche Dimension.Outputs[Neue Ausgabe]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Dieser CDATA-Abschnitt enthält die Layoutinformationen des Pakets, z.B. Informationen wie X-/Y-Koordinaten, Breite und Höhe.-->
+<!--Wenn Sie diesen Abschnitt manuell ändern und Ihnen ein Fehler unterläuft, können Sie ihn löschen. -->
+<!--Das Paket kann zwar weiterhin normal geladen werden, aber frühere Layoutinformationen gehen verloren, und die Elemente auf der Entwurfsoberfläche werden vom Designer automatisch neu angeordnet.-->
+<Objects
+  Version="8">
+  <!--Jeder darunter liegende Knoten enthält Eigenschaften, die sich nicht auf das Laufzeitverhalten auswirken.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Datenflusstask"
+          TopLeft="700,261" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Datenflusstask">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph" xmlns:s="clr-namespace:System;assembly=mscorlib">
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Datenflusstask\Datenkonvertierung"
+          TopLeft="126.5,91.4999999999999" />
+        <NodeLayout
+          Size="248,42"
+          Id="Package\Datenflusstask\Langsam veränderliche Dimension"
+          TopLeft="92,174.5" />
+        <EdgeLayout
+          Id="Package\Datenflusstask.Paths[Ausgabe der Datenkonvertierung]"
+          TopLeft="215,133.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41"
+              Start="0,0"
+              End="0,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="189,42"
+          Id="Package\Datenflusstask\Flatfile Personen SCM"
+          TopLeft="113.5,15.4999999999999" />
+        <EdgeLayout
+          Id="Package\Datenflusstask.Paths[Ausgabe der Flatfilequelle]"
+          TopLeft="211,57.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Datenflusstask\Ziel einfügen"
+          TopLeft="13.4999999999999,278.5" />
+        <EdgeLayout
+          Id="Package\Datenflusstask.Paths[Neue Ausgabe]"
+          TopLeft="176,216.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-91.5000000000001,62"
+              Start="0,0"
+              End="-91.5000000000001,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.0384615384615" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.0384615384615"
+                    Point2="0,25.0384615384615"
+                    Point3="-4,25.0384615384615" />
+                  <mssgle:LineSegment
+                    End="-87.5000000000001,25.0384615384615" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-87.5000000000001,25.0384615384615"
+                    Point2="-91.5000000000001,25.0384615384615"
+                    Point3="-91.5000000000001,29.0384615384615" />
+                  <mssgle:LineSegment
+                    End="-91.5000000000001,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-78.0063476562501,30.0384615384615,64.5126953125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Datenflusstask\OLE DB-Befehl 1"
+          TopLeft="327,281.5" />
+        <EdgeLayout
+          Id="Package\Datenflusstask.Paths[Ausgabe der Updates von veränderlichen Attributen]"
+          TopLeft="256,216.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="152.5,65"
+              Start="0,0"
+              End="152.5,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.25"
+                    Point2="0,26.25"
+                    Point3="4,26.25" />
+                  <mssgle:LineSegment
+                    End="148.5,26.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="148.5,26.25"
+                    Point2="152.5,26.25"
+                    Point3="152.5,30.25" />
+                  <mssgle:LineSegment
+                    End="152.5,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-38.51,31.25,229.52,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <GroupLayout
+          Text="Personen SCM"
+          ParentId="Package\Datenflusstask"
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="676,386"
+          Size="676,429"
+          Id="d74c4426-671e-4dd3-bc15-df18eacfed2e"
+          TopLeft="5.49999999999989,6.5">
+          <GroupLayout.ChildrenIds>
+            <s:String>Package\Datenflusstask\Datenkonvertierung</s:String>
+            <s:String>Package\Datenflusstask\Langsam veränderliche Dimension</s:String>
+            <s:String>Package\Datenflusstask.Paths[Ausgabe der Datenkonvertierung]</s:String>
+            <s:String>Package\Datenflusstask\Flatfile Personen SCM</s:String>
+            <s:String>Package\Datenflusstask.Paths[Ausgabe der Flatfilequelle]</s:String>
+            <s:String>Package\Datenflusstask\Ziel einfügen</s:String>
+            <s:String>Package\Datenflusstask.Paths[Neue Ausgabe]</s:String>
+            <s:String>Package\Datenflusstask\OLE DB-Befehl 1</s:String>
+            <s:String>Package\Datenflusstask.Paths[Ausgabe der Updates von veränderlichen Attributen]</s:String>
+          </GroupLayout.ChildrenIds>
+        </GroupLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Datenflusstask\Langsam veränderliche Dimension">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionID&gt;{B8289841-1739-41F2-BAFB-B16AB7796EE1}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[HUB_Personen]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Datenkonvertierung.Ausgaben[Ausgabe der Datenkonvertierung].Spalten[Kopie von "Art"]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Art&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Datenkonvertierung.Ausgaben[Ausgabe der Datenkonvertierung].Spalten[Kopie von "GebDat"]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;GebDat&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Datenkonvertierung.Ausgaben[Ausgabe der Datenkonvertierung].Spalten[Kopie von "gender"]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Geschlecht&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Datenkonvertierung.Ausgaben[Ausgabe der Datenkonvertierung].Spalten[Kopie von "Nachname"]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Nachname&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Datenkonvertierung.Ausgaben[Ausgabe der Datenkonvertierung].Spalten[Kopie von "PersonenNr"]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;PersonNr&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Datenkonvertierung.Ausgaben[Ausgabe der Datenkonvertierung].Spalten[Kopie von "Vorname"]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Vorname&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings /&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn /&gt;
+  &lt;EndDateColumn /&gt;
+  &lt;DateVariable /&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Datenflusstask\Ziel einfügen">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
